@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syed Tahir Ali Shah, Ph.D. Researcher</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #1f2937;
+      background: #fafafa;
+      line-height: 1.6;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      position: fixed;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    nav .brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #2563eb;
+    }
+    .hero {
+      height: 100vh;
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url("https://cdn.motor1.com/images/mgl/40mm8o/s1/new-okgo-smart-e-bike-boasts-futuristic-style-and-tech.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      color: white;
+    }
+    .hero-box {
+      max-width: 900px;
+    }
+    .hero-box h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    .hero-box p {
+      font-size: 1.4rem;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    section {
+      max-width: 1100px;
+      margin: 100px auto;
+      padding: 0 30px;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      border-left: 5px solid #2563eb;
+      padding-left: 16px;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #2563eb;
+    }
+    .bio {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .bio img {
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      border: 4px solid #fff;
+    }
+    .bio p {
+      font-size: 1.1rem;
+      color: #374151;
+    }
+    ul {
+      padding-left: 20px;
+      list-style-type: none;
+    }
+    ul li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+      color: #374151;
+    }
+    ul li::before {
+      content: '\f058';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+    }
+    .publications li {
+      margin-bottom: 25px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 15px;
+    }
+    .publications li:last-child {
+      border-bottom: none;
+    }
+    .publications strong {
+      font-weight: 600;
+    }
+    .publications em {
+      font-style: italic;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .contact-info a {
+      color: #2563eb;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+    .contact-info a:hover {
+      color: #1d4ed8;
+    }
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      color: #6b7280;
+      font-size: 0.9rem;
+      border-top: 1px solid #e5e7eb;
+      background: white;
+    }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hero-box h1 { font-size: 2.5rem; }
+      .bio { grid-template-columns: 1fr; text-align: center; }
+      .bio img { margin: 0 auto 30px; }
+      section { margin: 80px auto; }
+      table { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="brand">Syed Tahir Ali Shah</div>
+  <div>
+    <a href="#bio">Bio</a>
+    <a href="#education">Education</a>
+    <a href="#languages">Languages</a>
+    <a href="#affiliations">Affiliations</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#projects">Projects</a>
+    <a href="#software">Software</a>
+    <a href="#supervision">Supervision</a>
+    <a href="#events">Events</a>
+    <a href="#distinctions">Distinctions</a>
+    <a href="#contact">Contact</a>
+    <a href="F712-C83E-0EFB.pdf">CV</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-box">
+    <h1>Hello! I’m Syed Tahir Ali Shah</h1>
+    <p>
+      Ph.D. student in Mechanical Engineering at the University of Aveiro, Portugal.<br />
+      Researcher in emotion-aware IoT-integrated mobility systems, embedded machine learning,<br />
+      affective computing, and IoT-based physiological monitoring.
+    </p>
+  </div>
+</div>
+<section id="bio">
+  <h2>Bio</h2>
+  <div class="bio">
+    <img src="https://i1.rgstatic.net/ii/profile.image/865695453700097-1583409288538_Q512/Syed-Tahir-Ali-Shah.jpg" alt="Profile photo of Syed Tahir Ali Shah" />
+    <p>
+      Syed Tahir Ali Shah is a Ph.D. student in mechanical engineering at the University of Aveiro, Portugal, working under the AM2R—Mobilizing Agenda for Business Innovation in the Two-Wheel Sector. He holds a bachelor's and a master's degree in computer science from Karakoram International University and Iqra University, Pakistan. His research focuses on emotion-aware, IoT-integrated mobility systems. He has authored and co-authored several scientific papers, including published and submitted work in areas such as wearable-driven smart mobility, embedded machine learning, affective computing, and IoT-based physiological monitoring.
+    </p>
+  </div>
+</section>
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li><strong>Mechanical Engineering (Doutoramento)</strong><br />Ongoing (2023/11/01 - 2027/06/30)<br />Universidade de Aveiro, Portugal</li>
+    <li><strong>Master of Science (Computer Science) (Laurea Magistrale)</strong><br />Concluded (2016/01/10 - 2018/08/31), Classification: 14<br />Iqra University - Islamabad Campus, Pakistan</li>
+    <li><strong>Bachelor of Science in Computer Science (Bachelor)</strong><br />Concluded (2011/06/01 - 2016/01/01)<br />Major in Software engineering, database systems, data structures, and algorithm design<br />Karakoram International University, Pakistan</li>
+  </ul>
+</section>
+<section id="languages">
+  <h2>Languages</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Language</th>
+        <th>Speaking</th>
+        <th>Reading</th>
+        <th>Writing</th>
+        <th>Listening</th>
+        <th>Peer-review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Urdu (Mother tongue)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td>Upper intermediate (B2)</td>
+        <td>Proficiency (C2)</td>
+        <td>Proficiency (C2)</td>
+        <td>Advanced (C1)</td>
+        <td>Proficiency (C2)</td>
+      </tr>
+      <tr>
+        <td>Portuguese</td>
+        <td>Beginner (A1)</td>
+        <td>Beginner (A1)</td>
+        <td>Beginner (A1)</td>
+        <td>Intermediate (B1)</td>
+        <td>Upper intermediate (B2)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section id="affiliations">
+  <h2>Affiliations</h2>
+  <ul>
+    <li><strong>Research Trainee (Research)</strong><br />2025/12/31 - Current<br />Fundação para a Ciência e a Tecnologia, Portugal<br />Host: Universidade de Aveiro, Portugal</li>
+    <li><strong>Scholarship Holder</strong><br />2023/11/01 - 2025/12/31<br />Universidade de Aveiro, Portugal<br />Host: Universidade de Aveiro, Portugal</li>
+  </ul>
+</section>
+<section id="research">
+  <h2>Research Interests & Knowledge Fields</h2>
+  <ul>
+    <li>Emotion-aware and human-centered mobility systems</li>
+    <li>Embedded and mobile machine learning</li>
+    <li>Wearable-driven physiological sensing</li>
+    <li>IoT architectures for smart mobility and smart homes</li>
+    <li>Physio-digital twins and affective computing</li>
+    <li>Engineering and Technology - Electrotechnical Engineering, Electronics and Informatics</li>
+    <li>Exact Sciences - Computer and Information Sciences - Bioinformatics</li>
+    <li>Exact Sciences - Computer and Information Sciences - Computer Sciences</li>
+    <li>Exact Sciences - Computer and Information Sciences - Information Science</li>
+    <li>Engineering and Technology - Electrotechnical Engineering, Electronics and Informatics - Computer Hardware and Architecture</li>
+  </ul>
+</section>
+<section id="publications" class="publications">
+  <h2>Publications</h2>
+  <h3>Conference Abstracts</h3>
+  <ul>
+    <li>Gabriel Constantinescu; Horovistiz, Ana; Syed Tahir Ali Shah; José Paulo Oliveira Santos; António Manuel de Bastos Pereira; ALVES, JOÃO PEDRO; Luís, Salomé; Mário Sousa Henriques. Corresponding author: Gabriel Constantinescu. "Tensile and flexural characterizations of biaxial non-crimp fabric composites for sustainable, two-wheeled electric vehicle chassis". Paper presented in TEchMA 2025 – New frontiers in mechanical engineering, Aveiro, 2025. (Published)</li>
+    <li>Gabriel Constantinescu; Syed Tahir Ali Shah; José Paulo Oliveira Santos; António Manuel de Bastos Pereira; José Maria Amaral Fernandes ; Linda Borgato ; orsini, federico; et al. Corresponding author: Gabriel Constantinescu. "From ride data to carbon credits: a LCA-based mobile solution for sustainable EV usage". Paper presented in TEchMA 2025 – New frontiers in mechanical engineering, Aveiro, 2025. (Published)</li>
+    <li>Gabriel Constantinescu; Horovistiz, Ana; Syed Tahir Ali Shah; José Paulo Oliveira Santos; António Manuel de Bastos Pereira; ALVES, JOÃO PEDRO; Luís, Salomé; Mário Sousa Henriques. Corresponding author: Gabriel Constantinescu. "Compressive and shear behaviour of novel non-crimp fabric composites for sustainable and lightweight electrical mobility". Paper presented in TEchMA 2025 – New frontiers in mechanical engineering, Aveiro, 2025. (Published)</li>
+    <li>Syed Tahir Ali Shah. "Extending IoT Networks with the Human Factor: An Example for an E-bike Scenario (Emotion Sensitive Computing)". Paper presented in 7TH INTERNATIONAL CONFERENCE ON TECHNOLOGIES FOR THE WELLBEING AND SUSTAINABLE MANUFACTURING SOLUTIONS, Aveiro, 2024. (Published)</li>
+  </ul>
+  <h3>Conference Papers</h3>
+  <ul>
+    <li>Syed Tahir Ali Shah; Santos,J.P.; Gabriel Constantinescu; Fernandes, José; Pereira, A. B.. Corresponding author: Syed Tahir Ali Shah. "Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform". Paper presented in 2026 The 9th International Conference on Information and Computer Technologies (ICICT2026), Honolulu-Hawaii, 2026. (Under revision)</li>
+    <li>Syed Tahir Ali Shah; José Maria Fernandes; José Paulo Oliveira Santos; Gabriel Constantinescu; António Manuel de Bastos Pereira; Horovistiz, Ana; Margarida Isabel Cabrita Marques Coelho; Mario Sousa Henriques. Corresponding author: Syed Tahir Ali Shah. "Smart E-bike systems: Integrating own rider information for improving riding experience". Paper presented in 1ª Conferência AM2R: O Futuro da Mobilidade Sustentável, de Portugal para o Mundo, Porto, 2024. (Submitted)</li>
+  </ul>
+  <h3>Journal Articles</h3>
+  <ul>
+    <li>Gabriel Constantinescu; Horovistiz, Ana; Syed Tahir Ali Shah; Santos,J.P.; Margarida C. Coelho; João Manuel Cardoso; Raquel Belo Figueiredo; et al. Corresponding author: Gabriel Constantinescu. "Mechanical Properties of Novel Biaxial Non-Crimp Fabrics for Sustainable 2-Wheeled Electrical Vehicles". (2026): (Submitted)</li>
+    <li>Syed Tahir Ali Shah; José Maria Fernandes; José Paulo Santos; Gabriel Constantinescu; Mário Sousa Henriques. "State-of-the-Art in Machine Learning on Embedded and Mobile Runtimes: A Critical Review and Future Roadmap". (2025): (Submitted)</li>
+    <li>Syed Tahir Ali Shah; José Maria Fernandes; José Paulo Santos; Gabriel Constantinescu; António Bastos Pereira; Mário Sousa Henriques. "Smart E-bike systems: Integrating own rider information for improving riding experience". (2025): (Submitted)</li>
+    <li>Syed Tahir Ali Shah. "Gabriel Constantinescu; Horovistiz Ana; Syed Tahir Ali Shah, José Paulo Oliveira Santos; AntónioManuel de Bastos Pereira; Mario Sousa Henriques. Corresponding author:Gabriel Constantinescu. "Tensile Properties of Sustainable Biaxial Non-CrimpFabrics for 2- Wheeled Electrical Vehicle Chassis".". (2025): (Submitted)</li>
+    <li>Jamal Hussain Arman,Muhammad Usama Sharaf,Syed Tahir Ali Shah, Najamuddin Sohu,Sindhu,Urooj Tariq. "MACHINE LEARNING-BASED NETWORK INTRUSION DETECTION USING RANDOM COMMITTEE ENSEMBLES: A MULTI-METRIC PERFORMANCE EVALUATION". Zenodo (2025): https://zenodo.org/doi/10.5281/zenodo.17129656. 10.5281/ZENODO.17129656</li>
+    <li>Syed Tahir Ali Shah; José Maria Fernandes; José Paulo Santos; Gabriel Constantinescu; António Bastos Pereira; Mário Sousa Henriques. "Wearable- Driven Adaptive Lighting Control for Smart Homes: A Scalable, Physiology- Aware IoT Architecture". (2025): (Submitted • Open access)</li>
+    <li>Syed Tahir Ali Shah; Iftikhar, Abeer; Khan, Muhammad Imran; Mansoor, Majad; Mirza, Adeel Feroz; Bilal, Muhammad. "PREDICTING COVID-19 INFECTIONS PREVALENCE USING LINEAR REGRESSION TOOL". Journal of Experimental Biology and Agricultural Sciences 8 Spl-1- SAR (2020): S01-S08. https://doi. org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08. 10.14299/ijser.2020.02.05</li>
+    <li>Syed Tahir Ali Shah; Abeer Iftikhar; Muhammad Imran Khan; Majad Mansoor; Adeel Feroz Mirza; Muhammad Bilal. "PREDICTING COVID-19 INFECTIONS PREVALENCE USING LINEAR REGRESSION TOOL". Journal of Experimental Biology and Agricultural Sciences 8 Spl-1- {SA (2020): S01-S08. https://doi.org/10. 18006/2020.8(Spl-1-SARS-CoV-2).S01.S08. 10.18006/2020.8(Spl-1-SARS-CoV-2).S01.S08</li>
+    <li>Syed Tahir Ali Shah; Majad Mansoor; Adeel Feroz Mirza; Muhammad Dilshad; Muhammad Imran Khan; Rahat Farwa; Muhammad Ammar Khan; Muhammad Bilal; Hafiz M.N. Iqbal. "Predicting COVID-19 Spread in Pakistan using the SIR Model". Journal of Pure and Applied Microbiology 14 2 (2020): 1423-1430. 10.22207/JPAM.14.2.40</li>
+    <li>Syed Tahir Ali Shah; Khan, Dr Aihab; Hussain, Dr Afaq. "Text Steganography Using character Spacing after Normalization". International Journal of Scientific & Engineering Research 11 2 (2020): 949-957. https://doi.org/10. 14299/ijser.2020.02.05.</li>
+  </ul>
+</section>
+<section id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li><strong>AM2R - Mobilizing Agenda for business innovation in the Two-Wheel sector</strong><br />2023/11/01 - 2025/12/31, Ongoing<br />PhD Student Fellow<br />Universidade de Aveiro, Portugal</li>
+  </ul>
+</section>
+<section id="software">
+  <h2>Software</h2>
+  <ul>
+    <li><strong>MariaBike: Real-Time E-Bike Dashboard with BLE and MQTT Integration</strong><br />Version 0.1, Android/iOS, 2025<br />Universidade de Aveiro</li>
+  </ul>
+</section>
+<section id="supervision">
+  <h2>Supervision</h2>
+  <ul>
+    <li><strong>IoT-Based Smart Farming System with Real-Time Soil Moisture and Weather Monitoring</strong><br />2022/06/01 - 2023/06/30, Supervisor (Other)<br />University of Baltistan, Pakistan</li>
+    <li><strong>Real-Time Emotion Recognition from Facial Expressions Using Deep Learning</strong><br />2020/01/01 - 2021/01/31, Co-supervisor (Degree)<br />University of Baltistan, Pakistan</li>
+  </ul>
+  <h3>Mentoring / Tutoring</h3>
+  <ul>
+    <li><strong>Scientific Mentorship – Social Sciences, Humanities, Arts, and Research I (CHAI I), University of Aveiro</strong><br />2024/10/01 - 2025/06/30<br />Student: João Bispo</li>
+  </ul>
+</section>
+<section id="events">
+  <h2>Event Participation</h2>
+  <ul>
+    <li><strong>I presented my poster titled Smart E-Bike Systems: Integrating Rider-Specific Information to Enhance the Riding Experience</strong><br />2024/12/10 - 2024/12/11, Conference<br />AM2R - Mobilizing Agenda for Business Innovation in the Two-Wheel Sector, Portugal<br />Technical Scientific Conference</li>
+    <li><strong>The presentation focused on integrating physiological signals from wearables into embedded mobility solutions, demonstrating MariaBike as a case study</strong><br />2024/06/06 - 2024/06/07, Conference<br />EchMA2024 – 7th International Conference on Technologies for the Wellbeing and Sustainable Manufacturing Solution<br />Universidade de Aveiro, Portugal</li>
+  </ul>
+</section>
+<section id="distinctions">
+  <h2>Distinctions</h2>
+  <ul>
+    <li><strong>Certificate of Participation – Scientific Mentorship I Program (CHAI I)</strong><br />2025<br />Universidade de Aveiro, Portugal</li>
+  </ul>
+</section>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-info">
+    <p>Email: <a href="mailto:syedtahiralishah@ua.pt"><i class="fas fa-envelope"></i> syedtahiralishah@ua.pt (Professional)</a></p>
+    <p>Email: <a href="mailto:syedtahirkzm1@gmail.com"><i class="fas fa-envelope"></i> syedtahirkzm1@gmail.com (Personal)</a></p>
+    <p>Phone: <a href="tel:+351920425446"><i class="fas fa-phone"></i> +351 920 425 446 (Personal)</a></p>
+    <a href="https://scholar.google.com/citations?user=VED2-h4AAAAJ&hl=en"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+    <a href="https://orcid.org/0000-0003-0001-1810"><i class="fas fa-id-badge"></i> ORCID</a>
+    <a href="https://pt.linkedin.com/in/syed-tahir-ali-shah-a1582897"><i class="fab fa-linkedin"></i> LinkedIn</a>
+  </div>
+  <p>Address: Centre for Mechanical Technology and Automation (TEMA) Department of Mechanical Engineering (DEM) University of Aveiro (UA) Campus Universitário de Santiago, 3810-193 Aveiro, Aveiro, Portugal, Portugal (Professional)</p>
+</section>
+<footer>
+  © 2026 Syed Tahir Ali Shah · University of Aveiro
+</footer>
+</body>
+</html>

@@ -236,6 +236,32 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
+    #software .mariabike-details {
+      margin-top: 20px;
+    }
+    #software .mariabike-details p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 20px;
+    }
+    #slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    .slideshow-img {
+      display: none;
+      width: 100%;
+      height: auto;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow-img.active {
+      display: block;
+      opacity: 1;
+    }
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .hero-box h1 { font-size: 2.5rem; }
@@ -396,6 +422,16 @@
   <ul>
     <li><strong>MariaBike: Real-Time E-Bike Dashboard with BLE and MQTT Integration</strong><br />Version 0.1, Android/iOS, 2025<br />Universidade de Aveiro</li>
   </ul>
+  <div class="mariabike-details">
+    <p>MariaBike is a cutting-edge smart e-bike platform developed at the University of Aveiro as part of mobility innovation initiatives. It integrates physiological signals from wearables into embedded mobility solutions, enhancing the riding experience through emotion-aware IoT systems. Featured in events like the Regional Mobility Innovation Forum and EIT Urban Mobility RIS Winter Schools, MariaBike represents a proof-of-concept for human-centered IoT mobility.</p>
+    <div id="slideshow-container">
+      <img class="slideshow-img" src="https://cdn.dribbble.com/userupload/44171614/file/original-1853d6bdbdf73850900f867e2fe9dfbb.png?resize=752x&vertical=center" alt="MariaBike Image 1">
+      <img class="slideshow-img" src="http://www.chigee.com/cdn/shop/articles/Smart_Digital_Displays_for_Motorcycles_Essential_Upgrade_or_Lavish_Luxury.png?v=1745466648&width=2048" alt="MariaBike Image 2">
+      <img class="slideshow-img" src="http://leoguarbikes.com/cdn/shop/articles/8ad8daf8a017c5f48efdcbf9cd2ed5ac_44281878-bf79-4b7c-bd6b-5c29c8bdc229.webp?v=1756435633" alt="MariaBike Image 3">
+      <img class="slideshow-img" src="https://www.hyena-ebike.com/wp-content/uploads/2024/05/HyenaSync-14.png" alt="MariaBike Image 4">
+      <img class="slideshow-img" src="https://mbesb.in/wp-content/uploads/2025/12/KTM-Electric-Cycle-202.jpg" alt="MariaBike Image 5">
+    </div>
+  </div>
 </section>
 <section id="supervision" data-aos="fade-up">
   <h2>Supervision</h2>
@@ -454,6 +490,19 @@
       nav.classList.remove('scrolled');
     }
   });
+</script>
+<script>
+  const images = document.querySelectorAll('.slideshow-img');
+  let currentIndex = Math.floor(Math.random() * images.length);
+  images[currentIndex].classList.add('active');
+
+  function showNextImage() {
+    images[currentIndex].classList.remove('active');
+    currentIndex = Math.floor(Math.random() * images.length);
+    images[currentIndex].classList.add('active');
+  }
+
+  setInterval(showNextImage, 5000); // Change image every 5 seconds
 </script>
 </body>
 </html>

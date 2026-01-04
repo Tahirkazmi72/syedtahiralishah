@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,20 +55,53 @@
     }
     .hero {
       height: 100vh;
-      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url("https://cdn.motor1.com/images/mgl/40mm8o/s1/new-okgo-smart-e-bike-boasts-futuristic-style-and-tech.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Parallax effect */
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 40px;
       color: white;
+      background-attachment: fixed; /* Parallax effect */
+    }
+    #hero-slideshow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+      z-index: 1;
     }
     .hero-box {
       max-width: 900px;
       animation: fadeInUp 1s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+    .slideshow-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow-img.active {
+      display: block;
+      opacity: 1;
     }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(50px); }
@@ -252,15 +286,11 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       border-radius: 8px;
     }
-    .slideshow-img {
-      display: none;
-      width: 100%;
-      height: auto;
-      transition: opacity 1s ease-in-out;
-    }
-    .slideshow-img.active {
-      display: block;
-      opacity: 1;
+    #slideshow-container .slideshow-img {
+      position: relative;
+      top: auto;
+      left: auto;
+      object-fit: contain;
     }
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
@@ -292,6 +322,14 @@
   </div>
 </nav>
 <div class="hero">
+  <div id="hero-slideshow-container">
+    <img class="slideshow-img" src="https://cdn.motor1.com/images/mgl/40mm8o/s1/new-okgo-smart-e-bike-boasts-futuristic-style-and-tech.jpg" alt="Futuristic Smart E-Bike 1">
+    <img class="slideshow-img" src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/1/7/1389114585675/Smart-e-bike-004.jpg?width=465&dpr=1&s=none&crop=none" alt="Futuristic Smart E-Bike 2">
+    <img class="slideshow-img" src="https://inhabitat.com/wp-content/blogs.dir/1/files/2014/11/04_SEA-DENNY-the-Denny-bike-also-has-a-fully-integrated-smart-lighting-system-that-adapts-the-intensity-based-on-the-natural-light-conditions_Teague_1280.jpg" alt="Futuristic Smart E-Bike 3">
+    <img class="slideshow-img" src="http://thebikeshow.net/wp-content/uploads/2014/12/smart-ebike-10C1062_68_enl.jpg" alt="Futuristic Smart E-Bike 4">
+    <img class="slideshow-img" src="https://inhabitat.com/wp-content/blogs.dir/1/files/2014/11/Baidu-Dubike-3.jpg" alt="Futuristic Smart E-Bike 5">
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-box">
     <h1>Hello! I’m Syed Tahir Ali Shah</h1>
     <p>
@@ -492,17 +530,25 @@
   });
 </script>
 <script>
-  const images = document.querySelectorAll('.slideshow-img');
-  let currentIndex = Math.floor(Math.random() * images.length);
-  images[currentIndex].classList.add('active');
-
-  function showNextImage() {
-    images[currentIndex].classList.remove('active');
-    currentIndex = Math.floor(Math.random() * images.length);
+  function setupSlideshow(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const images = container.querySelectorAll('.slideshow-img');
+    let currentIndex = Math.floor(Math.random() * images.length);
     images[currentIndex].classList.add('active');
+
+    function showNextImage() {
+      images[currentIndex].classList.remove('active');
+      currentIndex = Math.floor(Math.random() * images.length);
+      images[currentIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 5000); // Change image every 5 seconds
   }
 
-  setInterval(showNextImage, 5000); // Change image every 5 seconds
+  setupSlideshow('hero-slideshow-container');
+  setupSlideshow('slideshow-container');
 </script>
 </body>
 </html>
+```

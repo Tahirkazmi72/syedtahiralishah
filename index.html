@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@
     }
     nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       padding: 18px 60px;
       position: fixed;
@@ -318,7 +317,7 @@
     <a href="#events">Events</a>
     <a href="#distinctions">Distinctions</a>
     <a href="#contact">Contact</a>
-    <a href="F712-C83E-0EFB.pdf">CV</a>
+    <a href="http://www.cienciavitae.pt//F712-C83E-0EFB">CV</a>
   </div>
 </nav>
 <div class="hero">
@@ -445,14 +444,14 @@
     <li>Syed Tahir Ali Shah; Abeer Iftikhar; Muhammad Imran Khan; Majad Mansoor; Adeel Feroz Mirza; Muhammad Bilal. <a href="https://www.researchgate.net/publication/345970067_PREDICTING_COVID-19_INFECTIONS_PREVALENCE_USING_LINEAR_REGRESSION_TOOL">"PREDICTING COVID-19 INFECTIONS PREVALENCE USING LINEAR REGRESSION TOOL"</a>. Journal of Experimental Biology and Agricultural Sciences 8 Spl-1- {SA (2020): S01-S08. <a href="https://doi.org/10.18006/2020.8(Spl-1-SARS-CoV-2).S01.S08">https://doi.org/10.18006/2020.8(Spl-1-SARS-CoV-2).S01.S08</a>. 10.18006/2020.8(Spl-1-SARS-CoV-2).S01.S08</li>
     <li>Syed Tahir Ali Shah; Majad Mansoor; Adeel Feroz Mirza; Muhammad Dilshad; Muhammad Imran Khan; Rahat Farwa; Muhammad Ammar Khan; Muhammad Bilal; Hafiz M.N. Iqbal. <a href="https://www.researchgate.net/publication/342592679_Predicting_COVID-19_Spread_in_Pakistan_using_the_SIR_Model">"Predicting COVID-19 Spread in Pakistan using the SIR Model"</a>. Journal of Pure and Applied Microbiology 14 2 (2020): 1423-1430. 10.22207/JPAM.14.2.40</li>
     <li>Syed Tahir Ali Shah; Khan, Dr Aihab; Hussain, Dr Afaq. <a href="https://www.researchgate.net/publication/339799864_Text_Steganography_Using_character_Spacing_after_Normalization">"Text Steganography Using character Spacing after Normalization"</a>. International Journal of Scientific & Engineering Research 11 2 (2020): 949-957. <a href="https://doi.org/10.14299/ijser.2020.02.05">https://doi.org/10.14299/ijser.2020.02.05</a>.</li>
-    
+  
     <li><a href="https://www.researchgate.net/publication/396931168_Machine_Learning-Driven_Design_and_Optimization_of_Neodymium_Substituted_R-Type_Hexagonal_Ferrites_for_Enhanced_Electrical_Polarization_Properties">Machine Learning-Driven Design and Optimization of Neodymium Substituted R-Type Hexagonal Ferrites for Enhanced Electrical Polarization Properties</a>. (2025)</li>
   </ul>
 </section>
 <section id="projects" data-aos="fade-up">
   <h2>Projects</h2>
   <ul>
-    <li><strong>AM2R - Mobilizing Agenda for business innovation in the Two-Wheel sector</strong><br />2023/11/01 - 2025/12/31, Ongoing<br />PhD Student Fellow<br />Universidade de Aveiro, Portugal</li>
+    <li><strong>AM2R - Mobilizing Agenda for business innovation in the Two-Wheel sector</strong><br />2023/11/01 - 2025/12/31, Concluded<br />PhD Student Fellow<br />Universidade de Aveiro, Portugal</li>
   </ul>
 </section>
 <section id="software" data-aos="fade-up">
@@ -536,19 +535,15 @@
     const images = container.querySelectorAll('.slideshow-img');
     let currentIndex = Math.floor(Math.random() * images.length);
     images[currentIndex].classList.add('active');
-
     function showNextImage() {
       images[currentIndex].classList.remove('active');
       currentIndex = Math.floor(Math.random() * images.length);
       images[currentIndex].classList.add('active');
     }
-
     setInterval(showNextImage, 5000); // Change image every 5 seconds
   }
-
   setupSlideshow('hero-slideshow-container');
   setupSlideshow('slideshow-container');
 </script>
 </body>
 </html>
-```

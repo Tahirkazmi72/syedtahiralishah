@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -324,9 +323,6 @@
 <div class="hero">
   <div id="hero-slideshow-container">
     <img class="slideshow-img" src="https://cdn.motor1.com/images/mgl/40mm8o/s1/new-okgo-smart-e-bike-boasts-futuristic-style-and-tech.jpg" alt="Futuristic Smart E-Bike 1">
-    <img class="slideshow-img" src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/1/7/1389114585675/Smart-e-bike-004.jpg?width=465&dpr=1&s=none&crop=none" alt="Futuristic Smart E-Bike 2">
-    <img class="slideshow-img" src="https://inhabitat.com/wp-content/blogs.dir/1/files/2014/11/04_SEA-DENNY-the-Denny-bike-also-has-a-fully-integrated-smart-lighting-system-that-adapts-the-intensity-based-on-the-natural-light-conditions_Teague_1280.jpg" alt="Futuristic Smart E-Bike 3">
-    <img class="slideshow-img" src="http://thebikeshow.net/wp-content/uploads/2014/12/smart-ebike-10C1062_68_enl.jpg" alt="Futuristic Smart E-Bike 4">
     <img class="slideshow-img" src="https://inhabitat.com/wp-content/blogs.dir/1/files/2014/11/Baidu-Dubike-3.jpg" alt="Futuristic Smart E-Bike 5">
   </div>
   <div class="hero-overlay"></div>
@@ -464,9 +460,6 @@
     <p>MariaBike is a cutting-edge smart e-bike platform developed at the University of Aveiro as part of mobility innovation initiatives. It integrates physiological signals from wearables into embedded mobility solutions, enhancing the riding experience through emotion-aware IoT systems. Featured in events like the Regional Mobility Innovation Forum and EIT Urban Mobility RIS Winter Schools, MariaBike represents a proof-of-concept for human-centered IoT mobility.</p>
     <div id="slideshow-container">
       <img class="slideshow-img" src="https://cdn.dribbble.com/userupload/44171614/file/original-1853d6bdbdf73850900f867e2fe9dfbb.png?resize=752x&vertical=center" alt="MariaBike Image 1">
-      <img class="slideshow-img" src="http://www.chigee.com/cdn/shop/articles/Smart_Digital_Displays_for_Motorcycles_Essential_Upgrade_or_Lavish_Luxury.png?v=1745466648&width=2048" alt="MariaBike Image 2">
-      <img class="slideshow-img" src="http://leoguarbikes.com/cdn/shop/articles/8ad8daf8a017c5f48efdcbf9cd2ed5ac_44281878-bf79-4b7c-bd6b-5c29c8bdc229.webp?v=1756435633" alt="MariaBike Image 3">
-      <img class="slideshow-img" src="https://www.hyena-ebike.com/wp-content/uploads/2024/05/HyenaSync-14.png" alt="MariaBike Image 4">
       <img class="slideshow-img" src="https://mbesb.in/wp-content/uploads/2025/12/KTM-Electric-Cycle-202.jpg" alt="MariaBike Image 5">
     </div>
   </div>
@@ -536,19 +529,15 @@
     const images = container.querySelectorAll('.slideshow-img');
     let currentIndex = Math.floor(Math.random() * images.length);
     images[currentIndex].classList.add('active');
-
     function showNextImage() {
       images[currentIndex].classList.remove('active');
       currentIndex = Math.floor(Math.random() * images.length);
       images[currentIndex].classList.add('active');
     }
-
     setInterval(showNextImage, 5000); // Change image every 5 seconds
   }
-
   setupSlideshow('hero-slideshow-container');
   setupSlideshow('slideshow-container');
 </script>
 </body>
 </html>
-```

@@ -439,6 +439,20 @@
       transform: translateX(10px);
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
+    
+    /* Status Badges */
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .status-published { background: #dcfce7; color: #166534; }
+    .status-submitted { background: #ffedd5; color: #9a3412; }
+    .status-accepted { background: #dbeafe; color: #1e40af; }
 
     .pub-title {
       font-weight: 700;
@@ -453,6 +467,13 @@
       color: var(--text-light);
       margin-bottom: 10px;
       display: block;
+      font-style: italic;
+    }
+
+    .pub-authors {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: #475569;
     }
 
     .pub-link {
@@ -773,65 +794,133 @@
 
     <div class="pub-tabs" data-aos="fade-up">
       <button class="tab-btn active" onclick="filterPubs('all', this)">All</button>
-      <button class="tab-btn" onclick="filterPubs('journal', this)">Journals</button>
+      <button class="tab-btn" onclick="filterPubs('journal', this)">Journals & Articles</button>
       <button class="tab-btn" onclick="filterPubs('conference', this)">Conferences</button>
-      <button class="tab-btn" onclick="filterPubs('abstract', this)">Abstracts</button>
     </div>
 
     <!-- All Publications Container -->
     <div id="pub-container" data-aos="fade-up">
       
-      <!-- Journal Articles -->
+      <!-- Journal Articles & Magazines -->
       <div class="pub-item" data-category="journal">
-        <span class="pub-title">State-of-the-Art in Machine Learning on Embedded and Mobile Runtimes</span>
-        <span class="pub-meta">2025 - Submitted</span>
-        <p>Syed Tahir Ali Shah, José Maria Fernandes, José Paulo Santos, et al.</p>
+        <span class="status-badge status-submitted">Submitted (2026)</span>
+        <span class="pub-title">Mechanical Properties of Novel Biaxial Non-Crimp Fabrics for Sustainable 2-Wheeled Electric Vehicles</span>
+        <div class="pub-meta">Article in a magazine</div>
+        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P. Santos, M.C. Coelho, J.M. Cardoso, R.B. Figueiredo, et al.</p>
+        <p><em>Corresponding author: Gabriel Constantinescu</em></p>
       </div>
 
       <div class="pub-item" data-category="journal">
-        <a href="https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08" target="_blank" class="pub-title">Predicting COVID-19 Infections Prevalence Using Linear Regression Tool</a>
-        <span class="pub-meta">Journal of Experimental Biology and Agricultural Sciences, 2020</span>
-        <p>Syed Tahir Ali Shah, Abeer Iftikhar, Muhammad Imran Khan, et al.</p>
+        <span class="status-badge status-submitted">Submitted (2025)</span>
+        <span class="pub-title">State-of-the-Art in Machine Learning on Embedded and Mobile Runtimes: A Critical Review and Future Roadmap</span>
+        <div class="pub-meta">Journal Article</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, M.S. Henriques.</p>
+      </div>
+
+      <div class="pub-item" data-category="journal">
+        <span class="status-badge status-submitted">Submitted (2025)</span>
+        <span class="pub-title">Smart E-bike systems: Integrating own rider information for improving riding experience</span>
+        <div class="pub-meta">Journal Article</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.</p>
+      </div>
+
+      <div class="pub-item" data-category="journal">
+        <span class="status-badge status-submitted">Submitted (2025)</span>
+        <span class="pub-title">Tensile Properties of Sustainable Biaxial Non-Crimp Fabrics for 2-Wheeled Electric Vehicle Chassis</span>
+        <div class="pub-meta">Journal Article</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, G. Constantinescu, A. Horovistiz, J.P.O. Santos, A.M.B. Pereira, M.S. Henriques.</p>
+        <p><em>Corresponding author: Gabriel Constantinescu</em></p>
+      </div>
+
+      <div class="pub-item" data-category="journal">
+        <span class="status-badge status-submitted">Open Access • Submitted (2025)</span>
+        <span class="pub-title">Wearable-Driven Adaptive Lighting Control for Smart Homes: A Scalable, Physiology-Aware IoT Architecture</span>
+        <div class="pub-meta">Journal Article</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.</p>
+      </div>
+
+      <div class="pub-item" data-category="journal">
+        <span class="pub-title">MACHINE LEARNING-BASED NETWORK INTRUSION DETECTION USING RANDOM COMMITTEE ENSEMBLES: A MULTI-METRIC PERFORMANCE EVALUATION</span>
+        <span class="pub-meta">Zenodo (2025)</span>
+        <p class="pub-authors">J.H. Arman, M.U. Sharaf, <strong>Syed Tahir Ali Shah</strong>, N. Sohu, Sindhu, U. Tariq.</p>
+        <a href="https://zenodo.org/doi/10.5281/zenodo.17129656" target="_blank" class="pub-link">View on Zenodo <i class="fas fa-external-link-alt"></i></a>
+      </div>
+
+      <div class="pub-item" data-category="journal">
+        <span class="status-badge status-published">Published (2020)</span>
+        <a href="https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08" target="_blank" class="pub-title">PREDICTING COVID-19 INFECTIONS PREVALENCE USING LINEAR REGRESSION TOOL</a>
+        <span class="pub-meta">Journal of Experimental Biology and Agricultural Sciences, 8 Spl-1- SAR</span>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, A. Iftikhar, M.I. Khan, M. Mansoor, A.F. Mirza, M. Bilal.</p>
         <a href="https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
       </div>
 
       <div class="pub-item" data-category="journal">
-        <a href="https://www.researchgate.net/publication/342592679_Predicting_COVID-19_Spread_in_Pakistan_using_the_SIR_Model" target="_blank" class="pub-title">Predicting COVID-19 Spread in Pakistan using the SIR Model</a>
-        <span class="pub-meta">Journal of Pure and Applied Microbiology, 2020</span>
-        <p>Syed Tahir Ali Shah, Majad Mansoor, Adeel Feroz Mirza, et al.</p>
+        <span class="status-badge status-published">Published (2020)</span>
+        <a href="https://doi.org/10.22207/JPAM.14.2.40" target="_blank" class="pub-title">Predicting COVID-19 Spread in Pakistan using the SIR Model</a>
+        <span class="pub-meta">Journal of Pure and Applied Microbiology, 14(2)</span>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, M. Mansoor, A.F. Mirza, M. Dilshad, M.I. Khan, R. Farwa, M.A. Khan, M. Bilal, H.M.N. Iqbal.</p>
         <a href="https://doi.org/10.22207/JPAM.14.2.40" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
       </div>
 
       <div class="pub-item" data-category="journal">
-        <span class="pub-title">Mechanical Properties of Novel Biaxial Non-Crimp Fabrics for Sustainable 2-Wheeled EVs</span>
-        <span class="pub-meta">2026 - Submitted</span>
-        <p>Gabriel Constantinescu, Ana Horovistiz, Syed Tahir Ali Shah, et al.</p>
+        <span class="status-badge status-published">Published (2020)</span>
+        <a href="https://doi.org/10.14299/ijser.2020.02.05" target="_blank" class="pub-title">Text Steganography Using Character Spacing after Normalization</a>
+        <span class="pub-meta">International Journal of Scientific & Engineering Research, 11(2)</span>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, Dr. A. Khan, Dr. A. Hussain.</p>
+        <a href="https://doi.org/10.14299/ijser.2020.02.05" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
       </div>
+
 
       <!-- Conference Papers -->
       <div class="pub-item" data-category="conference">
-        <span class="pub-title">Physio-Digital Twin for Human-Centered IoT Mobility: MariaBike Platform</span>
-        <span class="pub-meta">ICICT2026, Hawaii - Under Revision</span>
-        <p>Presenting a proof-of-concept implementation.</p>
+        <span class="status-badge status-accepted">Accepted (2026)</span>
+        <span class="pub-title">Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform</span>
+        <div class="pub-meta">ICICT2026, Honolulu-Hawaii</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.P. Santos, G. Constantinescu, J. Fernandes, A.B. Pereira.</p>
+        <p><em>Corresponding author: Syed Tahir Ali Shah</em></p>
       </div>
 
       <div class="pub-item" data-category="conference">
-        <span class="pub-title">Smart E-bike systems: Integrating rider information</span>
-        <span class="pub-meta">1ª Conferência AM2R, Porto 2024 - Submitted</span>
-        <p>Focusing on improving riding experience via IoT.</p>
+        <span class="status-badge status-accepted">Accepted (2026)</span>
+        <span class="pub-title">State of the Art in Machine Learning on Embedded and Mobile Runtimes: A PRISMA-Based Systematic Review and Future Roadmap</span>
+        <div class="pub-meta">ICCDE 2026, Phuket</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.J.S. Henriques.</p>
+        <p><em>Corresponding author: Syed Tahir Ali Shah</em></p>
       </div>
 
-      <!-- Abstracts -->
-      <div class="pub-item" data-category="abstract">
-        <span class="pub-title">Tensile and flexural characterizations of biaxial non-crimp fabric composites</span>
-        <span class="pub-meta">TEchMA 2025, Aveiro</span>
-        <p>G. Constantinescu, A. Horovistiz, Syed Tahir Ali Shah, et al.</p>
+      <div class="pub-item" data-category="conference">
+        <span class="status-badge status-published">Published (2025)</span>
+        <span class="pub-title">Tensile and flexural characterizations of biaxial non-crimp fabric composites for sustainable, two-wheeled electric vehicle chassis</span>
+        <div class="pub-meta">TECHMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
+        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Luís, M.S. Henriques.</p>
       </div>
-      
-      <div class="pub-item" data-category="abstract">
-        <a href="https://www.researchgate.net/publication/381195336_Extending_IoT_Networks_with_the_Human_Factor_An_Example_for_an_E-bike_Scenario_Emotion_Sensitive_Computing" target="_blank" class="pub-title">Extending IoT Networks with the Human Factor: An E-bike Scenario</a>
-        <span class="pub-meta">7th Int. Conf. on Wellbeing and Sustainable Manufacturing, 2024</span>
-        <p>Syed Tahir Ali Shah (Published)</p>
+
+      <div class="pub-item" data-category="conference">
+        <span class="status-badge status-published">Published (2025)</span>
+        <span class="pub-title">From ride data to carbon credits: a LCA-based mobile solution for sustainable EV usage</span>
+        <div class="pub-meta">TECHMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
+        <p class="pub-authors">G. Constantinescu, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.M.A. Fernandes, L. Borgato, F. Orsini, et al.</p>
+      </div>
+
+      <div class="pub-item" data-category="conference">
+        <span class="status-badge status-published">Published (2025)</span>
+        <span class="pub-title">Compressive and shear behavior of novel non-crimp fabric composites for sustainable and lightweight electrical mobility</span>
+        <div class="pub-meta">TECHMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
+        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Luís, M.S. Henriques.</p>
+      </div>
+
+      <div class="pub-item" data-category="conference">
+        <span class="status-badge status-submitted">Submitted (2024)</span>
+        <span class="pub-title">Smart E-bike systems: Integrating own rider information for improving riding experience</span>
+        <div class="pub-meta">1st AM2R Conference: The Future of Sustainable Mobility, Porto</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P.O. Santos, G. Constantinescu, A.M.B. Pereira, H. Ana, M.S. Henriques.</p>
+      </div>
+
+      <div class="pub-item" data-category="conference">
+        <span class="status-badge status-published">Published (2024)</span>
+        <span class="pub-title">Extending IoT Networks with the Human Factor: An Example for an E-bike Scenario (Emotion Sensitive Computing)</span>
+        <div class="pub-meta">7th Int. Conf. on Technologies for the Wellbeing and Sustainable Manufacturing Solutions, Aveiro</div>
+        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong></p>
       </div>
 
     </div>

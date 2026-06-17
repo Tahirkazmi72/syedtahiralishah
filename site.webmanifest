@@ -1,0 +1,22 @@
+{
+  "name": "Syed Tahir Ali Shah",
+  "short_name": "Syed Tahir",
+  "description": "Academic portfolio for Syed Tahir Ali Shah, Ph.D. researcher in embedded IoT and smart mobility.",
+  "start_url": "/syedtahiralishah/",
+  "scope": "/syedtahiralishah/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/syedtahiralishah/assets/images/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/syedtahiralishah/assets/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

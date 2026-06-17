@@ -10,6 +10,24 @@ Edit `assets/data/site-data.json` to update:
 - Publications, filters, links, status badges, and sorting data
 - Software/projects, contact cards, profile links, and footer socials
 - Hero text, calls to action, and slideshow images
+- Certificates shown in the certificate gallery
+
+## Add Certificates
+
+Put certificate PDFs/images in `assets/certificates/`, then add entries under `certificates.items` in `assets/data/site-data.json`.
+
+Example:
+
+```json
+{
+  "title": "Certificate Title",
+  "issuer": "Issuing Organization",
+  "date": "2026",
+  "description": "Short certificate description.",
+  "file": "assets/certificates/certificate.pdf",
+  "thumbnail": "assets/certificates/certificate.jpg"
+}
+```
 
 ## Run Locally
 

@@ -7,6 +7,7 @@
   "navigation": [
     { "label": "Bio", "href": "#bio" },
     { "label": "Education", "href": "#education" },
+    { "label": "Certificates", "href": "#certificates" },
     { "label": "Research", "href": "#research" },
     { "label": "Publications", "href": "#publications" },
     { "label": "Projects", "href": "#projects" },
@@ -23,7 +24,8 @@
     "title": "Advancing Mobility through Emotion-Aware IoT",
     "summary": "Exploring the intersection of Mechanical Engineering, Embedded Machine Learning, and Affective Computing at the University of Aveiro.",
     "actions": [
-      { "label": "Discover My Work", "href": "#bio", "external": false }
+      { "label": "Discover My Work", "href": "#bio", "external": false },
+      { "label": "Certificates", "href": "#certificates", "icon": "fas fa-certificate", "external": false }
     ],
     "images": [
       {
@@ -86,6 +88,12 @@
         "description": ""
       }
     ]
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Academic and professional certificates will be shown here.",
+    "emptyMessage": "Certificate files have not been added yet.",
+    "items": []
   },
   "research": {
     "title": "Research Interests",

@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-2";
+const DATA_URL = "assets/data/site-data.json?v=20260617-3";
 
 let siteData = null;
 const state = {
@@ -189,6 +189,97 @@ function renderLanguages() {
   });
 
   table.append(thead, tbody);
+}
+
+function certificateType(file) {
+  if (!file) return "none";
+  return /\.pdf($|\?)/i.test(file) ? "pdf" : "image";
+}
+
+function openCertificateModal(item) {
+  const modal = $("#certificate-modal");
+  const title = $("#certificate-modal-title");
+  const body = $("#certificate-modal-body");
+  const fullLink = $("#certificate-modal-link");
+  const type = certificateType(item.file);
+
+  title.textContent = item.title;
+  body.innerHTML = "";
+  fullLink.href = item.file;
+
+  if (type === "pdf") {
+    const frame = document.createElement("iframe");
+    frame.src = item.file;
+    frame.title = item.title;
+    body.appendChild(frame);
+  } else {
+    const image = document.createElement("img");
+    image.src = item.file;
+    image.alt = item.title;
+    image.decoding = "async";
+    body.appendChild(image);
+  }
+
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeCertificateModal() {
+  const modal = $("#certificate-modal");
+  const body = $("#certificate-modal-body");
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+  body.innerHTML = "";
+  document.body.classList.remove("modal-open");
+}
+
+function renderCertificates() {
+  const certificates = siteData.certificates;
+  const grid = $("#certificate-grid");
+
+  setText("#certificates-title", certificates.title);
+  setText("#certificates-subtitle", certificates.subtitle);
+  grid.innerHTML = "";
+
+  if (!certificates.items.length) {
+    grid.appendChild(createElement("p", "empty-state", certificates.emptyMessage));
+    return;
+  }
+
+  certificates.items.forEach((item) => {
+    const card = createElement("article", "certificate-card");
+    const preview = createElement("div", "certificate-preview");
+    const meta = createElement("div", "certificate-meta");
+    const button = document.createElement("button");
+
+    if (item.thumbnail) {
+      const image = document.createElement("img");
+      image.src = item.thumbnail;
+      image.alt = item.title;
+      image.loading = "lazy";
+      image.decoding = "async";
+      preview.appendChild(image);
+    } else {
+      appendIcon(preview, certificateType(item.file) === "pdf" ? "fas fa-file-pdf" : "fas fa-certificate");
+    }
+
+    meta.appendChild(createElement("h3", null, item.title));
+    if (item.issuer) meta.appendChild(createElement("p", "certificate-issuer", item.issuer));
+    if (item.date) meta.appendChild(createElement("span", "certificate-date", item.date));
+    if (item.description) meta.appendChild(createElement("p", null, item.description));
+
+    button.type = "button";
+    button.className = "btn";
+    button.appendChild(document.createTextNode(item.file ? (item.buttonLabel || "View Certificate") : "Certificate Pending"));
+    button.disabled = !item.file;
+    if (item.file) {
+      button.addEventListener("click", () => openCertificateModal(item));
+    }
+
+    card.append(preview, meta, button);
+    grid.appendChild(card);
+  });
 }
 
 function categoryCounts() {
@@ -384,6 +475,8 @@ function bindInteractions() {
   const nav = $("#navbar");
   const navLinks = $("#nav-links");
   const toggle = $("#mobile-toggle");
+  const certificateModal = $("#certificate-modal");
+  const certificateClose = $("#certificate-modal-close");
 
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 50);
@@ -403,6 +496,15 @@ function bindInteractions() {
     }
   });
 
+  certificateClose.addEventListener("click", closeCertificateModal);
+  certificateModal.addEventListener("click", (event) => {
+    if (event.target === certificateModal) closeCertificateModal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && certificateModal.classList.contains("active")) {
+      closeCertificateModal();
+    }
+  });
 }
 
 function observeSections() {
@@ -430,6 +532,7 @@ function renderSite() {
   renderBio();
   setText("#education-title", siteData.education.title);
   renderTimeline("#education-timeline", siteData.education.items);
+  renderCertificates();
   renderResearch();
   renderLanguages();
   setText("#publications-title", siteData.publications.title);

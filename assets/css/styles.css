@@ -204,6 +204,28 @@ nav.scrolled {
   transition: var(--transition);
 }
 
+.language-select {
+  align-items: center;
+  display: inline-flex;
+}
+
+.language-select select {
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 700;
+  min-height: 40px;
+  outline: 0;
+  padding: 8px 30px 8px 12px;
+}
+
+.language-select select:focus-visible {
+  border-color: var(--accent);
+}
+
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
   border-color: var(--accent);
@@ -1223,6 +1245,78 @@ footer .socials a:hover {
   text-align: center;
 }
 
+[dir="rtl"] body {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero,
+[dir="rtl"] .section-header,
+[dir="rtl"] .contact-card,
+[dir="rtl"] footer {
+  text-align: center;
+}
+
+[dir="rtl"] .bio-text p,
+[dir="rtl"] .timeline-item,
+[dir="rtl"] .pub-item,
+[dir="rtl"] .certificate-meta,
+[dir="rtl"] .software-info,
+[dir="rtl"] .project-card {
+  text-align: right;
+}
+
+[dir="rtl"] .timeline {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+[dir="rtl"] .timeline-item::before {
+  left: auto;
+  right: -35px;
+}
+
+[dir="rtl"] .pub-item {
+  border-left: 0;
+  border-right: 4px solid transparent;
+}
+
+[dir="rtl"] .pub-item.is-awarded,
+[dir="rtl"] .pub-item:hover {
+  border-right-color: var(--accent);
+}
+
+[dir="rtl"] .pub-note-link {
+  text-align: right;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+  text-align: right;
+}
+
+[dir="rtl"] .publication-filter,
+[dir="rtl"] .publication-sort {
+  padding-left: 0;
+  padding-right: 14px;
+}
+
+[dir="rtl"] .publication-filter select,
+[dir="rtl"] .publication-sort select,
+[dir="rtl"] .language-select select {
+  padding-left: 30px;
+  padding-right: 12px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1295,6 +1389,11 @@ footer .socials a:hover {
 
   .theme-toggle {
     justify-content: center;
+    width: 100%;
+  }
+
+  .language-select,
+  .language-select select {
     width: 100%;
   }
 

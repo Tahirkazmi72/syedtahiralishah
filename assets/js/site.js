@@ -1,14 +1,21 @@
 const DATA_URL = "assets/data/site-data.json?v=20260617-13";
+const TRANSLATIONS_URL = "assets/data/translations.json?v=20260617-1";
 const THEME_KEY = "syed-tahir-theme";
+const LANGUAGE_KEY = "syed-tahir-language";
 
+let baseData = null;
 let siteData = null;
+let translationData = null;
+let sectionObserver = null;
+let interactionsBound = false;
 const state = {
   publicationCategory: "all",
   publicationQuery: "",
   publicationSort: "newest",
   publicationYear: "all",
   publicationAwardedOnly: false,
-  theme: document.documentElement.dataset.theme || "light"
+  theme: document.documentElement.dataset.theme || "light",
+  language: "en"
 };
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -39,6 +46,82 @@ function setText(selector, text) {
   if (element) element.textContent = text || "";
 }
 
+function savedLanguage() {
+  try {
+    return localStorage.getItem(LANGUAGE_KEY) || "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function requestedLanguage() {
+  return new URLSearchParams(window.location.search).get("lang") || "";
+}
+
+function availableLanguages() {
+  return translationData?.languages?.length ? translationData.languages : [{ code: "en", short: "EN", label: "English", dir: "ltr" }];
+}
+
+function currentLanguageMeta() {
+  return availableLanguages().find((language) => language.code === state.language) || availableLanguages()[0];
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function cloneValue(value) {
+  if (Array.isArray(value)) return value.map(cloneValue);
+  if (isPlainObject(value)) {
+    return Object.fromEntries(Object.entries(value).map(([key, nested]) => [key, cloneValue(nested)]));
+  }
+  return value;
+}
+
+function mergeArray(baseArray, overrideArray) {
+  if (!baseArray.every(isPlainObject) || !overrideArray.every(isPlainObject)) {
+    return cloneValue(overrideArray);
+  }
+
+  return baseArray.map((item, index) => (
+    overrideArray[index] ? deepMerge(item, overrideArray[index]) : cloneValue(item)
+  ));
+}
+
+function deepMerge(base, override) {
+  if (Array.isArray(base) && Array.isArray(override)) return mergeArray(base, override);
+  if (!isPlainObject(base) || !isPlainObject(override)) return cloneValue(override ?? base);
+
+  const merged = cloneValue(base);
+  Object.entries(override).forEach(([key, value]) => {
+    if (key in merged) {
+      merged[key] = deepMerge(merged[key], value);
+    } else {
+      merged[key] = cloneValue(value);
+    }
+  });
+  return merged;
+}
+
+function localizedData() {
+  const content = translationData?.content?.[state.language];
+  return content ? deepMerge(baseData, content) : cloneValue(baseData);
+}
+
+function uiText(key, fallback) {
+  return translationData?.ui?.[state.language]?.[key]
+    || translationData?.ui?.en?.[key]
+    || fallback
+    || "";
+}
+
+function applyLanguageMetadata() {
+  const language = currentLanguageMeta();
+  document.documentElement.lang = language.code;
+  document.documentElement.dir = language.dir || "ltr";
+  document.body.classList.toggle("is-rtl", language.dir === "rtl");
+}
+
 function derivedDoi(item) {
   if (item.doi) return item.doi;
   const match = String(item.url || "").match(/10\.\d{4,9}\/\S+/i);
@@ -66,16 +149,22 @@ function createButtonLink(item, extraClass = "") {
   return link;
 }
 
+function setIconText(element, iconClass, text) {
+  element.innerHTML = "";
+  appendIcon(element, iconClass);
+  element.append(document.createTextNode(text));
+}
+
 function updateThemeToggle() {
   const toggle = $("#theme-toggle");
   if (!toggle) return;
 
   const isDark = state.theme === "dark";
-  toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+  toggle.setAttribute("aria-label", isDark ? uiText("switchToLight", "Switch to light mode") : uiText("switchToDark", "Switch to dark mode"));
   toggle.setAttribute("aria-pressed", String(isDark));
   toggle.innerHTML = "";
   appendIcon(toggle, isDark ? "fas fa-sun" : "fas fa-moon");
-  toggle.appendChild(document.createTextNode(isDark ? "Light" : "Dark"));
+  toggle.appendChild(document.createTextNode(isDark ? uiText("themeLight", "Light") : uiText("themeDark", "Dark")));
 }
 
 function applyTheme(theme, persist = false) {
@@ -108,6 +197,47 @@ function createThemeToggle() {
   return button;
 }
 
+function createLanguageSelector() {
+  const wrapper = document.createElement("label");
+  const label = createElement("span", "sr-only", uiText("languageLabel", "Language"));
+  const select = document.createElement("select");
+
+  wrapper.className = "language-select";
+  select.id = "language-select";
+  select.setAttribute("aria-label", uiText("languageLabel", "Language"));
+
+  availableLanguages().forEach((language) => {
+    const option = document.createElement("option");
+    option.value = language.code;
+    option.textContent = language.short;
+    option.label = `${language.short} - ${language.label}`;
+    select.appendChild(option);
+  });
+
+  select.value = state.language;
+  select.addEventListener("change", () => {
+    setLanguage(select.value, true);
+  });
+
+  wrapper.append(label, select);
+  return wrapper;
+}
+
+function setLanguage(languageCode, persist = false) {
+  const exists = availableLanguages().some((language) => language.code === languageCode);
+  state.language = exists ? languageCode : translationData?.defaultLanguage || "en";
+
+  if (persist) {
+    try {
+      localStorage.setItem(LANGUAGE_KEY, state.language);
+    } catch (error) {
+      console.warn("Language preference could not be saved.", error);
+    }
+  }
+
+  renderSite();
+}
+
 function highlightName(text) {
   const fragment = document.createDocumentFragment();
   const name = siteData.site.name;
@@ -135,6 +265,7 @@ function renderNavigation() {
     navLinks.appendChild(link);
   });
 
+  navLinks.appendChild(createLanguageSelector());
   navLinks.appendChild(createThemeToggle());
   navLinks.appendChild(createButtonLink(siteData.cvLink));
   updateThemeToggle();
@@ -272,6 +403,7 @@ function openCertificateModal(item) {
   title.textContent = item.title;
   body.innerHTML = "";
   fullLink.href = item.file;
+  setIconText(fullLink, "fas fa-external-link-alt", uiText("openFullCertificate", "Open Full Certificate"));
 
   if (type === "pdf") {
     const frame = document.createElement("iframe");
@@ -290,6 +422,7 @@ function openCertificateModal(item) {
   modal.setAttribute("aria-hidden", "false");
   if (item.verifyUrl) {
     verifyLink.href = item.verifyUrl;
+    setIconText(verifyLink, "fas fa-check-circle", item.verifyLabel || uiText("verifyOnline", "Verify Online"));
     verifyLink.style.display = "inline-flex";
   } else {
     verifyLink.removeAttribute("href");
@@ -413,42 +546,60 @@ function bindPublicationControls() {
   const sort = $("#publication-sort");
   const year = $("#publication-year");
   const awarded = $("#publication-awarded");
+  const searchLabel = $(".publication-search .sr-only");
+  const yearLabel = $(".publication-filter span");
+  const sortLabel = $(".publication-sort span");
+  const awardedLabel = $(".publication-awarded span");
+  const sortLabels = {
+    newest: uiText("sortNewest", "Newest first"),
+    oldest: uiText("sortOldest", "Oldest first"),
+    title: uiText("sortTitle", "Title A-Z"),
+    award: uiText("sortAward", "Award first")
+  };
 
   if (search) {
     search.value = state.publicationQuery;
-    search.addEventListener("input", () => {
+    search.placeholder = uiText("publicationSearchPlaceholder", "Search publications, authors, DOI");
+    if (searchLabel) searchLabel.textContent = uiText("publicationSearchLabel", "Search publications");
+    search.oninput = () => {
       state.publicationQuery = search.value.trim().toLowerCase();
       renderPublications();
-    });
+    };
   }
 
   if (sort) {
+    [...sort.options].forEach((option) => {
+      option.textContent = sortLabels[option.value] || option.textContent;
+    });
     sort.value = state.publicationSort;
-    sort.addEventListener("change", () => {
+    if (sortLabel) sortLabel.textContent = uiText("sort", "Sort");
+    sort.onchange = () => {
       state.publicationSort = sort.value;
       renderPublications();
-    });
+    };
   }
 
   if (year) {
     year.innerHTML = "";
-    year.appendChild(new Option("All years", "all"));
+    year.appendChild(new Option(uiText("allYears", "All years"), "all"));
     publicationYears().forEach((value) => {
       year.appendChild(new Option(String(value), String(value)));
     });
     year.value = state.publicationYear;
-    year.addEventListener("change", () => {
+    if (yearLabel) yearLabel.textContent = uiText("year", "Year");
+    year.onchange = () => {
       state.publicationYear = year.value;
       renderPublications();
-    });
+    };
   }
 
   if (awarded) {
     awarded.checked = state.publicationAwardedOnly;
-    awarded.addEventListener("change", () => {
+    if (awardedLabel) awardedLabel.textContent = uiText("awardedOnly", "Awarded only");
+    awarded.onchange = () => {
       state.publicationAwardedOnly = awarded.checked;
       renderPublications();
-    });
+    };
   }
 }
 
@@ -629,6 +780,12 @@ function downloadBibTeX(item) {
   URL.revokeObjectURL(url);
 }
 
+function publicationLinkLabel(item) {
+  return item.linkLabel && item.linkLabel !== "Read Article"
+    ? item.linkLabel
+    : uiText("readArticle", "Read Article");
+}
+
 function createPublicationItem(item) {
   const article = createElement("article", "pub-item");
   article.dataset.category = item.category;
@@ -640,7 +797,7 @@ function createPublicationItem(item) {
   }
 
   if (awarded && item.statusType !== "award") {
-    article.appendChild(createElement("span", "status-badge status-award", "Awarded"));
+    article.appendChild(createElement("span", "status-badge status-award", uiText("awarded", "Awarded")));
   }
 
   const title = item.url
@@ -685,26 +842,26 @@ function createPublicationItem(item) {
   const actions = createElement("div", "pub-actions");
 
   if (item.url) {
-    const link = createLink({ href: item.url, label: item.linkLabel || "Read Article" }, "pub-action pub-link");
+    const link = createLink({ href: item.url, label: publicationLinkLabel(item) }, "pub-action pub-link");
     link.textContent = "";
     appendIcon(link, "fas fa-external-link-alt");
-    link.append(document.createTextNode(item.linkLabel || "Read Article"));
+    link.append(document.createTextNode(publicationLinkLabel(item)));
     actions.appendChild(link);
   }
 
-  const copyButton = createPubActionButton("Copy BibTeX", "fas fa-copy");
+  const copyButton = createPubActionButton(uiText("copyBibtex", "Copy BibTeX"), "fas fa-copy");
   copyButton.addEventListener("click", async () => {
     try {
       await copyText(createBibTeX(item));
-      setTemporaryButtonLabel(copyButton, "Copied", "fas fa-check");
+      setTemporaryButtonLabel(copyButton, uiText("copied", "Copied"), "fas fa-check");
     } catch (error) {
       console.error(error);
-      setTemporaryButtonLabel(copyButton, "Copy failed", "fas fa-exclamation-triangle");
+      setTemporaryButtonLabel(copyButton, uiText("copyFailed", "Copy failed"), "fas fa-exclamation-triangle");
     }
   });
   actions.appendChild(copyButton);
 
-  const downloadButton = createPubActionButton("Download .bib", "fas fa-download");
+  const downloadButton = createPubActionButton(uiText("downloadBib", "Download .bib"), "fas fa-download");
   downloadButton.addEventListener("click", () => downloadBibTeX(item));
   actions.appendChild(downloadButton);
 
@@ -720,7 +877,7 @@ function renderPublications() {
   list.innerHTML = "";
 
   if (!matches.length) {
-    list.appendChild(createElement("p", "empty-state", "No publications match the selected filters."));
+    list.appendChild(createElement("p", "empty-state", uiText("noPublicationMatches", "No publications match the selected filters.")));
     return;
   }
 
@@ -809,7 +966,10 @@ function renderContact() {
     profileLinks.appendChild(link);
   });
 
-  setText("#footer-copy", `Copyright ${new Date().getFullYear()} ${siteData.site.name}. All Rights Reserved.`);
+  setText(
+    "#footer-copy",
+    `${uiText("copyrightPrefix", "Copyright")} ${new Date().getFullYear()} ${siteData.site.name}. ${uiText("copyrightSuffix", "All Rights Reserved.")}`
+  );
   socials.innerHTML = "";
   contact.socials.forEach((item) => {
     const link = createLink({ href: item.href, label: item.label }, null);
@@ -833,6 +993,9 @@ function startSlideshow(container, interval = 5000) {
 }
 
 function bindInteractions() {
+  if (interactionsBound) return;
+  interactionsBound = true;
+
   const nav = $("#navbar");
   const navLinks = $("#nav-links");
   const toggle = $("#mobile-toggle");
@@ -890,12 +1053,14 @@ function bindInteractions() {
 }
 
 function observeSections() {
+  if (sectionObserver) sectionObserver.disconnect();
+
   const links = $$("#nav-links a[href^='#']");
   const sections = links
     .map((link) => $(link.getAttribute("href")))
     .filter(Boolean);
 
-  const observer = new IntersectionObserver((entries) => {
+  sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       links.forEach((link) => {
@@ -904,12 +1069,16 @@ function observeSections() {
     });
   }, { rootMargin: "-42% 0px -52% 0px", threshold: 0 });
 
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach((section) => sectionObserver.observe(section));
 }
 
 function renderSite() {
+  siteData = localizedData();
+  applyLanguageMetadata();
   applyTheme(state.theme);
   document.title = siteData.site.pageTitle;
+  const certificateClose = $("#certificate-modal-close");
+  if (certificateClose) certificateClose.setAttribute("aria-label", uiText("closeCertificate", "Close certificate"));
   renderNavigation();
   renderHero();
   renderBio();
@@ -945,23 +1114,28 @@ function renderSite() {
   }
 }
 
-async function loadData() {
-  const response = await fetch(DATA_URL, { cache: "no-store" });
-  if (!response.ok) throw new Error(`Unable to load ${DATA_URL}`);
+async function loadJson(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) throw new Error(`Unable to load ${url}`);
   return response.json();
 }
 
-loadData()
-  .then((data) => {
-    siteData = data;
+Promise.all([loadJson(DATA_URL), loadJson(TRANSLATIONS_URL)])
+  .then(([data, translations]) => {
+    baseData = data;
+    translationData = translations;
+    const preferredLanguage = requestedLanguage() || savedLanguage() || translationData.defaultLanguage || "en";
+    state.language = availableLanguages().some((language) => language.code === preferredLanguage)
+      ? preferredLanguage
+      : translationData.defaultLanguage || "en";
     renderSite();
   })
   .catch((error) => {
     console.error(error);
     $("#app").innerHTML = `
       <section class="load-error">
-        <h2>Content could not be loaded</h2>
-        <p>Run the site through a local server or GitHub Pages so the JSON content file can be fetched.</p>
+        <h2>${uiText("loadErrorTitle", "Content could not be loaded")}</h2>
+        <p>${uiText("loadErrorText", "Run the site through a local server or GitHub Pages so the JSON content file can be fetched.")}</p>
       </section>
     `;
   });

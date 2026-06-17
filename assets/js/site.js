@@ -422,8 +422,8 @@ function sortPublications(items) {
     }
 
     if (state.publicationSort === "award") {
-      const firstAward = first.statusType === "award" || /award/i.test(first.status || "");
-      const secondAward = second.statusType === "award" || /award/i.test(second.status || "");
+      const firstAward = first.statusType === "award" || /award/i.test(`${first.status || ""} ${first.note || ""}`);
+      const secondAward = second.statusType === "award" || /award/i.test(`${second.status || ""} ${second.note || ""}`);
       if (firstAward !== secondAward) return firstAward ? -1 : 1;
     }
 

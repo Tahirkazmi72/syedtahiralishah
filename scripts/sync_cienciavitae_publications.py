@@ -186,8 +186,8 @@ def apply_publication_overrides(publication: dict) -> dict:
         {
             "category": "conference",
             "year": 2026,
-            "status": "Best Paper Award (2026)",
-            "statusType": "award",
+            "status": "Published (2026)",
+            "statusType": "published",
             "title": PHYSIO_TWIN_TITLE,
             "venue": PHYSIO_TWIN_VENUE,
             "authors": PHYSIO_TWIN_AUTHORS,

@@ -325,8 +325,8 @@
       {
         "category": "conference",
         "year": 2026,
-        "status": "Best Paper Award (2026)",
-        "statusType": "award",
+        "status": "Published (2026)",
+        "statusType": "published",
         "title": "Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform",
         "venue": "2026 The 9th International Conference on Information and Computer Technologies (ICICT 2026), Honolulu-Hawaii",
         "authors": "Syed Tahir Ali Shah, J.P. Santos, Gabriel Constantinescu, Jos\u00e9 M. Fernandes, A.B. Pereira.",

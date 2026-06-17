@@ -30,7 +30,6 @@
       <h1 id="hero-title">Syed Tahir Ali Shah</h1>
       <p id="hero-summary"></p>
       <div class="hero-actions" id="hero-actions"></div>
-      <div class="hero-highlights" id="hero-highlights" aria-label="Profile highlights"></div>
     </div>
   </header>
 
@@ -72,22 +71,7 @@
       <div class="section-header" data-aos="fade-up">
         <h2 id="publications-title"></h2>
       </div>
-      <div class="publication-toolbar" data-aos="fade-up">
-        <div class="pub-tabs" id="publication-tabs" role="tablist" aria-label="Publication filters"></div>
-        <label class="search-field">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          <input id="publication-search" type="search" placeholder="Search publications" autocomplete="off" />
-        </label>
-        <label class="select-field">
-          <span>Sort</span>
-          <select id="publication-sort">
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
-            <option value="title">Title A-Z</option>
-          </select>
-        </label>
-      </div>
-      <p class="result-count" id="publication-count" aria-live="polite"></p>
+      <div class="pub-tabs" id="publication-tabs" role="tablist" aria-label="Publication filters" data-aos="fade-up"></div>
       <div id="publication-list" data-aos="fade-up"></div>
     </section>
 
@@ -96,7 +80,7 @@
         <h2 id="software-title"></h2>
       </div>
       <div class="software-showcase" id="software-showcase"></div>
-      <div class="project-block">
+      <div class="project-block" id="projects">
         <h3 id="projects-title"></h3>
         <div class="research-grid" id="project-grid"></div>
       </div>
@@ -115,27 +99,6 @@
         <p id="contact-subtitle"></p>
       </div>
       <div class="contact-grid" id="contact-grid"></div>
-      <form class="contact-form" id="contact-form" data-aos="fade-up">
-        <div class="form-row">
-          <label>
-            <span>Name</span>
-            <input name="name" type="text" autocomplete="name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-        </div>
-        <label>
-          <span>Subject</span>
-          <input name="subject" type="text" required />
-        </label>
-        <label>
-          <span>Message</span>
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button class="btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Prepare Email</button>
-      </form>
       <div class="profile-links" id="profile-links"></div>
     </section>
   </main>

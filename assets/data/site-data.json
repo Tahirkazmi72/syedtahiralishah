@@ -9,8 +9,8 @@
     { "label": "Education", "href": "#education" },
     { "label": "Research", "href": "#research" },
     { "label": "Publications", "href": "#publications" },
+    { "label": "Projects", "href": "#projects" },
     { "label": "Software", "href": "#software" },
-    { "label": "Service", "href": "#supervision" },
     { "label": "Contact", "href": "#contact" }
   ],
   "cvLink": {
@@ -19,17 +19,11 @@
     "icon": "fas fa-arrow-right"
   },
   "hero": {
-    "subtitle": "Ph.D. Researcher | Embedded IoT | Smart Mobility",
-    "title": "Syed Tahir Ali Shah",
-    "summary": "Advancing emotion-aware and physiology-aware mobility systems through mechanical engineering, embedded machine learning, wearable sensing, and human-centred IoT.",
+    "subtitle": "Ph.D. Researcher",
+    "title": "Advancing Mobility through Emotion-Aware IoT",
+    "summary": "Exploring the intersection of Mechanical Engineering, Embedded Machine Learning, and Affective Computing at the University of Aveiro.",
     "actions": [
-      { "label": "Explore Research", "href": "#research", "icon": "fas fa-microscope", "external": false },
-      { "label": "View Publications", "href": "#publications", "icon": "fas fa-book-open", "external": false }
-    ],
-    "highlights": [
-      { "value": "University of Aveiro", "label": "Mechanical Engineering Ph.D. researcher" },
-      { "value": "FCT Fellow", "label": "BDANA track research fellowship" },
-      { "value": "IoT Mobility", "label": "Wearables, edge AI, and smart e-bike systems" }
+      { "label": "Discover My Work", "href": "#bio", "external": false }
     ],
     "images": [
       {
@@ -418,7 +412,6 @@
   "contact": {
     "title": "Get In Touch",
     "subtitle": "Open for research collaboration and academic discussion.",
-    "primaryEmail": "syedtahiralishah@ua.pt",
     "cards": [
       {
         "icon": "fas fa-envelope",

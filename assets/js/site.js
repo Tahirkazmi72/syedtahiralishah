@@ -2,9 +2,7 @@ const DATA_URL = "assets/data/site-data.json";
 
 let siteData = null;
 const state = {
-  publicationCategory: "all",
-  publicationQuery: "",
-  publicationSort: "newest"
+  publicationCategory: "all"
 };
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -86,7 +84,6 @@ function renderHero() {
   const hero = siteData.hero;
   const background = $("#hero-bg");
   const actions = $("#hero-actions");
-  const highlights = $("#hero-highlights");
 
   background.innerHTML = "";
   hero.images.forEach((image, index) => {
@@ -106,14 +103,6 @@ function renderHero() {
   actions.innerHTML = "";
   hero.actions.forEach((action, index) => {
     actions.appendChild(createButtonLink(action, index === 0 ? "btn-ghost" : ""));
-  });
-
-  highlights.innerHTML = "";
-  hero.highlights.forEach((item) => {
-    const node = createElement("div", "highlight-item");
-    node.appendChild(createElement("strong", null, item.value));
-    node.appendChild(createElement("span", null, item.label));
-    highlights.appendChild(node);
   });
 }
 
@@ -233,24 +222,7 @@ function renderPublicationTabs() {
 }
 
 function publicationMatches(item) {
-  const categoryMatches = state.publicationCategory === "all" || item.category === state.publicationCategory;
-  const query = state.publicationQuery.trim().toLowerCase();
-  if (!categoryMatches) return false;
-  if (!query) return true;
-
-  return [item.title, item.venue, item.authors, item.status, item.year]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase()
-    .includes(query);
-}
-
-function sortPublications(items) {
-  return [...items].sort((a, b) => {
-    if (state.publicationSort === "oldest") return a.year - b.year || a.title.localeCompare(b.title);
-    if (state.publicationSort === "title") return a.title.localeCompare(b.title);
-    return b.year - a.year || a.title.localeCompare(b.title);
-  });
+  return state.publicationCategory === "all" || item.category === state.publicationCategory;
 }
 
 function createPublicationItem(item) {
@@ -292,10 +264,8 @@ function createPublicationItem(item) {
 function renderPublications() {
   renderPublicationTabs();
   const list = $("#publication-list");
-  const matches = sortPublications(siteData.publications.items.filter(publicationMatches));
+  const matches = siteData.publications.items.filter(publicationMatches);
   list.innerHTML = "";
-
-  $("#publication-count").textContent = `Showing ${matches.length} of ${siteData.publications.items.length} publications`;
 
   if (!matches.length) {
     list.appendChild(createElement("p", "empty-state", "No publications match the selected filters."));
@@ -414,9 +384,6 @@ function bindInteractions() {
   const nav = $("#navbar");
   const navLinks = $("#nav-links");
   const toggle = $("#mobile-toggle");
-  const search = $("#publication-search");
-  const sort = $("#publication-sort");
-  const contactForm = $("#contact-form");
 
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 50);
@@ -436,26 +403,6 @@ function bindInteractions() {
     }
   });
 
-  search.addEventListener("input", (event) => {
-    state.publicationQuery = event.target.value;
-    renderPublications();
-  });
-
-  sort.addEventListener("change", (event) => {
-    state.publicationSort = event.target.value;
-    renderPublications();
-  });
-
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const form = new FormData(contactForm);
-    const name = form.get("name");
-    const email = form.get("email");
-    const subject = form.get("subject");
-    const message = form.get("message");
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:${siteData.contact.primaryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
 }
 
 function observeSections() {

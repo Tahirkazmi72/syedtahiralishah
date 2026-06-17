@@ -29,6 +29,18 @@ Example:
 }
 ```
 
+## Sync Publications
+
+Journal publications are synced from Ciencia Vitae by GitHub Actions every Sunday at 06:00 UTC. The workflow can also be run manually from the GitHub Actions tab.
+
+The sync source is:
+
+```text
+https://www.cienciavitae.pt//F712-C83E-0EFB
+```
+
+The sync updates only `publications.items` in `assets/data/site-data.json`; manual website content outside publications is not changed.
+
 ## Run Locally
 
 Because the site loads JSON dynamically, run it through a local server:

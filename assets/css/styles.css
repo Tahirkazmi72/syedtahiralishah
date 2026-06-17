@@ -314,6 +314,11 @@ section {
   max-width: 680px;
 }
 
+.section-updated {
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
 .bio-container {
   align-items: center;
   display: grid;

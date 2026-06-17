@@ -16,6 +16,7 @@ import ssl
 import sys
 import urllib.error
 import urllib.request
+from datetime import date
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -23,6 +24,20 @@ from pathlib import Path
 DEFAULT_CV_URL = "https://www.cienciavitae.pt//F712-C83E-0EFB"
 DEFAULT_DATA_PATH = Path("assets/data/site-data.json")
 SOURCE = "cienciavitae"
+MONTHS = (
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+)
 
 
 class TextExtractor(HTMLParser):
@@ -324,8 +339,37 @@ def dump_items(items: list[dict]) -> str:
     return "\n".join([lines[0], *[f"    {line}" for line in lines[1:]]])
 
 
-def write_publications_items(data_path: Path, items: list[dict]) -> None:
+def formatted_update_date(today: date | None = None) -> str:
+    today = today or date.today()
+    return f"Updated: {MONTHS[today.month - 1]} {today.day}, {today.year}"
+
+
+def update_publications_date(raw: str, last_updated: str) -> str:
+    publications_at = raw.find('"publications"')
+    if publications_at == -1:
+        raise ValueError("Could not find publications section.")
+    items_at = raw.find('"items"', publications_at)
+    if items_at == -1:
+        raise ValueError("Could not find publications items.")
+
+    search_span = raw[publications_at:items_at]
+    replacement = f'"lastUpdated": {json.dumps(last_updated)},'
+    current = re.search(r'"lastUpdated"\s*:\s*"[^"]*"\s*,', search_span)
+    if current:
+        start = publications_at + current.start()
+        end = publications_at + current.end()
+        return raw[:start] + replacement + raw[end:]
+
+    title_line = re.search(r'(^\s*"title"\s*:\s*"[^"]*"\s*,\n)', raw[publications_at:], flags=re.M)
+    if not title_line:
+        raise ValueError("Could not find publications title line.")
+    insert_at = publications_at + title_line.end()
+    return raw[:insert_at] + f'    {replacement}\n' + raw[insert_at:]
+
+
+def write_publications_data(data_path: Path, items: list[dict], last_updated: str) -> None:
     raw = data_path.read_text(encoding="utf-8")
+    raw = update_publications_date(raw, last_updated)
     start, end = find_publications_items_span(raw)
     data_path.write_text(raw[:start] + dump_items(items) + raw[end:], encoding="utf-8")
 
@@ -346,12 +390,17 @@ def main() -> int:
     data = json.loads(args.data_path.read_text(encoding="utf-8"))
     existing = data["publications"]["items"]
     data["publications"]["items"] = merge_publications(existing, synced)
+    data["publications"]["lastUpdated"] = formatted_update_date()
 
     if args.dry_run:
         print(f"Found {len(synced)} Ciencia Vitae journal publications.")
         return 0
 
-    write_publications_items(args.data_path, data["publications"]["items"])
+    write_publications_data(
+        args.data_path,
+        data["publications"]["items"],
+        data["publications"]["lastUpdated"],
+    )
     print(f"Synced {len(synced)} Ciencia Vitae journal publications.")
     return 0
 

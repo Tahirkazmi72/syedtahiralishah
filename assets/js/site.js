@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-9";
+const DATA_URL = "assets/data/site-data.json?v=20260617-10";
 
 let siteData = null;
 const state = {
@@ -605,6 +605,7 @@ function renderSite() {
   renderResearch();
   renderLanguages();
   setText("#publications-title", siteData.publications.title);
+  setText("#publications-updated", siteData.publications.lastUpdated);
   renderPublications();
   renderSoftware();
   setText("#service-title", siteData.service.title);

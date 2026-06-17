@@ -173,6 +173,7 @@
   },
   "publications": {
     "title": "Publications",
+    "lastUpdated": "Updated: June 17, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },

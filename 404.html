@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta http-equiv="refresh" content="1; url=/syedtahiralishah/" />
+  <title>Redirecting | Syed Tahir Ali Shah</title>
+  <link rel="stylesheet" href="/syedtahiralishah/assets/css/styles.css?v=20260617-19" />
+  <style>
+    .not-found {
+      align-items: center;
+      display: flex;
+      min-height: 100svh;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .not-found__panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      margin: 0 auto;
+      max-width: 640px;
+      padding: 34px;
+    }
+
+    .not-found__panel h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .not-found__panel p {
+      margin: 0 0 22px;
+    }
+  </style>
+</head>
+<body>
+  <main class="not-found">
+    <section class="not-found__panel" aria-labelledby="not-found-title">
+      <h1 id="not-found-title">Page not found</h1>
+      <p>Redirecting to the main website.</p>
+      <a class="btn" href="/syedtahiralishah/">Open Website</a>
+    </section>
+  </main>
+  <script>
+    window.setTimeout(() => {
+      window.location.replace("/syedtahiralishah/");
+    }, 600);
+  </script>
+</body>
+</html>

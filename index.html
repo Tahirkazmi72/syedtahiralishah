@@ -3,1160 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Syed Tahir Ali Shah - Ph.D. researcher in Mechanical Engineering, embedded IoT, affective computing, and smart mobility." />
   <title>Syed Tahir Ali Shah | Ph.D. Researcher</title>
-  
-  <!-- Fonts: Playfair Display (Academic/Fancy) and Lato (Clean/Modern) -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Animation Library -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-  <style>
-    :root {
-      /* Academic Color Palette */
-      --primary: #0f172a;       /* Deep Navy */
-      --accent: #b45309;        /* Antique Gold/Bronze */
-      --text-main: #334155;     /* Slate Grey */
-      --text-light: #64748b;    /* Light Grey */
-      --bg-body: #f8fafc;       /* Off-white */
-      --bg-card: #ffffff;
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Lato', sans-serif;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* --- Global Reset & Typography --- */
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: var(--font-body);
-      color: var(--text-main);
-      background: var(--bg-body);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--primary);
-      margin-top: 0;
-    }
-
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    ul { list-style: none; padding: 0; margin: 0; }
-
-    /* --- Navigation --- */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      transition: var(--transition);
-    }
-    
-    nav.scrolled {
-      padding: 15px 5%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .brand {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-main);
-      position: relative;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-links a:not(.btn)::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-    .nav-links a:not(.btn):hover::after { width: 100%; }
-
-    .btn {
-      padding: 10px 24px;
-      background: var(--primary);
-      color: white !important;
-      border-radius: 4px;
-      font-weight: 700;
-      border: 1px solid var(--primary);
-    }
-    
-    .btn:hover {
-      background: transparent;
-      color: var(--primary) !important;
-    }
-
-    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
-    /* --- Hero Section --- */
-    .hero {
-      height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-    }
-
-    /* Parallax/Slideshow Background */
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-    }
-
-    .hero-bg img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      transform: scale(1.1); /* For subtle zoom effect */
-    }
-
-    .hero-bg img.active { opacity: 1; }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.6));
-      z-index: -1;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      padding: 0 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-body);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 0.9rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: block;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      line-height: 1.1;
-      margin-bottom: 30px;
-      color: white;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      font-weight: 300;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: 0 auto 40px;
-    }
-
-    /* --- Section Styling --- */
-    section {
-      max-width: 1200px;
-      margin: 120px auto;
-      padding: 0 30px;
-    }
-
-    .section-header {
-      margin-bottom: 60px;
-      text-align: center;
-    }
-
-    .section-header h2 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-header h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      margin: 15px auto 0;
-    }
-
-    /* --- Bio Section --- */
-    .bio-container {
-      display: grid;
-      grid-template-columns: 350px 1fr;
-      gap: 60px;
-      align-items: start;
-      background: var(--bg-card);
-      padding: 50px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    }
-
-    .bio-image {
-      position: relative;
-    }
-
-    .bio-image img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .bio-image::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 100%;
-      height: 100%;
-      border: 2px solid var(--accent);
-      z-index: -1;
-      border-radius: 8px;
-    }
-
-    .bio-text h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .bio-text p {
-      margin-bottom: 20px;
-      color: var(--text-main);
-    }
-
-    /* --- Timeline (Education/Affiliations) --- */
-    .timeline {
-      position: relative;
-      padding-left: 30px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background: #e2e8f0;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 50px;
-      padding-left: 30px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -35px;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      background: var(--bg-card);
-      border: 3px solid var(--accent);
-      border-radius: 50%;
-      z-index: 2;
-    }
-
-    .timeline-date {
-      font-size: 0.85rem;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .timeline-item h3 {
-      font-size: 1.4rem;
-      margin-bottom: 5px;
-    }
-
-    .timeline-item h4 {
-      font-family: var(--font-body);
-      font-weight: 400;
-      color: var(--text-light);
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    /* --- Research & Skills --- */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .research-card {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      border-top: 4px solid var(--primary);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-      transition: var(--transition);
-    }
-
-    .research-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-    }
-
-    .research-card i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    /* --- Languages Table --- */
-    .table-wrapper {
-      overflow-x: auto;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    th, td {
-      padding: 18px 25px;
-      text-align: left;
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    th {
-      background: #f8fafc;
-      color: var(--primary);
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: #fcfcfc; }
-
-    /* --- Publications (With Tabs) --- */
-    .pub-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      padding: 10px 25px;
-      background: transparent;
-      border: 1px solid #e2e8f0;
-      border-radius: 30px;
-      cursor: pointer;
-      font-family: var(--font-body);
-      font-weight: 600;
-      color: var(--text-light);
-      transition: var(--transition);
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
-
-    .pub-content {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .pub-content.active { display: block; }
-
-    .pub-item {
-      background: white;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      border-left: 4px solid transparent;
-      transition: var(--transition);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-
-    .pub-item:hover {
-      border-left-color: var(--accent);
-      transform: translateX(10px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    
-    /* Status Badges */
-    .status-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-    .status-published { background: #dcfce7; color: #166534; }
-    .status-submitted { background: #ffedd5; color: #9a3412; }
-    .status-accepted { background: #dbeafe; color: #1e40af; }
-
-    .pub-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-      color: var(--primary);
-      display: block;
-    }
-
-    .pub-meta {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 10px;
-      display: block;
-      font-style: italic;
-    }
-
-    .pub-authors {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      color: #475569;
-    }
-
-    .pub-link {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    /* --- Software Section --- */
-    .software-showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .software-info h3 { font-size: 2rem; margin-bottom: 15px; }
-    .software-info .badge {
-      display: inline-block;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 5px 12px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .slideshow-frame {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .slideshow-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .slideshow-frame img.active { opacity: 1; }
-
-    /* --- Contact --- */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .contact-card {
-      background: white;
-      padding: 30px;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: var(--transition);
-    }
-
-    .contact-card:hover {
-      transform: translateY(-5px);
-      background: var(--primary);
-      color: white;
-    }
-
-    .contact-card:hover i, .contact-card:hover a { color: white; }
-
-    .contact-card i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-      display: block;
-    }
-
-    .contact-card a {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-      margin-top: 100px;
-    }
-
-    footer p { opacity: 0.7; font-size: 0.9rem; }
-    footer .socials { margin-top: 20px; }
-    footer .socials a { color: white; margin: 0 10px; font-size: 1.2rem; }
-    footer .socials a:hover { color: var(--accent); }
-
-    /* --- Animations --- */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- Media Queries --- */
-    @media (max-width: 992px) {
-      .bio-container { grid-template-columns: 1fr; text-align: center; }
-      .bio-image::before { display: none; }
-      .bio-image img { max-width: 300px; margin: 0 auto; }
-      .software-showcase { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.5rem; }
-      .nav-links {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        background: white;
-        flex-direction: column;
-        width: 100%;
-        height: calc(100vh - 70px);
-        padding: 50px;
-        transition: 0.4s;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-      }
-      .nav-links.active { right: 0; }
-      .mobile-toggle { display: block; }
-      .bio-container { padding: 30px; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="brand">Syed Tahir Ali Shah</div>
-    <div class="mobile-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-    <div class="nav-links">
-      <a href="#bio" onclick="toggleMenu()">Bio</a>
-      <a href="#education" onclick="toggleMenu()">Education</a>
-      <a href="#research" onclick="toggleMenu()">Research</a>
-      <a href="#publications" onclick="toggleMenu()">Publications</a>
-      <a href="#projects" onclick="toggleMenu()">Projects</a>
-      <a href="#software" onclick="toggleMenu()">Software</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
-      <a href="http://www.cienciavitae.pt//F712-C83E-0EFB" target="_blank" class="btn">CV <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left:5px;"></i></a>
-    </div>
+  <nav id="navbar" aria-label="Primary navigation">
+    <a class="brand" href="#hero" data-brand>Syed Tahir Ali Shah</a>
+    <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="nav-links" id="nav-links"></div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-bg" id="hero-bg">
-      <!-- Using the provided bike images for background -->
-      <img src="https://cdn.motor1.com/images/mgl/40mm8o/s1/new-okgo-smart-e-bike-boasts-futuristic-style-and-tech.jpg" class="active">
-      <img src="https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/1/7/1389114585675/Smart-e-bike-004.jpg?width=465&dpr=1&s=none&crop=none">
-      <img src="https://inhabitat.com/wp-content/blogs.dir/1/files/2014/11/04_SEA-DENNY-the-Denny-bike-also-has-a-fully-integrated-smart-lighting-system-that-adapts-the-intensity-based-on-the-natural-light-conditions_Teague_1280.jpg">
-      <img src="http://thebikeshow.net/wp-content/uploads/2014/12/smart-ebike-10C1062_68_enl.jpg">
-    </div>
+  <header class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content" data-aos="fade-up">
-      <span class="hero-subtitle">Ph.D. Researcher</span>
-      <h1>Advancing Mobility through Emotion-Aware IoT</h1>
-      <p>
-        Exploring the intersection of Mechanical Engineering, Embedded Machine Learning, and Affective Computing at the University of Aveiro.
-      </p>
-      <a href="#bio" class="btn" style="background: transparent; border: 2px solid white;">Discover My Work</a>
+      <span class="hero-subtitle" id="hero-subtitle"></span>
+      <h1 id="hero-title">Syed Tahir Ali Shah</h1>
+      <p id="hero-summary"></p>
+      <div class="hero-actions" id="hero-actions"></div>
+      <div class="hero-highlights" id="hero-highlights" aria-label="Profile highlights"></div>
     </div>
   </header>
 
-  <!-- Bio Section -->
-  <section id="bio">
-    <div class="bio-container" data-aos="fade-up">
-      <div class="bio-image">
-        <img src="https://i1.rgstatic.net/ii/profile.image/865695453700097-1583409288538_Q512/Syed-Tahir-Ali-Shah.jpg" alt="Syed Tahir Ali Shah">
-      </div>
-      <div class="bio-text">
-        <h3>About Me</h3>
-        <p>
-          Syed Tahir Ali Shah is a multidisciplinary PhD researcher working at the intersection of Mechanical Engineering, Computer Science, and embedded Internet-of-Things (IoT) systems. He is currently a PhD student in Mechanical Engineering at the University of Aveiro (Portugal) and holds a PhD fellowship (BDANA track) supported by Fundação para a Ciência e a Tecnologia (FCT).
-        </p>
-        <p>
-          With a solid background in Computer Science, his work bridges hardware–software integration, wearable sensing, and edge intelligence. His current research focuses on developing emotion-aware and physiology-aware mobility systems, using data from wearable devices (e.g., heart rate and motion signals) together with embedded machine learning models to support safer, more adaptive, and human-centred smart mobility solutions.
-        </p>
-        <p>
-          Overall, his work promotes the next generation of intelligent systems that respond to human needs in real time, combining engineering design, data science, and embedded computing.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Affiliations (Timeline) -->
-  <section id="education">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Academic Journey</h2>
-    </div>
-    <div class="timeline">
-      <!-- Education Items -->
-      <div class="timeline-item" data-aos="fade-right">
-        <span class="timeline-date">2023/11/01 - 2027/06/30 (Ongoing)</span>
-        <h3>Ph.D. in Mechanical Engineering</h3>
-        <h4>University of Aveiro, Portugal</h4>
-        <p>Focus: Emotion-aware IoT-integrated mobility systems.</p>
-      </div>
-      
-      <div class="timeline-item" data-aos="fade-right">
-        <span class="timeline-date">2016/01/10 - 2018/08/31</span>
-        <h3>M.Sc. Computer Science</h3>
-        <h4>Iqra University - Islamabad Campus, Pakistan</h4>
-        <p>Classification: 14/20</p>
-      </div>
-
-      <div class="timeline-item" data-aos="fade-right">
-        <span class="timeline-date">2011/06/01 - 2016/01/01</span>
-        <h3>B.Sc. Computer Science</h3>
-        <h4>Karakoram International University, Pakistan</h4>
-        <p>Major: Software engineering, database systems, data structures, and algorithm design.</p>
-      </div>
-
-      <!-- Affiliations -->
-      <div class="timeline-item" data-aos="fade-right" style="margin-top: 40px;">
-        <span class="timeline-date">Current (From 2026/01/01)</span>
-        <h3>Research Trainee</h3>
-        <h4>Fundação para a Ciência e a Tecnologia, Portugal</h4>
-        <p>Host: Universidade de Aveiro Departamento de Engenharia Mecânica</p>
-      </div>
-      
-      <div class="timeline-item" data-aos="fade-right">
-        <span class="timeline-date">2023/11/01 - 2025/12/31</span>
-        <h3>Scholarship Holder</h3>
-        <h4>University of Aveiro, Portugal</h4>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research Interests -->
-  <section id="research">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Research Interests</h2>
-    </div>
-    <div class="research-grid">
-      <div class="research-card" data-aos="zoom-in" data-aos-delay="100">
-        <i class="fas fa-brain"></i>
-        <h3>Affective Computing</h3>
-        <p>Integrating human emotional factors into IoT networks to create responsive environments.</p>
-      </div>
-      <div class="research-card" data-aos="zoom-in" data-aos-delay="200">
-        <i class="fas fa-microchip"></i>
-        <h3>Embedded ML</h3>
-        <p>Deploying machine learning models directly onto mobile and embedded runtimes (TinyML/Edge AI).</p>
-      </div>
-      <div class="research-card" data-aos="zoom-in" data-aos-delay="300">
-        <i class="fas fa-heartbeat"></i>
-        <h3>Physiological Monitoring</h3>
-        <p>Wearable-driven sensing for real-time health and stress tracking during mobility.</p>
-      </div>
-      <div class="research-card" data-aos="zoom-in" data-aos-delay="400">
-        <i class="fas fa-motorcycle"></i>
-        <h3>Smart Mobility</h3>
-        <p>IoT architectures for smart homes and next-generation electric vehicles.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Languages -->
-  <section id="languages">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Languages</h2>
-    </div>
-    <div class="table-wrapper" data-aos="flip-up">
-      <table>
-        <thead>
-          <tr>
-            <th>Language</th>
-            <th>Speaking</th>
-            <th>Reading</th>
-            <th>Writing</th>
-            <th>Listening</th>
-            <th>Review</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Urdu</strong> (Mother Tongue)</td>
-            <td>Native</td>
-            <td>Native</td>
-            <td>Native</td>
-            <td>Native</td>
-            <td>Native</td>
-          </tr>
-          <tr>
-            <td><strong>English</strong></td>
-            <td>Upper Int. (B2)</td>
-            <td>Proficiency (C2)</td>
-            <td>Proficiency (C2)</td>
-            <td>Advanced (C1)</td>
-            <td>Proficiency (C2)</td>
-          </tr>
-          <tr>
-            <td><strong>Portuguese</strong></td>
-            <td>Beginner (A1)</td>
-            <td>Beginner (A1)</td>
-            <td>Beginner (A1)</td>
-            <td>Intermediate (B1)</td>
-            <td>Upper Int. (B2)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Publications (Tabbed Interface) -->
-  <section id="publications">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Publications</h2>
-    </div>
-
-    <div class="pub-tabs" data-aos="fade-up">
-      <button class="tab-btn active" onclick="filterPubs('all', this)">All</button>
-      <button class="tab-btn" onclick="filterPubs('journal', this)">Journals & Articles</button>
-      <button class="tab-btn" onclick="filterPubs('conference', this)">Conferences</button>
-    </div>
-
-    <!-- All Publications Container -->
-    <div id="pub-container" data-aos="fade-up">
-      
-      <!-- Journal Articles & Magazines -->
-      
-      <!-- UPDATED TITLE PAPER -->
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-published">Published (2026)</span>
-        <a href="https://rcresearcharchive.com/index.php/Journal/article/view/592" target="_blank" class="pub-title">Machine Learning In Animal Disease Diagnosis: Developing Predictive Models For Disease Diagnosis Using Machine Learning Algorithms And Sensor Data</a>
-        <div class="pub-meta">Research Consortium Archive, Vol. 4 No. 1 (2026)</div>
-        <p class="pub-authors">S. Bibi, B. Khan, F. Sehar, N. Akhtar, F. Nawaz, <strong>Syed Tahir Ali Shah</strong>.</p>
-        <a href="https://rcresearcharchive.com/index.php/Journal/article/view/592" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
-      </div>
-      <!-- END UPDATED PAPER -->
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-published">Published (2026)</span>
-        <a href="https://doi.org/10.3390/s26041110" target="_blank" class="pub-title">The Micro-Mobility Sensing Gap: A Systematic Review of Physiological Safety Monitoring from Cycling to E-Scooters</a>
-        <div class="pub-meta">Sensors</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J. M. Fernandes, J. P. Santos, G. Constantinescu, António B. Pereira.</p>
-        <a href="https://doi.org/10.3390/s26041110" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-submitted">Submitted (2026)</span>
-        <span class="pub-title">Mechanical Properties of Novel Biaxial Non-Crimp Fabrics for Sustainable 2-Wheeled Electrical Vehicles</span>
-        <div class="pub-meta">Journal Article</div>
-        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P. Santos, M.C. Coelho, J.M. Cardoso, R.B. Figueiredo, et al.</p>
-        <p><em>Corresponding author: Gabriel Constantinescu</em></p>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-submitted">Submitted (2025)</span>
-        <span class="pub-title">State-of-the-Art in Machine Learning on Embedded and Mobile Runtimes: A Critical Review and Future Roadmap</span>
-        <div class="pub-meta">Journal Article</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-submitted">Submitted (2025)</span>
-        <span class="pub-title">Smart E-bike systems: Integrating own rider information for improving riding experience</span>
-        <div class="pub-meta">Journal Article</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-submitted">Submitted (2025)</span>
-        <span class="pub-title">Tensile Properties of Sustainable Biaxial Non-Crimp Fabrics for 2-Wheeled Electrical Vehicle Chassis</span>
-        <div class="pub-meta">Journal Article</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, G. Constantinescu, A. Horovistiz, J.P.O. Santos, A.M.B. Pereira, M.S. Henriques.</p>
-        <p><em>Corresponding author: Gabriel Constantinescu</em></p>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-submitted">Submitted • Open Access (2025)</span>
-        <span class="pub-title">Wearable-Driven Adaptive Lighting Control for Smart Homes: A Scalable, Physiology-Aware IoT Architecture</span>
-        <div class="pub-meta">Journal Article</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="pub-title">MACHINE LEARNING-BASED NETWORK INTRUSION DETECTION USING RANDOM COMMITTEE ENSEMBLES: A MULTI-METRIC PERFORMANCE EVALUATION</span>
-        <span class="pub-meta">Zenodo (2025)</span>
-        <p class="pub-authors">J.H. Arman, M.U. Sharaf, <strong>Syed Tahir Ali Shah</strong>, N. Sohu, Sindhu, U. Tariq.</p>
-        <a href="https://zenodo.org/doi/10.5281/zenodo.17129656" target="_blank" class="pub-link">View on Zenodo <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-published">Published (2020)</span>
-        <a href="https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08" target="_blank" class="pub-title">PREDICTING COVID-19 INFECTIONS PREVALENCE USING LINEAR REGRESSION TOOL</a>
-        <span class="pub-meta">Journal of Experimental Biology and Agricultural Sciences, 8 Spl-1- SAR</span>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, A. Iftikhar, M.I. Khan, M. Mansoor, A.F. Mirza, M. Bilal.</p>
-        <a href="https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-published">Published (2020)</span>
-        <a href="https://doi.org/10.22207/JPAM.14.2.40" target="_blank" class="pub-title">Predicting COVID-19 Spread in Pakistan using the SIR Model</a>
-        <span class="pub-meta">Journal of Pure and Applied Microbiology, 14(2)</span>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, M. Mansoor, A.F. Mirza, M. Dilshad, M.I. Khan, R. Farwa, M.A. Khan, M. Bilal, H.M.N. Iqbal.</p>
-        <a href="https://doi.org/10.22207/JPAM.14.2.40" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-      <div class="pub-item" data-category="journal">
-        <span class="status-badge status-published">Published (2020)</span>
-        <a href="https://doi.org/10.14299/ijser.2020.02.05" target="_blank" class="pub-title">Text Steganography Using Character Spacing after Normalization</a>
-        <span class="pub-meta">International Journal of Scientific & Engineering Research, 11(2)</span>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, Dr. A. Khan, Dr. A. Hussain.</p>
-        <a href="https://doi.org/10.14299/ijser.2020.02.05" class="pub-link">Read Article <i class="fas fa-external-link-alt"></i></a>
-      </div>
-
-
-      <!-- Conference Papers & Abstracts -->
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-accepted">Accepted (2026)</span>
-        <span class="pub-title">Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on theE-Bike</span>
-        <div class="pub-meta">ICICT2026, Honolulu-Hawaii</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.P. Santos, G. Constantinescu, J. Fernandes, A.B. Pereira.</p>
-        <p><em>Corresponding author: Syed Tahir Ali Shah</em></p>
-      </div>
-
-  
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-accepted">Accepted (2026)</span>
-        <span class="pub-title">Spatio-Temporal Analytics of Traffic-Induced Stress: A Longitudinal Sensor Fusion Study in Real-World Micromobility Environments</span>
-        <div class="pub-meta">ICCDE 2026, Phuket</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, José Maria Fernandes, José Paulo Oliveira Santos, Gabriel Constantinescu, António Manuel de Bastos Pereira.</p>
-      </div>
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-published">Published (2025)</span>
-        <span class="pub-title">Tensile and flexural characterizations of biaxial non-crimp fabric composites for sustainable, two-wheeled electric vehicle chassis</span>
-        <div class="pub-meta">TEchMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
-        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Luís, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-published">Published (2025)</span>
-        <span class="pub-title">From ride data to carbon credits: a LCA-based mobile solution for sustainable EV usage</span>
-        <div class="pub-meta">TEchMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
-        <p class="pub-authors">G. Constantinescu, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.M.A. Fernandes, L. Borgato, F. Orsini, et al.</p>
-      </div>
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-published">Published (2025)</span>
-        <span class="pub-title">Compressive and shear behaviour of novel non-crimp fabric composites for sustainable and lightweight electrical mobility</span>
-        <div class="pub-meta">TEchMA 2025 – New frontiers in mechanical engineering, Aveiro</div>
-        <p class="pub-authors">G. Constantinescu, A. Horovistiz, <strong>Syed Tahir Ali Shah</strong>, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Luís, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-submitted">Submitted (2024)</span>
-        <span class="pub-title">Smart E-bike systems: Integrating own rider information for improving riding experience</span>
-        <div class="pub-meta">1ª Conferência AM2R: O Futuro da Mobilidade Sustentável, de Portugal para o Mundo, Porto</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong>, J.M. Fernandes, J.P.O. Santos, G. Constantinescu, A.M.B. Pereira, H. Ana, M.S. Henriques.</p>
-      </div>
-
-      <div class="pub-item" data-category="conference">
-        <span class="status-badge status-published">Published (2024)</span>
-        <span class="pub-title">Extending IoT Networks with the Human Factor: An Example for an E-bike Scenario (Emotion Sensitive Computing)</span>
-        <div class="pub-meta">7TH INTERNATIONAL CONFERENCE ON TECHNOLOGIES FOR THE WELLBEING AND SUSTAINABLE MANUFACTURING SOLUTIONS, Aveiro</div>
-        <p class="pub-authors"><strong>Syed Tahir Ali Shah</strong></p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Projects & Software -->
-  <section id="software">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Projects & Software</h2>
-    </div>
-    
-    <div class="software-showcase">
-      <div class="software-info" data-aos="fade-right">
-        <span class="badge">Featured Software</span>
-        <h3>MariaBike Dashboard</h3>
-        <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 20px;">
-          Real-Time E-Bike Dashboard with BLE and MQTT Integration. A tool for physiological monitoring in mobility.
-        </p>
-        <ul style="list-style: disc; padding-left: 20px; margin-bottom: 30px; color: var(--text-main);">
-          <li>Real-Time Dashboard</li>
-          <li>BLE & MQTT Integration</li>
-          <li>Android / iOS Compatible</li>
-          <li>Version 0.1 (2025)</li>
-        </ul>
-        <a href="#contact" class="btn">Request Demo</a>
-      </div>
-      
-      <div class="slideshow-frame" data-aos="fade-left">
-        <img src="https://cdn.dribbble.com/userupload/44171614/file/original-1853d6bdbdf73850900f867e2fe9dfbb.png?resize=752x" class="active">
-        <img src="http://www.chigee.com/cdn/shop/articles/Smart_Digital_Displays_for_Motorcycles_Essential_Upgrade_or_Lavish_Luxury.png?v=1745466648&width=2048">
-        <img src="http://leoguarbikes.com/cdn/shop/articles/8ad8daf8a017c5f48efdcbf9cd2ed5ac_44281878-bf79-4b7c-bd6b-5c29c8bdc229.webp?v=1756435633">
-        <img src="https://www.hyena-ebike.com/wp-content/uploads/2024/05/HyenaSync-14.png">
-      </div>
-    </div>
-
-    <div style="margin-top: 60px;">
-      <h3 style="text-align: center; margin-bottom: 40px;">Key Research Projects</h3>
-      <div class="research-grid">
-        <div class="pub-item" style="border-left: 4px solid var(--accent);">
-          <strong>AM2R Mobilizing Agenda</strong>
-          <p>PhD Student Fellow (2023-2025)</p>
-          <p class="pub-meta">Mobilizing Agenda for business innovation in the Two-Wheel sector, University of Aveiro.</p>
-        </div>
-        <div class="pub-item" style="border-left: 4px solid var(--accent);">
-          <strong>BREUCA</strong>
-          <p>Research Fellow (Mar 2023 - Jun 2023)</p>
-          <p class="pub-meta">Development of a high-precision Virtual Reality simulator for professional simulation.</p>
+  <main id="app">
+    <section id="bio" aria-labelledby="bio-title">
+      <div class="bio-container" data-aos="fade-up">
+        <div class="bio-image" id="bio-image"></div>
+        <div class="bio-text">
+          <h2 id="bio-title"></h2>
+          <div id="bio-copy"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Supervision & Events -->
-  <section id="supervision">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Service & Mentorship</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item" data-aos="fade-left">
-        <span class="timeline-date">2024/10/01 - 2025/06/30</span>
-        <h3>Scientific Mentorship (CHAI I)</h3>
-        <h4>University of Aveiro</h4>
-        <p>Mentoring student: João Bispo (Social Sciences, Humanities, Arts, and Research I).</p>
+    <section id="education" aria-labelledby="education-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="education-title"></h2>
       </div>
-      
-      <div class="timeline-item" data-aos="fade-left">
-        <span class="timeline-date">2022/06/01 - 2023/06/30</span>
-        <h3>Thesis Supervisor</h3>
-        <h4>University of Baltistan, Pakistan</h4>
-        <p>Topic: IoT-Based Smart Farming System with Real-Time Soil Moisture and Weather Monitoring.</p>
-      </div>
+      <div class="timeline" id="education-timeline"></div>
+    </section>
 
-      <div class="timeline-item" data-aos="fade-left">
-        <span class="timeline-date">2020/01/01 - 2021/01/31</span>
-        <h3>Thesis Co-supervisor</h3>
-        <h4>University of Baltistan, Pakistan</h4>
-        <p>Topic: Real-Time Emotion Recognition from Facial Expressions Using Deep Learning.</p>
+    <section id="research" aria-labelledby="research-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="research-title"></h2>
       </div>
+      <div class="research-grid" id="research-grid"></div>
+    </section>
 
-      <div class="timeline-item" data-aos="fade-left">
-        <span class="timeline-date">2024/12/10 - 2024/12/11</span>
-        <h3>Poster Presentation: AM2R</h3>
-        <h4>AM2R Technical Scientific Conference, Portugal</h4>
-        <p>Presented "Smart E-Bike Systems: Integrating Rider-Specific Information to Enhance the Riding Experience".</p>
+    <section id="languages" aria-labelledby="languages-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="languages-title"></h2>
       </div>
-      
-      <div class="timeline-item" data-aos="fade-left">
-        <span class="timeline-date">2024/06/06 - 2024/06/07</span>
-        <h3>Conference Presentation</h3>
-        <h4>EchMA2024, University of Aveiro</h4>
-        <p>Presentation on integrating physiological signals from wearables into embedded mobility solutions (MariaBike).</p>
+      <div class="table-wrapper" data-aos="flip-up">
+        <table id="languages-table"></table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="section-header" data-aos="fade-up">
-      <h2>Get In Touch</h2>
-      <p style="color: var(--text-light);">Open for research collaboration and academic discussion.</p>
-    </div>
-    
-    <div class="contact-grid">
-      <a href="mailto:syedtahiralishah@ua.pt" class="contact-card">
-        <i class="fas fa-envelope"></i>
-        <h4>Email (Professional)</h4>
-        <p>syedtahiralishah@ua.pt</p>
-      </a>
-      <a href="mailto:syedtahirkzm1@gmail.com" class="contact-card">
-        <i class="fas fa-at"></i>
-        <h4>Email (Personal)</h4>
-        <p>syedtahirkzm1@gmail.com</p>
-      </a>
-      <div class="contact-card">
-        <i class="fas fa-map-marker-alt"></i>
-        <h4>Address</h4>
-        <p style="font-size: 0.9rem;">Centre for Mechanical Technology and Automation (TEMA)<br>Dept. of Mechanical Engineering<br>University of Aveiro, 3810-193<br>Aveiro, Portugal</p>
+    <section id="publications" aria-labelledby="publications-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="publications-title"></h2>
       </div>
-    </div>
+      <div class="publication-toolbar" data-aos="fade-up">
+        <div class="pub-tabs" id="publication-tabs" role="tablist" aria-label="Publication filters"></div>
+        <label class="search-field">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <input id="publication-search" type="search" placeholder="Search publications" autocomplete="off" />
+        </label>
+        <label class="select-field">
+          <span>Sort</span>
+          <select id="publication-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A-Z</option>
+          </select>
+        </label>
+      </div>
+      <p class="result-count" id="publication-count" aria-live="polite"></p>
+      <div id="publication-list" data-aos="fade-up"></div>
+    </section>
 
-    <div style="text-align: center; margin-top: 50px;">
-      <a href="https://scholar.google.com/citations?user=VED2-h4AAAAJ" target="_blank" class="btn"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-      <a href="https://orcid.org/0000-0003-0001-1810" target="_blank" class="btn" style="margin-left: 10px; background: #334155; border-color: #334155;"><i class="fas fa-id-card"></i> ORCID</a>
-      <a href="https://tahirkazmi72.github.io/syedtahiralishah" target="_blank" class="btn" style="margin-left: 10px; background: #0f172a; border-color: #0f172a;"><i class="fas fa-globe"></i> Personal Website</a>
-      <a href="https://www.temaua.pt/pt/pessoas/membros/syed-tahir-ali-shah/" target="_blank" class="btn" style="margin-left: 10px; background: #b45309; border-color: #b45309;"><i class="fas fa-university"></i> TEMA Profile</a>
-    </div>
-  </section>
+    <section id="software" aria-labelledby="software-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="software-title"></h2>
+      </div>
+      <div class="software-showcase" id="software-showcase"></div>
+      <div class="project-block">
+        <h3 id="projects-title"></h3>
+        <div class="research-grid" id="project-grid"></div>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Syed Tahir Ali Shah. All Rights Reserved.</p>
-    <div class="socials">
-      <a href="https://pt.linkedin.com/in/syed-tahir-ali-shah-a1582897"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.researchgate.net/profile/Syed-Tahir-Ali-Shah"><i class="fab fa-researchgate"></i></a>
-    </div>
+    <section id="supervision" aria-labelledby="service-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="service-title"></h2>
+      </div>
+      <div class="timeline" id="service-timeline"></div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 id="contact-title"></h2>
+        <p id="contact-subtitle"></p>
+      </div>
+      <div class="contact-grid" id="contact-grid"></div>
+      <form class="contact-form" id="contact-form" data-aos="fade-up">
+        <div class="form-row">
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+        </div>
+        <label>
+          <span>Subject</span>
+          <input name="subject" type="text" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Prepare Email</button>
+      </form>
+      <div class="profile-links" id="profile-links"></div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <p id="footer-copy"></p>
+    <div class="socials" id="footer-socials"></div>
   </footer>
 
-  <!-- Scripts -->
+  <noscript>
+    <section class="noscript-message">
+      <h2>JavaScript required</h2>
+      <p>This site renders profile data from a JSON content file.</p>
+    </section>
+  </noscript>
+
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    // Initialize Animations
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-out-cubic',
-      once: true,
-      offset: 50
-    });
-
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // Mobile Menu Toggle
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
-    }
-
-    // Publication Filter Logic
-    function filterPubs(category, btnElement) {
-      // Update buttons
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
-
-      // Filter items
-      const items = document.querySelectorAll('.pub-item');
-      items.forEach(item => {
-        if (category === 'all' || item.getAttribute('data-category') === category) {
-          item.style.display = 'block';
-          // Re-trigger animation slightly
-          item.style.animation = 'none';
-          item.offsetHeight; /* trigger reflow */
-          item.style.animation = 'fadeIn 0.5s ease';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    // Generic Slideshow Logic
-    function startSlideshow(containerId, interval = 5000) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      
-      // For hero, we look at direct img tags. For software, we look inside .slideshow-frame
-      let images;
-      if(containerId === 'hero-bg') {
-        images = container.querySelectorAll('img');
-      } else {
-        images = container.querySelectorAll('.slideshow-frame img');
-      }
-
-      if(images.length === 0) return;
-
-      let currentIndex = 0;
-
-      function showNext() {
-        images[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % images.length;
-        images[currentIndex].classList.add('active');
-      }
-
-      setInterval(showNext, interval);
-    }
-
-    // Init Slideshows
-    startSlideshow('hero-bg', 6000);
-    startSlideshow('software', 4000);
-
-  </script>
+  <script src="assets/js/site.js" type="module"></script>
 </body>
 </html>

@@ -102,6 +102,17 @@
         "file": "assets/certificates/best-paper-jps-2026.pdf",
         "thumbnail": "assets/certificates/best-paper-jps-2026.png",
         "buttonLabel": "View Certificate"
+      },
+      {
+        "title": "Scientific Mentorship I Participation Certificate",
+        "issuer": "University of Aveiro - Department of Medical Sciences",
+        "date": "Academic year 2024/2025",
+        "description": "Certificate of participation as a scientific mentor in the Scientific Mentorship I Program, CHAI I, with a total workload of 13 hours.",
+        "file": "assets/certificates/scientific-mentorship-chai-2025.pdf",
+        "thumbnail": "assets/certificates/scientific-mentorship-chai-2025.png",
+        "verifyUrl": "https://credsverse.com/credentials/a46da3d3-169d-448b-b702-36f8a1bbba28",
+        "verifyLabel": "Verify Online",
+        "buttonLabel": "View Certificate"
       }
     ]
   },

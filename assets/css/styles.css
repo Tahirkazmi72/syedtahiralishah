@@ -184,6 +184,17 @@ nav.scrolled {
   color: var(--primary) !important;
 }
 
+.btn.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn.btn-accent:hover,
+.btn.btn-accent:focus-visible {
+  background: transparent;
+  color: var(--accent) !important;
+}
+
 .hero {
   align-items: center;
   color: #ffffff;
@@ -664,6 +675,12 @@ body.certificate-view #certificates {
   margin-bottom: 8px;
 }
 
+.certificate-actions {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
 .certificate-modal {
   align-items: center;
   background: rgba(15, 23, 42, 0.76);
@@ -735,7 +752,14 @@ body.certificate-view #certificates {
   height: min(680px, 70svh);
 }
 
-.certificate-modal__link {
+.certificate-modal__actions {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.certificate-modal__link,
+.certificate-modal__verify {
   width: 100%;
 }
 
@@ -1069,6 +1093,10 @@ footer .socials a:hover {
 
   .certificate-modal__body iframe {
     height: 68svh;
+  }
+
+  .certificate-modal__actions {
+    grid-template-columns: 1fr;
   }
 
   .slideshow-frame {

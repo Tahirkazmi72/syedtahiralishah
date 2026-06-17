@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-8";
+const DATA_URL = "assets/data/site-data.json?v=20260617-9";
 
 let siteData = null;
 const state = {
@@ -201,6 +201,7 @@ function openCertificateModal(item) {
   const title = $("#certificate-modal-title");
   const body = $("#certificate-modal-body");
   const fullLink = $("#certificate-modal-link");
+  const verifyLink = $("#certificate-modal-verify");
   const type = certificateType(item.file);
 
   title.textContent = item.title;
@@ -222,6 +223,13 @@ function openCertificateModal(item) {
 
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
+  if (item.verifyUrl) {
+    verifyLink.href = item.verifyUrl;
+    verifyLink.style.display = "inline-flex";
+  } else {
+    verifyLink.removeAttribute("href");
+    verifyLink.style.display = "none";
+  }
   document.body.classList.add("modal-open");
 }
 
@@ -281,6 +289,7 @@ function renderCertificates() {
     const card = createElement("article", "certificate-card");
     const preview = createElement("div", "certificate-preview");
     const meta = createElement("div", "certificate-meta");
+    const actions = createElement("div", "certificate-actions");
     const button = document.createElement("button");
 
     if (item.thumbnail) {
@@ -306,8 +315,17 @@ function renderCertificates() {
     if (item.file) {
       button.addEventListener("click", () => openCertificateModal(item));
     }
+    actions.appendChild(button);
 
-    card.append(preview, meta, button);
+    if (item.verifyUrl) {
+      actions.appendChild(createButtonLink({
+        label: item.verifyLabel || "Verify Online",
+        href: item.verifyUrl,
+        icon: "fas fa-check-circle"
+      }, "btn-accent"));
+    }
+
+    card.append(preview, meta, actions);
     grid.appendChild(card);
   });
 }

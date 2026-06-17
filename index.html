@@ -8,6 +8,17 @@
   <meta name="author" content="Syed Tahir Ali Shah" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0f172a" />
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("syed-tahir-theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
   <link rel="canonical" href="https://tahirkazmi72.github.io/syedtahiralishah/" />
 
   <meta property="og:type" content="website" />
@@ -34,7 +45,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260617-16" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260617-17" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -164,6 +175,12 @@
           <span class="sr-only">Search publications</span>
           <input id="publication-search" type="search" placeholder="Search publications, authors, DOI" autocomplete="off" />
         </label>
+        <label class="publication-filter">
+          <span>Year</span>
+          <select id="publication-year">
+            <option value="all">All years</option>
+          </select>
+        </label>
         <label class="publication-sort">
           <span>Sort</span>
           <select id="publication-sort">
@@ -172,6 +189,10 @@
             <option value="title">Title A-Z</option>
             <option value="award">Award first</option>
           </select>
+        </label>
+        <label class="publication-awarded">
+          <input id="publication-awarded" type="checkbox" />
+          <span>Awarded only</span>
         </label>
       </div>
       <div class="pub-tabs" id="publication-tabs" role="tablist" aria-label="Publication filters" data-aos="fade-up"></div>
@@ -239,6 +260,6 @@
   </noscript>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="assets/js/site.js?v=20260617-13" type="module"></script>
+  <script src="assets/js/site.js?v=20260617-14" type="module"></script>
 </body>
 </html>

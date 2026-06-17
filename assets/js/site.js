@@ -1,10 +1,14 @@
 const DATA_URL = "assets/data/site-data.json?v=20260617-13";
+const THEME_KEY = "syed-tahir-theme";
 
 let siteData = null;
 const state = {
   publicationCategory: "all",
   publicationQuery: "",
-  publicationSort: "newest"
+  publicationSort: "newest",
+  publicationYear: "all",
+  publicationAwardedOnly: false,
+  theme: document.documentElement.dataset.theme || "light"
 };
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -41,6 +45,10 @@ function derivedDoi(item) {
   return match ? match[0].replace(/[.)\]]$/, "") : "";
 }
 
+function isAwardedPublication(item) {
+  return item.statusType === "award" || /award/i.test(`${item.status || ""} ${item.note || ""}`);
+}
+
 function appendIcon(parent, iconClass) {
   if (!iconClass) return null;
   const icon = document.createElement("i");
@@ -56,6 +64,48 @@ function createButtonLink(item, extraClass = "") {
   appendIcon(link, item.icon);
   link.append(document.createTextNode(item.label));
   return link;
+}
+
+function updateThemeToggle() {
+  const toggle = $("#theme-toggle");
+  if (!toggle) return;
+
+  const isDark = state.theme === "dark";
+  toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+  toggle.setAttribute("aria-pressed", String(isDark));
+  toggle.innerHTML = "";
+  appendIcon(toggle, isDark ? "fas fa-sun" : "fas fa-moon");
+  toggle.appendChild(document.createTextNode(isDark ? "Light" : "Dark"));
+}
+
+function applyTheme(theme, persist = false) {
+  state.theme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = state.theme;
+  document.documentElement.style.colorScheme = state.theme;
+
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) metaTheme.content = state.theme === "dark" ? "#020617" : "#0f172a";
+
+  if (persist) {
+    try {
+      localStorage.setItem(THEME_KEY, state.theme);
+    } catch (error) {
+      console.warn("Theme preference could not be saved.", error);
+    }
+  }
+
+  updateThemeToggle();
+}
+
+function createThemeToggle() {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "theme-toggle";
+  button.id = "theme-toggle";
+  button.addEventListener("click", () => {
+    applyTheme(state.theme === "dark" ? "light" : "dark", true);
+  });
+  return button;
 }
 
 function highlightName(text) {
@@ -85,7 +135,9 @@ function renderNavigation() {
     navLinks.appendChild(link);
   });
 
+  navLinks.appendChild(createThemeToggle());
   navLinks.appendChild(createButtonLink(siteData.cvLink));
+  updateThemeToggle();
 }
 
 function renderHero() {
@@ -351,9 +403,16 @@ function categoryCounts() {
   }, { all: 0 });
 }
 
+function publicationYears() {
+  return [...new Set(siteData.publications.items.map((item) => Number(item.year)).filter(Boolean))]
+    .sort((first, second) => second - first);
+}
+
 function bindPublicationControls() {
   const search = $("#publication-search");
   const sort = $("#publication-sort");
+  const year = $("#publication-year");
+  const awarded = $("#publication-awarded");
 
   if (search) {
     search.value = state.publicationQuery;
@@ -367,6 +426,27 @@ function bindPublicationControls() {
     sort.value = state.publicationSort;
     sort.addEventListener("change", () => {
       state.publicationSort = sort.value;
+      renderPublications();
+    });
+  }
+
+  if (year) {
+    year.innerHTML = "";
+    year.appendChild(new Option("All years", "all"));
+    publicationYears().forEach((value) => {
+      year.appendChild(new Option(String(value), String(value)));
+    });
+    year.value = state.publicationYear;
+    year.addEventListener("change", () => {
+      state.publicationYear = year.value;
+      renderPublications();
+    });
+  }
+
+  if (awarded) {
+    awarded.checked = state.publicationAwardedOnly;
+    awarded.addEventListener("change", () => {
+      state.publicationAwardedOnly = awarded.checked;
       renderPublications();
     });
   }
@@ -398,6 +478,9 @@ function publicationMatches(item) {
   const categoryMatch = state.publicationCategory === "all" || item.category === state.publicationCategory;
   if (!categoryMatch) return false;
 
+  if (state.publicationYear !== "all" && String(item.year) !== state.publicationYear) return false;
+  if (state.publicationAwardedOnly && !isAwardedPublication(item)) return false;
+
   if (!state.publicationQuery) return true;
 
   const searchable = [
@@ -422,8 +505,8 @@ function sortPublications(items) {
     }
 
     if (state.publicationSort === "award") {
-      const firstAward = first.statusType === "award" || /award/i.test(`${first.status || ""} ${first.note || ""}`);
-      const secondAward = second.statusType === "award" || /award/i.test(`${second.status || ""} ${second.note || ""}`);
+      const firstAward = isAwardedPublication(first);
+      const secondAward = isAwardedPublication(second);
       if (firstAward !== secondAward) return firstAward ? -1 : 1;
     }
 
@@ -437,12 +520,127 @@ function sortPublications(items) {
   return sorted;
 }
 
+function sanitizeBibValue(value) {
+  return String(value || "")
+    .replace(/[{}]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function bibAuthors(authors) {
+  return sanitizeBibValue(authors)
+    .replace(/\.$/, "")
+    .split(/\s*,\s*/)
+    .filter(Boolean)
+    .join(" and ");
+}
+
+function citationKey(item) {
+  const firstAuthor = sanitizeBibValue(item.authors)
+    .split(",")[0]
+    .replace(/\./g, "")
+    .trim()
+    .split(/\s+/)
+    .pop() || "publication";
+  const firstWord = sanitizeBibValue(item.title)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .split(/\s+/)
+    .find((word) => word.length > 3) || "work";
+
+  return `${firstAuthor.toLowerCase()}${item.year || ""}${firstWord}`.replace(/[^a-z0-9]/g, "");
+}
+
+function createBibTeX(item) {
+  const doi = derivedDoi(item);
+  const type = item.category === "conference" ? "inproceedings" : "article";
+  const venueField = item.category === "conference" ? "booktitle" : "journal";
+  const fields = [
+    ["title", sanitizeBibValue(item.title)],
+    ["author", bibAuthors(item.authors)],
+    ["year", item.year || ""],
+    [venueField, sanitizeBibValue(item.venue)]
+  ];
+
+  if (doi) fields.push(["doi", doi]);
+  if (item.url) fields.push(["url", item.url]);
+  if (item.note) fields.push(["note", sanitizeBibValue(item.note)]);
+
+  const body = fields
+    .filter(([, value]) => value)
+    .map(([key, value]) => `  ${key} = {${value}}`)
+    .join(",\n");
+
+  return `@${type}{${citationKey(item)},\n${body}\n}`;
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.setAttribute("readonly", "");
+  textArea.style.position = "fixed";
+  textArea.style.left = "-9999px";
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  textArea.remove();
+}
+
+function setTemporaryButtonLabel(button, label, iconClass) {
+  const original = button.dataset.originalLabel;
+  const originalIcon = button.dataset.originalIcon;
+  button.innerHTML = "";
+  appendIcon(button, iconClass);
+  button.appendChild(document.createTextNode(label));
+
+  window.setTimeout(() => {
+    button.innerHTML = "";
+    appendIcon(button, originalIcon);
+    button.appendChild(document.createTextNode(original));
+  }, 1500);
+}
+
+function createPubActionButton(label, iconClass) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "pub-action";
+  button.dataset.originalLabel = label;
+  button.dataset.originalIcon = iconClass;
+  appendIcon(button, iconClass);
+  button.appendChild(document.createTextNode(label));
+  return button;
+}
+
+function downloadBibTeX(item) {
+  const blob = new Blob([createBibTeX(item)], { type: "application/x-bibtex;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const fileName = citationKey(item) || "citation";
+  link.href = url;
+  link.download = `${fileName}.bib`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
 function createPublicationItem(item) {
   const article = createElement("article", "pub-item");
   article.dataset.category = item.category;
+  const awarded = isAwardedPublication(item);
+  if (awarded) article.classList.add("is-awarded");
 
   if (item.status) {
     article.appendChild(createElement("span", `status-badge status-${item.statusType}`, item.status));
+  }
+
+  if (awarded && item.statusType !== "award") {
+    article.appendChild(createElement("span", "status-badge status-award", "Awarded"));
   }
 
   const title = item.url
@@ -457,10 +655,11 @@ function createPublicationItem(item) {
 
   const doi = derivedDoi(item);
   if (doi) {
-    const doiLine = createElement("span", "pub-doi", "DOI: ");
-    const doiLink = createLink({ href: `https://doi.org/${doi}`, label: doi }, null);
-    doiLine.appendChild(doiLink);
-    article.appendChild(doiLine);
+    const doiLink = createLink({ href: `https://doi.org/${doi}`, label: doi }, "pub-doi-badge");
+    doiLink.textContent = "";
+    doiLink.appendChild(createElement("span", null, "DOI"));
+    doiLink.appendChild(document.createTextNode(doi));
+    article.appendChild(doiLink);
   }
 
   if (item.note) {
@@ -483,12 +682,33 @@ function createPublicationItem(item) {
     article.appendChild(note);
   }
 
+  const actions = createElement("div", "pub-actions");
+
   if (item.url) {
-    const link = createLink({ href: item.url, label: item.linkLabel || "Read Article" }, "pub-link");
-    link.append(document.createTextNode(" "));
+    const link = createLink({ href: item.url, label: item.linkLabel || "Read Article" }, "pub-action pub-link");
+    link.textContent = "";
     appendIcon(link, "fas fa-external-link-alt");
-    article.appendChild(link);
+    link.append(document.createTextNode(item.linkLabel || "Read Article"));
+    actions.appendChild(link);
   }
+
+  const copyButton = createPubActionButton("Copy BibTeX", "fas fa-copy");
+  copyButton.addEventListener("click", async () => {
+    try {
+      await copyText(createBibTeX(item));
+      setTemporaryButtonLabel(copyButton, "Copied", "fas fa-check");
+    } catch (error) {
+      console.error(error);
+      setTemporaryButtonLabel(copyButton, "Copy failed", "fas fa-exclamation-triangle");
+    }
+  });
+  actions.appendChild(copyButton);
+
+  const downloadButton = createPubActionButton("Download .bib", "fas fa-download");
+  downloadButton.addEventListener("click", () => downloadBibTeX(item));
+  actions.appendChild(downloadButton);
+
+  article.appendChild(actions);
 
   return article;
 }
@@ -688,6 +908,7 @@ function observeSections() {
 }
 
 function renderSite() {
+  applyTheme(state.theme);
   document.title = siteData.site.pageTitle;
   renderNavigation();
   renderHero();

@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-4";
+const DATA_URL = "assets/data/site-data.json?v=20260617-5";
 
 let siteData = null;
 const state = {
@@ -232,6 +232,26 @@ function closeCertificateModal() {
   modal.setAttribute("aria-hidden", "true");
   body.innerHTML = "";
   document.body.classList.remove("modal-open");
+}
+
+function revealCertificates(options = {}) {
+  const section = $("#certificates");
+  if (!section) return;
+
+  section.classList.remove("is-hidden");
+  section.setAttribute("aria-hidden", "false");
+
+  if (options.updateHash) {
+    history.pushState(null, "", "#certificates");
+  }
+
+  if (window.AOS) {
+    window.AOS.refreshHard();
+  }
+
+  window.setTimeout(() => {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 30);
 }
 
 function renderCertificates() {
@@ -496,6 +516,14 @@ function bindInteractions() {
     }
   });
 
+  document.addEventListener("click", (event) => {
+    const certificateLink = event.target.closest("a[href='#certificates']");
+    if (!certificateLink) return;
+
+    event.preventDefault();
+    revealCertificates({ updateHash: true });
+  });
+
   certificateClose.addEventListener("click", closeCertificateModal);
   certificateModal.addEventListener("click", (event) => {
     if (event.target === certificateModal) closeCertificateModal();
@@ -553,6 +581,10 @@ function renderSite() {
       once: true,
       offset: 50
     });
+  }
+
+  if (window.location.hash === "#certificates") {
+    revealCertificates();
   }
 }
 

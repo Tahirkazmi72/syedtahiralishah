@@ -598,6 +598,10 @@ a.pub-title:hover,
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+.certificate-section.is-hidden {
+  display: none;
+}
+
 .certificate-card {
   display: grid;
   gap: 18px;

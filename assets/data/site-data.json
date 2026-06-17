@@ -445,24 +445,14 @@
     },
     "projects": [
       {
-        "title": "EMARIAB - Embedded Intelligent Systems for Personalized and Sustainable Mobility",
-        "role": "FCT BDANA PhD Work Programme (2026-2030)",
-        "meta": "IoT-based framework integrating wearable sensing, embedded design, and low-power machine learning for MariaBike. The project uses real-time physiological signals to adapt assist levels, alerts, and energy modes for safer and more sustainable mobility."
-      },
-      {
-        "title": "MariaBike Human-Aware Mobility Testbed",
-        "role": "Embedded IoT and Rider Dashboard Development",
-        "meta": "Development of BLE-MQTT telemetry, smart locking features, real-time rider dashboards, and field validation workflows for MHSi MariaBike prototypes."
-      },
-      {
-        "title": "Privacy-Aware Federated Mobility Intelligence",
-        "role": "Research Work Package",
-        "meta": "Design of privacy-preserving learning workflows for rider data, including local model updates, encryption considerations, GDPR-aware processing, and on-device personalization."
+        "title": "FCT BDANA PhD Work Programme (2026-2030)",
+        "role": "PhD Studentship",
+        "meta": "Embedded intelligent systems for personalized and sustainable mobility, developed at the University of Aveiro within the AM2R and MariaBike research context."
       },
       {
         "title": "AM2R Mobilizing Agenda",
         "role": "PhD Student Fellow (2023-2025)",
-        "meta": "Mobilizing Agenda for business innovation in the Two-Wheel sector, linking University of Aveiro research with industrial e-mobility development."
+        "meta": "Mobilizing Agenda for business innovation in the Two-Wheel sector, University of Aveiro."
       },
       {
         "title": "BREUCA",

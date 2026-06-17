@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-14";
+const DATA_URL = "assets/data/site-data.json?v=20260617-15";
 const TRANSLATIONS_URL = "assets/data/translations.json?v=20260617-1";
 const THEME_KEY = "syed-tahir-theme";
 const LANGUAGE_KEY = "syed-tahir-language";

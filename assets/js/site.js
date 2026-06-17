@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-7";
+const DATA_URL = "assets/data/site-data.json?v=20260617-8";
 
 let siteData = null;
 const state = {
@@ -238,6 +238,7 @@ function revealCertificates(options = {}) {
   const section = $("#certificates");
   if (!section) return;
 
+  document.body.classList.add("certificate-view");
   section.classList.remove("is-hidden");
   section.setAttribute("aria-hidden", "false");
 
@@ -258,6 +259,7 @@ function hideCertificates() {
   const section = $("#certificates");
   if (!section) return;
 
+  document.body.classList.remove("certificate-view");
   section.classList.add("is-hidden");
   section.setAttribute("aria-hidden", "true");
 }

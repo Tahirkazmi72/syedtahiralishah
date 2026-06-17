@@ -271,6 +271,7 @@ section {
   margin: 112px auto;
   max-width: 1200px;
   padding: 0 30px;
+  scroll-margin-top: 96px;
 }
 
 .section-header {
@@ -600,6 +601,18 @@ a.pub-title:hover,
 
 .certificate-section.is-hidden {
   display: none;
+}
+
+body.certificate-view .hero,
+body.certificate-view main > section:not(#certificates),
+body.certificate-view footer {
+  display: none;
+}
+
+body.certificate-view #certificates {
+  display: block;
+  margin-bottom: 90px;
+  margin-top: 128px;
 }
 
 .certificate-card {

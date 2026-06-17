@@ -336,14 +336,17 @@ section {
 
 .bio-image {
   aspect-ratio: 1 / 1;
+  background: #ffffff;
+  border: 2px solid var(--accent);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  padding: 16px;
   position: relative;
 }
 
 .bio-image img {
-  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
   height: 100%;
   object-fit: cover;
   object-position: center top;
@@ -351,15 +354,7 @@ section {
 }
 
 .bio-image::before {
-  border: 2px solid var(--accent);
-  border-radius: var(--radius);
-  content: "";
-  height: 100%;
-  left: -18px;
-  position: absolute;
-  top: -18px;
-  width: 100%;
-  z-index: -1;
+  display: none;
 }
 
 .bio-text p {

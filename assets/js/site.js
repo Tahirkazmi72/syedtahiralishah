@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-5";
+const DATA_URL = "assets/data/site-data.json?v=20260617-6";
 
 let siteData = null;
 const state = {
@@ -252,6 +252,14 @@ function revealCertificates(options = {}) {
   window.setTimeout(() => {
     section.scrollIntoView({ behavior: "smooth", block: "start" });
   }, 30);
+}
+
+function hideCertificates() {
+  const section = $("#certificates");
+  if (!section) return;
+
+  section.classList.add("is-hidden");
+  section.setAttribute("aria-hidden", "true");
 }
 
 function renderCertificates() {
@@ -517,11 +525,24 @@ function bindInteractions() {
   });
 
   document.addEventListener("click", (event) => {
-    const certificateLink = event.target.closest("a[href='#certificates']");
-    if (!certificateLink) return;
+    const internalLink = event.target.closest("a[href^='#']");
+    if (!internalLink) return;
 
-    event.preventDefault();
-    revealCertificates({ updateHash: true });
+    if (internalLink.getAttribute("href") === "#certificates") {
+      event.preventDefault();
+      revealCertificates({ updateHash: true });
+      return;
+    }
+
+    hideCertificates();
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash === "#certificates") {
+      revealCertificates();
+    } else {
+      hideCertificates();
+    }
   });
 
   certificateClose.addEventListener("click", closeCertificateModal);

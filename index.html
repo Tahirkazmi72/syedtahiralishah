@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260617-10" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260617-11" />
 </head>
 <body>
   <nav id="navbar" aria-label="Primary navigation">
@@ -80,6 +80,22 @@
         <h2 id="publications-title"></h2>
         <p class="section-updated" id="publications-updated"></p>
       </div>
+      <div class="publication-tools" data-aos="fade-up">
+        <label class="publication-search">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <span class="sr-only">Search publications</span>
+          <input id="publication-search" type="search" placeholder="Search publications, authors, DOI" autocomplete="off" />
+        </label>
+        <label class="publication-sort">
+          <span>Sort</span>
+          <select id="publication-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A-Z</option>
+            <option value="award">Award first</option>
+          </select>
+        </label>
+      </div>
       <div class="pub-tabs" id="publication-tabs" role="tablist" aria-label="Publication filters" data-aos="fade-up"></div>
       <div id="publication-list" data-aos="fade-up"></div>
     </section>
@@ -145,6 +161,6 @@
   </noscript>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="assets/js/site.js?v=20260617-10" type="module"></script>
+  <script src="assets/js/site.js?v=20260617-11" type="module"></script>
 </body>
 </html>

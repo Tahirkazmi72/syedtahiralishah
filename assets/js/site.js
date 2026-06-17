@@ -1,8 +1,10 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-10";
+const DATA_URL = "assets/data/site-data.json?v=20260617-11";
 
 let siteData = null;
 const state = {
-  publicationCategory: "all"
+  publicationCategory: "all",
+  publicationQuery: "",
+  publicationSort: "newest"
 };
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -31,6 +33,12 @@ function createLink(item, className) {
 function setText(selector, text) {
   const element = $(selector);
   if (element) element.textContent = text || "";
+}
+
+function derivedDoi(item) {
+  if (item.doi) return item.doi;
+  const match = String(item.url || "").match(/10\.\d{4,9}\/\S+/i);
+  return match ? match[0].replace(/[.)\]]$/, "") : "";
 }
 
 function appendIcon(parent, iconClass) {
@@ -338,6 +346,27 @@ function categoryCounts() {
   }, { all: 0 });
 }
 
+function bindPublicationControls() {
+  const search = $("#publication-search");
+  const sort = $("#publication-sort");
+
+  if (search) {
+    search.value = state.publicationQuery;
+    search.addEventListener("input", () => {
+      state.publicationQuery = search.value.trim().toLowerCase();
+      renderPublications();
+    });
+  }
+
+  if (sort) {
+    sort.value = state.publicationSort;
+    sort.addEventListener("change", () => {
+      state.publicationSort = sort.value;
+      renderPublications();
+    });
+  }
+}
+
 function renderPublicationTabs() {
   const tabs = $("#publication-tabs");
   const counts = categoryCounts();
@@ -361,7 +390,46 @@ function renderPublicationTabs() {
 }
 
 function publicationMatches(item) {
-  return state.publicationCategory === "all" || item.category === state.publicationCategory;
+  const categoryMatch = state.publicationCategory === "all" || item.category === state.publicationCategory;
+  if (!categoryMatch) return false;
+
+  if (!state.publicationQuery) return true;
+
+  const searchable = [
+    item.title,
+    item.venue,
+    item.authors,
+    item.status,
+    item.note,
+    item.year,
+    item.category,
+    derivedDoi(item)
+  ].join(" ").toLowerCase();
+
+  return searchable.includes(state.publicationQuery);
+}
+
+function sortPublications(items) {
+  const sorted = [...items];
+  sorted.sort((first, second) => {
+    if (state.publicationSort === "title") {
+      return String(first.title || "").localeCompare(String(second.title || ""));
+    }
+
+    if (state.publicationSort === "award") {
+      const firstAward = first.statusType === "award" || /award/i.test(first.status || "");
+      const secondAward = second.statusType === "award" || /award/i.test(second.status || "");
+      if (firstAward !== secondAward) return firstAward ? -1 : 1;
+    }
+
+    const firstYear = Number(first.year || 0);
+    const secondYear = Number(second.year || 0);
+    if (state.publicationSort === "oldest") {
+      return firstYear - secondYear || String(first.title || "").localeCompare(String(second.title || ""));
+    }
+    return secondYear - firstYear || String(first.title || "").localeCompare(String(second.title || ""));
+  });
+  return sorted;
 }
 
 function createPublicationItem(item) {
@@ -381,6 +449,14 @@ function createPublicationItem(item) {
   const authors = createElement("p", "pub-authors");
   authors.appendChild(highlightName(item.authors));
   article.appendChild(authors);
+
+  const doi = derivedDoi(item);
+  if (doi) {
+    const doiLine = createElement("span", "pub-doi", "DOI: ");
+    const doiLink = createLink({ href: `https://doi.org/${doi}`, label: doi }, null);
+    doiLine.appendChild(doiLink);
+    article.appendChild(doiLine);
+  }
 
   if (item.note) {
     const note = createElement("p", "pub-note");
@@ -403,7 +479,7 @@ function createPublicationItem(item) {
 function renderPublications() {
   renderPublicationTabs();
   const list = $("#publication-list");
-  const matches = siteData.publications.items.filter(publicationMatches);
+  const matches = sortPublications(siteData.publications.items.filter(publicationMatches));
   list.innerHTML = "";
 
   if (!matches.length) {
@@ -606,6 +682,7 @@ function renderSite() {
   renderLanguages();
   setText("#publications-title", siteData.publications.title);
   setText("#publications-updated", siteData.publications.lastUpdated);
+  bindPublicationControls();
   renderPublications();
   renderSoftware();
   setText("#service-title", siteData.service.title);

@@ -28,6 +28,11 @@ ORCID_API_BASE = "https://pub.orcid.org/v3.0"
 DEFAULT_DATA_PATH = Path("assets/data/site-data.json")
 SOURCE = "cienciavitae"
 ORCID_SOURCE = "orcid"
+PHYSIO_TWIN_TITLE = "Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform"
+PHYSIO_TWIN_DOI = "10.1145/3803291.3803295"
+PHYSIO_TWIN_VENUE = "2026 The 9th International Conference on Information and Computer Technologies (ICICT 2026), Honolulu-Hawaii"
+PHYSIO_TWIN_AUTHORS = "Syed Tahir Ali Shah, J.P. Santos, Gabriel Constantinescu, Jos\u00e9 M. Fernandes, A.B. Pereira."
+PHYSIO_TWIN_NOTE = "Best Paper Award; corresponding author: Syed Tahir Ali Shah."
 MONTHS = (
     "January",
     "February",
@@ -160,8 +165,45 @@ def normalize_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", value.lower())
 
 
+def canonical_title(title: str) -> str:
+    title = clean(title)
+    key = normalize_key(title)
+    is_physio_twin = (
+        "physiodigitaltwinforhumancenterediotmobility" in key
+        and "proofofconceptimplementation" in key
+        and ("mariabikeplatform" in key or "ebikeplatform" in key or key.endswith("ontheebike"))
+    )
+    return PHYSIO_TWIN_TITLE if is_physio_twin else title
+
+
+def apply_publication_overrides(publication: dict) -> dict:
+    if canonical_title(publication.get("title", "")) != PHYSIO_TWIN_TITLE:
+        return publication
+
+    updated = publication.copy()
+    updated.update(
+        {
+            "category": "conference",
+            "year": 2026,
+            "status": "Best Paper Award (2026)",
+            "statusType": "award",
+            "title": PHYSIO_TWIN_TITLE,
+            "venue": PHYSIO_TWIN_VENUE,
+            "authors": PHYSIO_TWIN_AUTHORS,
+            "doi": PHYSIO_TWIN_DOI,
+            "url": doi_url(PHYSIO_TWIN_DOI),
+            "linkLabel": "Read Article",
+            "note": PHYSIO_TWIN_NOTE,
+        }
+    )
+    return updated
+
+
 def publication_doi_keys(item: dict) -> list[str]:
     keys: list[str] = []
+    doi = item.get("doi") or ""
+    if doi:
+        keys.append(normalize_key(str(doi)))
     url = item.get("url") or ""
     doi_match = re.search(r"(10\.\d{4,9}/\S+)", url, flags=re.I)
     if doi_match:
@@ -170,7 +212,7 @@ def publication_doi_keys(item: dict) -> list[str]:
 
 
 def publication_title_key(item: dict) -> str:
-    title = item.get("title") or ""
+    title = canonical_title(item.get("title") or "")
     return normalize_key(title) if title else ""
 
 
@@ -269,10 +311,12 @@ def parse_publications(page_html: str) -> list[dict]:
             "authors": authors,
             "url": doi_url(doi),
         }
+        if doi:
+            publication["doi"] = doi
         if publication["url"]:
             publication["linkLabel"] = "Read Article"
         publication["source"] = SOURCE
-        publications.append(publication)
+        publications.append(apply_publication_overrides(publication))
 
     return dedupe_publications(publications)
 
@@ -296,8 +340,8 @@ def clean_title(title: str) -> str:
     title = clean(title)
     nested_title = re.search(r'"([^"]+)"$', title)
     if nested_title:
-        return clean(nested_title.group(1))
-    return title
+        return canonical_title(nested_title.group(1))
+    return canonical_title(title)
 
 
 def orcid_work_type_category(work_type: str) -> str:
@@ -369,12 +413,15 @@ def orcid_publication_from_work(work: dict) -> dict | None:
         "venue": venue,
         "authors": orcid_authors(work),
     }
+    doi = orcid_doi(work)
+    if doi:
+        publication["doi"] = doi
     url = orcid_work_url(work)
     if url:
         publication["url"] = url
         publication["linkLabel"] = "Read Article"
     publication["source"] = ORCID_SOURCE
-    return publication
+    return apply_publication_overrides(publication)
 
 
 def preferred_orcid_summary(group: dict) -> dict | None:
@@ -415,7 +462,8 @@ def dedupe_publications(items: list[dict]) -> list[dict]:
     seen: dict[str, int] = {}
 
     for item in items:
-        key = normalize_key(item.get("title", ""))
+        item = apply_publication_overrides(item)
+        key = publication_title_key(item)
         if key in seen:
             existing = deduped[seen[key]]
             if not existing.get("url") and item.get("url"):
@@ -437,7 +485,7 @@ def merge_item(existing: dict, synced: dict) -> dict:
             else:
                 merged[field] = value
 
-    for field in ("category", "url", "linkLabel"):
+    for field in ("category", "doi", "url", "linkLabel"):
         value = synced.get(field)
         if not merged.get(field) and value not in (None, ""):
             merged[field] = value
@@ -446,7 +494,7 @@ def merge_item(existing: dict, synced: dict) -> dict:
         if not merged.get(field) and synced.get(field):
             merged[field] = synced[field]
 
-    return merged
+    return apply_publication_overrides(merged)
 
 
 def combine_sources(existing_source: str | None, new_source: str) -> str:
@@ -488,6 +536,25 @@ def merge_publications(existing: list[dict], synced: list[dict]) -> list[dict]:
         merged.insert(publication_insert_index(merged, item), item)
 
     return merged
+
+
+def dedupe_merged_publications(items: list[dict]) -> list[dict]:
+    deduped: list[dict] = []
+    seen: dict[tuple[str, str], int] = {}
+
+    for item in items:
+        item = apply_publication_overrides(item)
+        key = (item.get("category", ""), publication_title_key(item))
+        if not key[1]:
+            deduped.append(item)
+            continue
+        if key in seen:
+            deduped[seen[key]] = merge_item(deduped[seen[key]], item)
+            continue
+        seen[key] = len(deduped)
+        deduped.append(item)
+
+    return deduped
 
 
 def publication_insert_index(items: list[dict], new_item: dict) -> int:
@@ -607,7 +674,7 @@ def main() -> int:
     merged = merge_publications(existing, cv_synced)
     if orcid_synced:
         merged = merge_publications(merged, orcid_synced)
-    data["publications"]["items"] = merged
+    data["publications"]["items"] = dedupe_merged_publications(merged)
     data["publications"]["lastUpdated"] = formatted_update_date()
 
     if args.dry_run:

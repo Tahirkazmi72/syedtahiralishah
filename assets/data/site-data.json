@@ -547,6 +547,18 @@
         "href": "https://www.temaua.pt/pt/pessoas/membros/syed-tahir-ali-shah/",
         "icon": "fas fa-university",
         "color": "#b45309"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://pt.linkedin.com/in/syed-tahir-ali-shah-a1582897",
+        "icon": "fab fa-linkedin",
+        "color": "#0a66c2"
+      },
+      {
+        "label": "ResearchGate",
+        "href": "https://www.researchgate.net/profile/Syed-Tahir-Ali-Shah",
+        "icon": "fab fa-researchgate",
+        "color": "#00a59b"
       }
     ],
     "socials": [

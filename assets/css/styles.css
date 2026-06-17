@@ -360,6 +360,8 @@ section {
 .bio-text p {
   color: var(--text-main);
   margin: 0 0 18px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .timeline {

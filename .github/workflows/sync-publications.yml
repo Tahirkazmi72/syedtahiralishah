@@ -1,4 +1,4 @@
-name: Sync publications from Ciencia Vitae
+name: Sync publications from Ciencia Vitae and ORCID
 
 on:
   schedule:
@@ -32,5 +32,5 @@ jobs:
             exit 0
           fi
           git add assets/data/site-data.json
-          git commit -m "Sync publications from Ciencia Vitae"
+          git commit -m "Sync publications from external profiles"
           git push

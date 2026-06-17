@@ -31,12 +31,13 @@ Example:
 
 ## Sync Publications
 
-Journal publications are synced from Ciencia Vitae by GitHub Actions every Sunday at 06:00 UTC. The workflow can also be run manually from the GitHub Actions tab.
+Publications are synced from Ciencia Vitae and ORCID by GitHub Actions every Sunday at 06:00 UTC. The workflow can also be run manually from the GitHub Actions tab.
 
-The sync source is:
+The sync sources are:
 
 ```text
 https://www.cienciavitae.pt//F712-C83E-0EFB
+https://orcid.org/0000-0003-0001-1810
 ```
 
 The sync updates only `publications.items` in `assets/data/site-data.json`; manual website content outside publications is not changed.

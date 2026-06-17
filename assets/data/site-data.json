@@ -201,7 +201,7 @@
         "authors": "Syed Tahir Ali Shah, J. M. Fernandes, J. P. Santos, G. Constantinescu, Ant\u00f3nio B. Pereira.",
         "url": "https://doi.org/10.3390/s26041110",
         "linkLabel": "Read Article",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -224,7 +224,7 @@
         "authors": "Gabriel Constantinescu, Syed Tahir Ali Shah, Jos\u00e9 Paulo Oliveira Santos, Jo\u00e3o Manuel Cardoso, M\u00e1rio Jorge de Sousa Henriques, Ant\u00f3nio Manuel de Bastos Pereira",
         "url": "https://doi.org/10.3390/fib14050061",
         "linkLabel": "Read Article",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -244,7 +244,7 @@
         "title": "Smart E-bike systems: Integrating own rider information for improving riding experience",
         "venue": "Journal Article",
         "authors": "Syed Tahir Ali Shah, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -255,7 +255,7 @@
         "venue": "Journal Article",
         "authors": "Syed Tahir Ali Shah, G. Constantinescu, A. Horovistiz, J.P.O. Santos, A.M.B. Pereira, M.S. Henriques.",
         "note": "Corresponding author: Gabriel Constantinescu",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -277,7 +277,7 @@
         "linkLabel": "Read Article",
         "status": "Published (2025)",
         "statusType": "published",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -289,7 +289,7 @@
         "authors": "Syed Tahir Ali Shah, A. Iftikhar, M.I. Khan, M. Mansoor, A.F. Mirza, M. Bilal.",
         "url": "https://doi.org/10.18006/2020.8(spl-1-sars-cov-2).s01.s08",
         "linkLabel": "Read Article",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -301,7 +301,7 @@
         "authors": "Syed Tahir Ali Shah, M. Mansoor, A.F. Mirza, M. Dilshad, M.I. Khan, R. Farwa, M.A. Khan, M. Bilal, H.M.N. Iqbal.",
         "url": "https://doi.org/10.22207/JPAM.14.2.40",
         "linkLabel": "Read Article",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -313,7 +313,7 @@
         "authors": "Syed Tahir Ali Shah, Dr. A. Khan, Dr. A. Hussain.",
         "url": "https://doi.org/10.14299/ijser.2020.02.05",
         "linkLabel": "Read Article",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "conference",
@@ -336,6 +336,34 @@
       },
       {
         "category": "conference",
+        "year": 2026,
+        "title": "Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform",
+        "venue": "2026 The 9th International Conference on Information and Computer Technologies (ICICT2026)",
+        "authors": "Syed Tahir Ali Shah, Santos,J.P, Gabriel Constantinescu, Fernandes, Jos\u00e9, Pereira, A. B",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "Urban Biometrics in Motion: A Longitudinal Sensor Fusion Framework for Quantifying Traffic-Induced Stress in Micromobility Environments",
+        "venue": "Conference Paper",
+        "authors": "Syed Tahir Ali Shah, Jos\u00e9 P. Santos, Antonio B. Pereira, Gabriel Constantinescu, Jos\u00e9 M. Fernandes",
+        "url": "https://doi.org/10.1145/3801839.3801849",
+        "linkLabel": "Read Article",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the E-Bike Platform",
+        "venue": "Conference Paper",
+        "authors": "Syed Tahir Ali Shah, Jos\u00e9 Paulo Oliveira Santos, Gabriel Constantinescu, Jos\u00e9 Maria Amaral Fernandes, Antonio Manuel de Bastos Pereira",
+        "url": "https://doi.org/10.1145/3803291.3803295",
+        "linkLabel": "Read Article",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
         "year": 2025,
         "status": "Published (2025)",
         "statusType": "published",
@@ -350,7 +378,8 @@
         "statusType": "published",
         "title": "From ride data to carbon credits: a LCA-based mobile solution for sustainable EV usage",
         "venue": "TEchMA 2025 - New frontiers in mechanical engineering, Aveiro",
-        "authors": "G. Constantinescu, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.M.A. Fernandes, L. Borgato, F. Orsini, et al."
+        "authors": "G. Constantinescu, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.M.A. Fernandes, L. Borgato, F. Orsini, et al.",
+        "source": "orcid"
       },
       {
         "category": "conference",
@@ -377,7 +406,10 @@
         "statusType": "published",
         "title": "Extending IoT Networks with the Human Factor: An Example for an E-bike Scenario (Emotion Sensitive Computing)",
         "venue": "7TH INTERNATIONAL CONFERENCE ON TECHNOLOGIES FOR THE WELLBEING AND SUSTAINABLE MANUFACTURING SOLUTIONS, Aveiro",
-        "authors": "Syed Tahir Ali Shah"
+        "authors": "Syed Tahir Ali Shah",
+        "source": "orcid",
+        "url": "https://doi.org/10.48528/mehv-z227",
+        "linkLabel": "Read Article"
       }
     ]
   },

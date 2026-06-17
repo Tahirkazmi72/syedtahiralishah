@@ -45,7 +45,7 @@
   "bio": {
     "title": "About Me",
     "image": {
-      "src": "https://i1.rgstatic.net/ii/profile.image/865695453700097-1583409288538_Q512/Syed-Tahir-Ali-Shah.jpg",
+      "src": "assets/images/profile-photo.webp",
       "alt": "Portrait of Syed Tahir Ali Shah"
     },
     "paragraphs": [

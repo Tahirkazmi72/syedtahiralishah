@@ -1172,6 +1172,16 @@ body.certificate-view #certificates {
   margin-top: 38px;
 }
 
+.profile-links .btn {
+  color: #ffffff !important;
+}
+
+.profile-links .btn:hover,
+.profile-links .btn:focus-visible {
+  color: #ffffff !important;
+  filter: brightness(1.08);
+}
+
 footer {
   background: var(--footer-bg);
   color: #ffffff;

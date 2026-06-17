@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-11";
+const DATA_URL = "assets/data/site-data.json?v=20260617-12";
 
 let siteData = null;
 const state = {
@@ -202,6 +202,11 @@ function renderLanguages() {
 function certificateType(file) {
   if (!file) return "none";
   return /\.pdf($|\?)/i.test(file) ? "pdf" : "image";
+}
+
+function findCertificate(id) {
+  if (!id || !siteData?.certificates?.items) return null;
+  return siteData.certificates.items.find((item) => item.id === id) || null;
 }
 
 function openCertificateModal(item) {
@@ -460,9 +465,21 @@ function createPublicationItem(item) {
 
   if (item.note) {
     const note = createElement("p", "pub-note");
-    const emphasis = document.createElement("em");
-    emphasis.textContent = item.note;
-    note.appendChild(emphasis);
+    if (item.certificateId) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "pub-note-link";
+      button.textContent = item.note;
+      button.addEventListener("click", () => {
+        const certificate = findCertificate(item.certificateId);
+        if (certificate) openCertificateModal(certificate);
+      });
+      note.appendChild(button);
+    } else {
+      const emphasis = document.createElement("em");
+      emphasis.textContent = item.note;
+      note.appendChild(emphasis);
+    }
     article.appendChild(note);
   }
 

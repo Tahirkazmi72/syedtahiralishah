@@ -95,6 +95,7 @@
     "emptyMessage": "Certificate files have not been added yet.",
     "items": [
       {
+        "id": "best-paper-jps-2026",
         "title": "Best Paper Award Certificate",
         "issuer": "2026 9th International Conference on Information and Computer Technologies (ICICT 2026)",
         "date": "March 11-13, 2026",
@@ -333,6 +334,7 @@
         "url": "https://doi.org/10.1145/3803291.3803295",
         "linkLabel": "Read Article",
         "note": "Best Paper Award; corresponding author: Syed Tahir Ali Shah.",
+        "certificateId": "best-paper-jps-2026",
         "source": "orcid"
       },
       {

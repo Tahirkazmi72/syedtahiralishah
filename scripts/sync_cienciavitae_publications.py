@@ -33,6 +33,7 @@ PHYSIO_TWIN_DOI = "10.1145/3803291.3803295"
 PHYSIO_TWIN_VENUE = "2026 The 9th International Conference on Information and Computer Technologies (ICICT 2026), Honolulu-Hawaii"
 PHYSIO_TWIN_AUTHORS = "Syed Tahir Ali Shah, J.P. Santos, Gabriel Constantinescu, Jos\u00e9 M. Fernandes, A.B. Pereira."
 PHYSIO_TWIN_NOTE = "Best Paper Award; corresponding author: Syed Tahir Ali Shah."
+PHYSIO_TWIN_CERTIFICATE_ID = "best-paper-jps-2026"
 MONTHS = (
     "January",
     "February",
@@ -194,6 +195,7 @@ def apply_publication_overrides(publication: dict) -> dict:
             "url": doi_url(PHYSIO_TWIN_DOI),
             "linkLabel": "Read Article",
             "note": PHYSIO_TWIN_NOTE,
+            "certificateId": PHYSIO_TWIN_CERTIFICATE_ID,
         }
     )
     return updated
@@ -485,7 +487,7 @@ def merge_item(existing: dict, synced: dict) -> dict:
             else:
                 merged[field] = value
 
-    for field in ("category", "doi", "url", "linkLabel"):
+    for field in ("category", "doi", "url", "linkLabel", "certificateId"):
         value = synced.get(field)
         if not merged.get(field) and value not in (None, ""):
             merged[field] = value

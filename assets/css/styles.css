@@ -661,6 +661,23 @@ a.pub-title:hover,
   margin: 8px 0 0;
 }
 
+.pub-note-link {
+  background: transparent;
+  border: 0;
+  color: var(--accent);
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 700;
+  padding: 0;
+  text-align: left;
+}
+
+.pub-note-link:hover,
+.pub-note-link:focus-visible {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
 .pub-doi {
   color: #475569;
   display: block;

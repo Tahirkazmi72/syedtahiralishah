@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-6";
+const DATA_URL = "assets/data/site-data.json?v=20260617-7";
 
 let siteData = null;
 const state = {

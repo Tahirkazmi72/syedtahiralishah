@@ -1,0 +1,91 @@
+\documentclass[11pt,a4paper]{article}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{cmap}
+\usepackage[margin=0.72in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{array}
+\usepackage{xcolor}
+
+\definecolor{accent}{HTML}{B45309}
+\definecolor{textgray}{HTML}{334155}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\familydefault}{\sfdefault}
+
+\newcommand{\cvsection}[1]{%
+  \vspace{8pt}
+  {\large\bfseries\color{accent} #1}\\[-2pt]
+  \rule{\linewidth}{0.4pt}
+  \vspace{2pt}
+}
+
+\newcommand{\entry}[4]{%
+  \textbf{#1}\hfill{\small #2}\\
+  \textit{#3}\\
+  #4
+  \vspace{4pt}
+}
+
+\begin{document}
+
+{\LARGE\bfseries Syed Tahir Ali Shah}\\
+{\large Ph.D. Researcher in Mechanical Engineering, Embedded IoT, Affective Computing, and Smart Mobility}\\[4pt]
+\href{mailto:syedtahiralishah@ua.pt}{syedtahiralishah@ua.pt} \quad
+\href{mailto:syedtahirkzm1@gmail.com}{syedtahirkzm1@gmail.com}\\
+Centre for Mechanical Technology and Automation (TEMA), Department of Mechanical Engineering, University of Aveiro, Portugal\\
+\href{https://orcid.org/0000-0003-0001-1810}{ORCID} \quad
+\href{https://scholar.google.com/citations?user=VED2-h4AAAAJ}{Google Scholar} \quad
+\href{https://www.cienciavitae.pt//F712-C83E-0EFB}{Ciencia Vitae} \quad
+\href{https://pt.linkedin.com/in/syed-tahir-ali-shah-a1582897}{LinkedIn}
+
+\cvsection{Profile}
+Multidisciplinary Ph.D. researcher working across Mechanical Engineering, Computer Science, embedded Internet-of-Things systems, wearable sensing, edge intelligence, and human-centred smart mobility. Current research focuses on emotion-aware and physiology-aware mobility systems that use wearable signals, embedded machine learning, and IoT integration to support safer and more adaptive mobility experiences.
+
+\cvsection{Education and Research Appointments}
+\entry{Ph.D. in Mechanical Engineering}{2023/11/01--2027/06/30 (ongoing)}{University of Aveiro, Portugal}{Focus: emotion-aware IoT-integrated mobility systems.}
+\entry{Research Trainee}{From 2026/01/01}{Fundacao para a Ciencia e a Tecnologia, Portugal}{Host: University of Aveiro, Department of Mechanical Engineering.}
+\entry{Scholarship Holder}{2023/11/01--2025/12/31}{University of Aveiro, Portugal}{Ph.D. research work in the AM2R and MariaBike research context.}
+\entry{M.Sc. Computer Science}{2016/01/10--2018/08/31}{Iqra University - Islamabad Campus, Pakistan}{Classification: 14/20.}
+\entry{B.Sc. Computer Science}{2011/06/01--2016/01/01}{Karakoram International University, Pakistan}{Major: software engineering, database systems, data structures, and algorithm design.}
+
+\cvsection{Research Interests}
+\begin{itemize}
+  \item Affective computing and emotion-aware IoT systems.
+  \item Embedded machine learning, TinyML, mobile runtimes, and edge intelligence.
+  \item Wearable-driven physiological monitoring for mobility safety.
+  \item Human-centred smart mobility, e-bikes, and intelligent transport systems.
+\end{itemize}
+
+\cvsection{Selected Publications}
+\begin{itemize}
+  \item Syed Tahir Ali Shah, J.P. Santos, Gabriel Constantinescu, Jose M. Fernandes, A.B. Pereira. ``Physio-Digital Twin for Human-Centered IoT Mobility: A Proof-of-Concept Implementation on the MariaBike Platform.'' ICICT 2026. Best Paper Award. DOI: \href{https://doi.org/10.1145/3803291.3803295}{10.1145/3803291.3803295}.
+  \item Syed Tahir Ali Shah, J. M. Fernandes, J. P. Santos, G. Constantinescu, Antonio B. Pereira. ``The Micro-Mobility Sensing Gap: A Systematic Review of Physiological Safety Monitoring from Cycling to E-Scooters.'' Sensors, 2026. DOI: \href{https://doi.org/10.3390/s26041110}{10.3390/s26041110}.
+  \item Gabriel Constantinescu, Syed Tahir Ali Shah, Jose Paulo Oliveira Santos, Joao Manuel Cardoso, Mario Jorge de Sousa Henriques, Antonio Manuel de Bastos Pereira. ``Tensile and Flexural Behavior of Biaxial Non-Crimp-Fabric Composites for Two-Wheeled Electric-Vehicle Chassis.'' Fibers, 2026. DOI: \href{https://doi.org/10.3390/fib14050061}{10.3390/fib14050061}.
+  \item Syed Tahir Ali Shah. ``Extending IoT Networks with the Human Factor: An Example for an E-bike Scenario.'' 7th International Conference on Technologies for the Wellbeing and Sustainable Manufacturing Solutions, 2024. DOI: \href{https://doi.org/10.48528/mehv-z227}{10.48528/mehv-z227}.
+\end{itemize}
+
+\cvsection{Projects and Software}
+\entry{MariaBike Dashboard}{2025}{Featured software}{Real-time e-bike dashboard with BLE and MQTT integration for physiological monitoring in mobility.}
+\entry{FCT BDANA PhD Work Programme}{2026--2030}{Ph.D. studentship}{Embedded intelligent systems for personalized and sustainable mobility.}
+\entry{AM2R Mobilizing Agenda}{2023--2025}{Ph.D. student fellow}{Business innovation in the two-wheel sector at the University of Aveiro.}
+
+\cvsection{Service and Mentorship}
+\entry{Scientific Mentorship (CHAI I)}{2024/10/01--2025/06/30}{University of Aveiro}{Mentoring student Joao Bispo in Scientific Mentorship I.}
+\entry{Thesis Supervisor}{2022/06/01--2023/06/30}{University of Baltistan, Pakistan}{Topic: IoT-Based Smart Farming System with Real-Time Soil Moisture and Weather Monitoring.}
+\entry{Thesis Co-supervisor}{2020/01/01--2021/01/31}{University of Baltistan, Pakistan}{Topic: Real-Time Emotion Recognition from Facial Expressions Using Deep Learning.}
+
+\cvsection{Languages}
+\begin{tabular}{>{\bfseries}p{0.24\linewidth}p{0.68\linewidth}}
+Urdu & Native / mother tongue\\
+English & Upper intermediate to proficient across communication skills\\
+Portuguese & Beginner to intermediate working proficiency\\
+\end{tabular}
+
+\vfill
+{\small This CV is generated for the personal academic website. For the complete official record, visit \href{https://www.cienciavitae.pt//F712-C83E-0EFB}{Ciencia Vitae}.}
+
+\end{document}

@@ -1001,6 +1001,13 @@ function bindInteractions() {
   const toggle = $("#mobile-toggle");
   const certificateModal = $("#certificate-modal");
   const certificateClose = $("#certificate-modal-close");
+  const closeNavigation = () => {
+    navLinks.classList.remove("active");
+    document.body.classList.remove("nav-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", uiText("openNavigation", "Open navigation"));
+    $("i", toggle).className = "fas fa-bars";
+  };
 
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 50);
@@ -1008,16 +1015,26 @@ function bindInteractions() {
 
   toggle.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("active");
+    document.body.classList.toggle("nav-open", isOpen);
     toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? uiText("closeNavigation", "Close navigation") : uiText("openNavigation", "Open navigation"));
     $("i", toggle).className = isOpen ? "fas fa-times" : "fas fa-bars";
   });
 
   navLinks.addEventListener("click", (event) => {
     if (event.target.closest("a")) {
-      navLinks.classList.remove("active");
-      toggle.setAttribute("aria-expanded", "false");
-      $("i", toggle).className = "fas fa-bars";
+      closeNavigation();
     }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navLinks.classList.contains("active")) return;
+    if (nav.contains(event.target)) return;
+    closeNavigation();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1200) closeNavigation();
   });
 
   document.addEventListener("click", (event) => {

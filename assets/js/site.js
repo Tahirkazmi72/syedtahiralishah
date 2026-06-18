@@ -1,4 +1,4 @@
-const DATA_URL = "assets/data/site-data.json?v=20260619-3";
+const DATA_URL = "assets/data/site-data.json?v=20260617-16";
 const TRANSLATIONS_URL = "assets/data/translations.json?v=20260617-1";
 const THEME_KEY = "syed-tahir-theme";
 const LANGUAGE_KEY = "syed-tahir-language";
@@ -34,9 +34,6 @@ function createLink(item, className) {
   link.href = rawHref;
   link.textContent = item.label || item.title;
   if (className) link.className = className;
-  if (item.download) {
-    link.setAttribute("download", item.download === true ? "" : item.download);
-  }
   if (item.external !== false && /^https?:\/\//i.test(rawHref)) {
     link.target = "_blank";
     link.rel = "noopener";

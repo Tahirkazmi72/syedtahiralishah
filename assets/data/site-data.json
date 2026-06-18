@@ -15,11 +15,9 @@
     { "label": "Contact", "href": "#contact" }
   ],
   "cvLink": {
-    "label": "Download CV",
-    "href": "assets/documents/syed-tahir-ali-shah-cv.pdf",
-    "icon": "fas fa-download",
-    "external": false,
-    "download": "Syed-Tahir-Ali-Shah-CV.pdf"
+    "label": "CV",
+    "href": "https://www.cienciavitae.pt//F712-C83E-0EFB",
+    "icon": "fas fa-arrow-right"
   },
   "hero": {
     "subtitle": "Ph.D. Researcher",
@@ -27,9 +25,7 @@
     "summary": "Exploring the intersection of Mechanical Engineering, Embedded Machine Learning, and Affective Computing at the University of Aveiro.",
     "actions": [
       { "label": "Discover My Work", "href": "#bio", "external": false },
-      { "label": "Certificates", "href": "#certificates", "icon": "fas fa-certificate", "external": false },
-      { "label": "Download CV", "href": "assets/documents/syed-tahir-ali-shah-cv.pdf", "icon": "fas fa-download", "external": false, "download": "Syed-Tahir-Ali-Shah-CV.pdf" },
-      { "label": "View Ciência Vitae", "href": "https://www.cienciavitae.pt//F712-C83E-0EFB", "icon": "fas fa-id-card" }
+      { "label": "Certificates", "href": "#certificates", "icon": "fas fa-certificate", "external": false }
     ],
     "images": [
       {

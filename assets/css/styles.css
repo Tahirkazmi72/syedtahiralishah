@@ -1651,6 +1651,113 @@ footer .socials a:hover {
 }
 
 @media (max-width: 560px) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  body,
+  main,
+  section,
+  header,
+  footer,
+  nav {
+    max-width: 100vw;
+  }
+
+  section {
+    margin: 64px auto;
+    padding: 0 14px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 92px 14px 54px;
+  }
+
+  .hero-content,
+  .bio-container,
+  .software-showcase,
+  .research-grid,
+  .certificate-grid,
+  .contact-grid,
+  .publication-tools,
+  .pub-tabs,
+  #publication-list,
+  .profile-links {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .bio-container,
+  .research-card,
+  .project-card,
+  .pub-item,
+  .certificate-card,
+  .contact-card {
+    padding: 18px;
+  }
+
+  .bio-image {
+    max-width: min(100%, 300px);
+    padding: 10px;
+  }
+
+  .table-wrapper {
+    overflow: visible;
+  }
+
+  table,
+  thead,
+  tbody,
+  tr,
+  td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  tr {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  tr:last-child {
+    border-bottom: 0;
+  }
+
+  td {
+    align-items: baseline;
+    border-bottom: 0;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: minmax(96px, 38%) 1fr;
+    padding: 8px 14px;
+    text-align: left;
+  }
+
+  td::before {
+    color: var(--text-light);
+    content: attr(data-label);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  tr:hover td {
+    background: transparent;
+  }
+
   .publication-tools {
     grid-template-columns: 1fr;
   }
@@ -1669,16 +1776,33 @@ footer .socials a:hover {
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  .pub-doi-badge {
+    border-radius: 6px;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  .pub-action,
+  .profile-links .btn,
+  .hero-actions .btn,
+  .certificate-actions .btn {
+    width: 100%;
+  }
+
+  .slideshow-frame {
+    height: 210px;
+  }
 }
 
 @media (max-width: 440px) {
   .brand {
-    font-size: 1rem;
-    max-width: 230px;
+    font-size: 0.94rem;
+    max-width: calc(100vw - 96px);
   }
 
   .hero h1 {
-    font-size: 2.15rem;
+    font-size: 2rem;
   }
 
   .software-info h3,
@@ -1699,5 +1823,4 @@ footer .socials a:hover {
   .certificate-card {
     padding: 16px;
   }
-
 }

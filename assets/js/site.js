@@ -366,6 +366,7 @@ function renderLanguages() {
     const tableRow = document.createElement("tr");
     row.forEach((cell, index) => {
       const td = document.createElement("td");
+      td.dataset.label = siteData.languages.columns[index] || "";
       if (index === 0) {
         const strong = document.createElement("strong");
         strong.textContent = cell.primary;

@@ -2,7 +2,7 @@ name: Sync publications from Ciencia Vitae and ORCID
 
 on:
   schedule:
-    - cron: "0 6 * * 0"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:

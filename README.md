@@ -31,7 +31,7 @@ Example:
 
 ## Sync Publications
 
-Publications are synced from Ciencia Vitae and ORCID by GitHub Actions every Sunday at 06:00 UTC. The workflow can also be run manually from the GitHub Actions tab.
+Publications are synced from Ciencia Vitae and ORCID by GitHub Actions every 15 days. The workflow checks the schedule daily at 06:00 UTC, runs the sync only on the 15-day cadence, and can also be run manually from the GitHub Actions tab.
 
 The sync sources are:
 

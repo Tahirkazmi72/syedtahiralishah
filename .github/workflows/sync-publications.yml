@@ -2,7 +2,7 @@ name: Sync publications from Ciencia Vitae and ORCID
 
 on:
   schedule:
-    - cron: "0 6 * * 0"
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -20,10 +20,23 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Check 15-day cadence
+        id: cadence
+        run: |
+          days_since_epoch=$(( $(date -u +%s) / 86400 ))
+          if [ $(( days_since_epoch % 15 )) -eq 0 ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping scheduled sync; next 15-day cadence has not arrived."
+          fi
+
       - name: Sync publications
+        if: github.event_name == 'workflow_dispatch' || steps.cadence.outputs.should_run == 'true'
         run: python scripts/sync_cienciavitae_publications.py
 
       - name: Commit and push changes
+        if: github.event_name == 'workflow_dispatch' || steps.cadence.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

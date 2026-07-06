@@ -174,13 +174,25 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: July 5, 2026",
+    "lastUpdated": "Updated: July 6, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
       { "id": "conference", "label": "Conferences" }
     ],
     "items": [
+      {
+        "category": "journal",
+        "year": 2026,
+        "status": "Published (2026)",
+        "statusType": "published",
+        "title": "Impact of Generative Artificial Intelligence (ChatGPT) on Students\u2019 Critical Thinking Skills and Academic Integrity in Higher Education",
+        "venue": "Social Science Review Archives, 4(1), 3071-3087",
+        "authors": "Seemen Umar Khan Yousufzai, Zunaira Faraz, Muhammad Junaid Abbas, Syed Tahir Ali Shah.",
+        "url": "https://doi.org/10.70670/sra.v4i1.1865",
+        "linkLabel": "Read Article",
+        "doi": "10.70670/sra.v4i1.1865"
+      },
       {
         "category": "journal",
         "year": 2026,

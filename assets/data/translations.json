@@ -241,7 +241,7 @@
         "rows": [
           [{ "primary": "Urdu", "note": "Língua materna" }, "Nativo", "Nativo", "Nativo", "Nativo", "Nativo"],
           [{ "primary": "Inglês" }, "Intermédio superior (B2)", "Proficiência (C2)", "Proficiência (C2)", "Avançado (C1)", "Proficiência (C2)"],
-          [{ "primary": "Português" }, "Iniciante (A1)", "Iniciante (A1)", "Iniciante (A1)", "Intermédio (B1)", "Intermédio superior (B2)"]
+          [{ "primary": "Português", "note": "Certificado A2" }, "Elementar (A2)", "Elementar (A2)", "Elementar (A2)", "Elementar (A2)", "A2 certificado"]
         ]
       },
       "publications": {
@@ -355,7 +355,7 @@
         "rows": [
           [{ "primary": "Urdu", "note": "Lengua materna" }, "Nativo", "Nativo", "Nativo", "Nativo", "Nativo"],
           [{ "primary": "Inglés" }, "Intermedio alto (B2)", "Dominio (C2)", "Dominio (C2)", "Avanzado (C1)", "Dominio (C2)"],
-          [{ "primary": "Portugués" }, "Inicial (A1)", "Inicial (A1)", "Inicial (A1)", "Intermedio (B1)", "Intermedio alto (B2)"]
+          [{ "primary": "Portugués", "note": "Certificado A2" }, "Elemental (A2)", "Elemental (A2)", "Elemental (A2)", "Elemental (A2)", "A2 certificado"]
         ]
       },
       "publications": {
@@ -469,7 +469,7 @@
         "rows": [
           [{ "primary": "Ourdou", "note": "Langue maternelle" }, "Natif", "Natif", "Natif", "Natif", "Natif"],
           [{ "primary": "Anglais" }, "Intermédiaire supérieur (B2)", "Maîtrise (C2)", "Maîtrise (C2)", "Avancé (C1)", "Maîtrise (C2)"],
-          [{ "primary": "Portugais" }, "Débutant (A1)", "Débutant (A1)", "Débutant (A1)", "Intermédiaire (B1)", "Intermédiaire supérieur (B2)"]
+          [{ "primary": "Portugais", "note": "Certificat A2" }, "Élémentaire (A2)", "Élémentaire (A2)", "Élémentaire (A2)", "Élémentaire (A2)", "A2 certifié"]
         ]
       },
       "publications": {
@@ -583,7 +583,7 @@
         "rows": [
           [{ "primary": "اردو", "note": "مادری زبان" }, "مادری", "مادری", "مادری", "مادری", "مادری"],
           [{ "primary": "انگریزی" }, "Upper Intermediate (B2)", "Proficiency (C2)", "Proficiency (C2)", "Advanced (C1)", "Proficiency (C2)"],
-          [{ "primary": "Portuguese" }, "Beginner (A1)", "Beginner (A1)", "Beginner (A1)", "Intermediate (B1)", "Upper Intermediate (B2)"]
+          [{ "primary": "Portuguese", "note": "A2 Certificate" }, "Elementary (A2)", "Elementary (A2)", "Elementary (A2)", "Elementary (A2)", "Certified A2"]
         ]
       },
       "publications": {

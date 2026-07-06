@@ -114,6 +114,16 @@
         "verifyUrl": "https://credsverse.com/credentials/a46da3d3-169d-448b-b702-36f8a1bbba28",
         "verifyLabel": "Verify Online",
         "buttonLabel": "View Certificate"
+      },
+      {
+        "id": "portuguese-language-a2-2026",
+        "title": "Portuguese Language Certificate (A2)",
+        "issuer": "Instituto do Emprego e Formacao Profissional - Centro de Emprego e Formacao Profissional de Agueda",
+        "date": "April 10, 2026",
+        "description": "Portuguese Language of Welcome certificate confirming A2 level, completed on March 26, 2026, with 150 training hours.",
+        "file": "assets/certificates/portuguese-language-a2-2026.jpeg",
+        "thumbnail": "assets/certificates/portuguese-language-a2-2026.jpeg",
+        "buttonLabel": "View Certificate"
       }
     ]
   },
@@ -163,12 +173,12 @@
         "Proficiency (C2)"
       ],
       [
-        { "primary": "Portuguese" },
-        "Beginner (A1)",
-        "Beginner (A1)",
-        "Beginner (A1)",
-        "Intermediate (B1)",
-        "Upper Int. (B2)"
+        { "primary": "Portuguese", "note": "A2 Certificate" },
+        "Elementary (A2)",
+        "Elementary (A2)",
+        "Elementary (A2)",
+        "Elementary (A2)",
+        "Certified A2"
       ]
     ]
   },

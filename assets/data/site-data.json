@@ -340,18 +340,11 @@
       {
         "category": "conference",
         "year": 2026,
-        "status": "Accepted (2026)",
-        "statusType": "accepted",
+        "status": "Published (2026)",
+        "statusType": "published",
         "title": "Spatio-Temporal Analytics of Traffic-Induced Stress: A Longitudinal Sensor Fusion Study in Real-World Micromobility Environments",
         "venue": "ICCDE 2026, Phuket",
-        "authors": "Syed Tahir Ali Shah, Jos\u00e9 Maria Fernandes, Jos\u00e9 Paulo Oliveira Santos, Gabriel Constantinescu, Ant\u00f3nio Manuel de Bastos Pereira."
-      },
-      {
-        "category": "conference",
-        "year": 2026,
-        "title": "Urban Biometrics in Motion: A Longitudinal Sensor Fusion Framework for Quantifying Traffic-Induced Stress in Micromobility Environments",
-        "venue": "Conference Paper",
-        "authors": "Syed Tahir Ali Shah, Jos\u00e9 P. Santos, Antonio B. Pereira, Gabriel Constantinescu, Jos\u00e9 M. Fernandes",
+        "authors": "Syed Tahir Ali Shah, Jos\u00e9 Maria Fernandes, Jos\u00e9 Paulo Oliveira Santos, Gabriel Constantinescu, Ant\u00f3nio Manuel de Bastos Pereira.",
         "url": "https://doi.org/10.1145/3801839.3801849",
         "linkLabel": "Read Article",
         "source": "orcid",

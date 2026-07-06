@@ -34,6 +34,10 @@ PHYSIO_TWIN_VENUE = "2026 The 9th International Conference on Information and Co
 PHYSIO_TWIN_AUTHORS = "Syed Tahir Ali Shah, J.P. Santos, Gabriel Constantinescu, Jos\u00e9 M. Fernandes, A.B. Pereira."
 PHYSIO_TWIN_NOTE = "Best Paper Award; corresponding author: Syed Tahir Ali Shah."
 PHYSIO_TWIN_CERTIFICATE_ID = "best-paper-jps-2026"
+STRESS_ANALYTICS_TITLE = "Spatio-Temporal Analytics of Traffic-Induced Stress: A Longitudinal Sensor Fusion Study in Real-World Micromobility Environments"
+STRESS_ANALYTICS_DOI = "10.1145/3801839.3801849"
+STRESS_ANALYTICS_VENUE = "ICCDE 2026, Phuket"
+STRESS_ANALYTICS_AUTHORS = "Syed Tahir Ali Shah, Jos\u00e9 Maria Fernandes, Jos\u00e9 Paulo Oliveira Santos, Gabriel Constantinescu, Ant\u00f3nio Manuel de Bastos Pereira."
 MONTHS = (
     "January",
     "February",
@@ -174,11 +178,45 @@ def canonical_title(title: str) -> str:
         and "proofofconceptimplementation" in key
         and ("mariabikeplatform" in key or "ebikeplatform" in key or key.endswith("ontheebike"))
     )
-    return PHYSIO_TWIN_TITLE if is_physio_twin else title
+    if is_physio_twin:
+        return PHYSIO_TWIN_TITLE
+
+    is_stress_analytics = (
+        (
+            "spatiotemporalanalyticsoftrafficinducedstress" in key
+            or "urbanbiometricsinmotion" in key
+        )
+        and "sensorfusion" in key
+        and "micromobility" in key
+    )
+    if is_stress_analytics:
+        return STRESS_ANALYTICS_TITLE
+
+    return title
 
 
 def apply_publication_overrides(publication: dict) -> dict:
-    if canonical_title(publication.get("title", "")) != PHYSIO_TWIN_TITLE:
+    title = canonical_title(publication.get("title", ""))
+
+    if title == STRESS_ANALYTICS_TITLE:
+        updated = publication.copy()
+        updated.update(
+            {
+                "category": "conference",
+                "year": 2026,
+                "status": "Published (2026)",
+                "statusType": "published",
+                "title": STRESS_ANALYTICS_TITLE,
+                "venue": STRESS_ANALYTICS_VENUE,
+                "authors": STRESS_ANALYTICS_AUTHORS,
+                "doi": STRESS_ANALYTICS_DOI,
+                "url": doi_url(STRESS_ANALYTICS_DOI),
+                "linkLabel": "Read Article",
+            }
+        )
+        return updated
+
+    if title != PHYSIO_TWIN_TITLE:
         return publication
 
     updated = publication.copy()

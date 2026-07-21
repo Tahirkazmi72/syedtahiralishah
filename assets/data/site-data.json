@@ -184,7 +184,7 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: July 6, 2026",
+    "lastUpdated": "Updated: July 21, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
@@ -290,7 +290,7 @@
         "title": "Wearable-Driven Adaptive Lighting Control for Smart Homes: A Scalable, Physiology-Aware IoT Architecture",
         "venue": "Journal Article",
         "authors": "Syed Tahir Ali Shah, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.",
-        "source": "cienciavitae"
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -374,12 +374,21 @@
       },
       {
         "category": "conference",
+        "year": 2026,
+        "title": "Wearable Sensing for Electric Micromobility Safety (From Cycling Evidence to E-Scooter Rider Monitoring)",
+        "venue": "TEchMA 2026 \u2013 Engineering Sustainable Futures: Materials, Systems and Technologies for Society",
+        "authors": "Gabriel Constantinescu, Syed Tahir Ali Shah",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
         "year": 2025,
         "status": "Published (2025)",
         "statusType": "published",
         "title": "Tensile and flexural characterizations of biaxial non-crimp fabric composites for sustainable, two-wheeled electric vehicle chassis",
         "venue": "TEchMA 2025 - New frontiers in mechanical engineering, Aveiro",
-        "authors": "G. Constantinescu, A. Horovistiz, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Lu\u00eds, M.S. Henriques."
+        "authors": "G. Constantinescu, A. Horovistiz, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Lu\u00eds, M.S. Henriques.",
+        "source": "orcid"
       },
       {
         "category": "conference",
@@ -398,7 +407,16 @@
         "statusType": "published",
         "title": "Compressive and shear behaviour of novel non-crimp fabric composites for sustainable and lightweight electrical mobility",
         "venue": "TEchMA 2025 - New frontiers in mechanical engineering, Aveiro",
-        "authors": "G. Constantinescu, A. Horovistiz, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Lu\u00eds, M.S. Henriques."
+        "authors": "G. Constantinescu, A. Horovistiz, Syed Tahir Ali Shah, J.P.O. Santos, A.M.B. Pereira, J.P. Alves, S. Lu\u00eds, M.S. Henriques.",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2025,
+        "title": "FROM NET-NEUTRAL TO NET-POSITIVE: A BLOCKCHAIN-ENABLED REGENERATIVE FRAMEWORK (BERF) FOR THE TOURISM-ENERGY NEXUS",
+        "venue": "APEEN2026: 9th Annual APEEN Conference",
+        "authors": "Sumera Javaid, Syed Tahir Ali Shah, Robaina, Margarita",
+        "source": "orcid"
       },
       {
         "category": "conference",

@@ -1,5 +1,6 @@
-const DATA_URL = "assets/data/site-data.json?v=20260617-16";
-const TRANSLATIONS_URL = "assets/data/translations.json?v=20260617-1";
+const CACHE_BUSTER = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+const DATA_URL = `assets/data/site-data.json?v=${CACHE_BUSTER}`;
+const TRANSLATIONS_URL = `assets/data/translations.json?v=${CACHE_BUSTER}`;
 const THEME_KEY = "syed-tahir-theme";
 const LANGUAGE_KEY = "syed-tahir-language";
 

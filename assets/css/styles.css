@@ -1098,6 +1098,34 @@ body.gallery-view #gallery {
   justify-content: center;
 }
 
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: -22px 0 30px;
+}
+
+.gallery-filter {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-main);
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 40px;
+  padding: 8px 18px;
+  transition: var(--transition);
+}
+
+.gallery-filter.active,
+.gallery-filter:hover,
+.gallery-filter:focus-visible {
+  background: var(--button-bg);
+  border-color: var(--button-bg);
+  color: var(--button-text);
+}
+
 .gallery-card {
   overflow: hidden;
 }

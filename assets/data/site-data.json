@@ -135,10 +135,26 @@
       {
         "title": "EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal",
         "date": "2026",
-        "category": "Academic Event",
+        "category": "School Activity",
         "description": "EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal",
         "image": "assets/images/eaia-2026-portrait.jpeg",
         "alt": "Syed Tahir Ali Shah at EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal"
+      },
+      {
+        "title": "EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal",
+        "date": "2026",
+        "category": "School Activity",
+        "description": "EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal",
+        "image": "assets/images/eaia-2026-lecture-selfie.jpeg",
+        "alt": "Syed Tahir Ali Shah attending a lecture at EAIA 2026, University of Aveiro, Portugal"
+      },
+      {
+        "title": "EAIA 2026 Participant Badge",
+        "date": "2026",
+        "category": "School Activity",
+        "description": "EAIA 2026 Advanced School on Artificial Intelligence, University of Aveiro, Portugal",
+        "image": "assets/images/eaia-2026-participant-badge.jpeg",
+        "alt": "EAIA 2026 participant badge for Syed Tahir at the University of Aveiro, Portugal"
       }
     ]
   },

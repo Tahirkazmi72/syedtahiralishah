@@ -15,6 +15,7 @@ const state = {
   publicationSort: "newest",
   publicationYear: "all",
   publicationAwardedOnly: false,
+  galleryCategory: "all",
   theme: document.documentElement.dataset.theme || "light",
   language: "en"
 };
@@ -589,13 +590,36 @@ function renderCertificates() {
 function renderGallery() {
   const gallery = siteData.gallery;
   const grid = $("#gallery-grid");
+  const filters = $("#gallery-filters");
   if (!gallery || !grid) return;
 
   setText("#gallery-title", gallery.title);
   setText("#gallery-subtitle", gallery.subtitle);
+  const categories = ["all", ...new Set(gallery.items.map((item) => item.category).filter(Boolean))];
+
+  if (filters) {
+    filters.innerHTML = "";
+    categories.forEach((category) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "gallery-filter";
+      button.dataset.category = category;
+      button.textContent = category === "all" ? "All" : category;
+      button.setAttribute("aria-pressed", String(state.galleryCategory === category));
+      if (state.galleryCategory === category) button.classList.add("active");
+      button.addEventListener("click", () => {
+        state.galleryCategory = category;
+        renderGallery();
+      });
+      filters.appendChild(button);
+    });
+  }
+
   grid.innerHTML = "";
 
-  gallery.items.forEach((item) => {
+  gallery.items
+    .filter((item) => state.galleryCategory === "all" || item.category === state.galleryCategory)
+    .forEach((item) => {
     const card = createElement("article", "gallery-card");
     const button = document.createElement("button");
     const imageWrap = createElement("div", "gallery-image");

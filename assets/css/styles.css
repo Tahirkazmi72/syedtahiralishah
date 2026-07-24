@@ -1094,11 +1094,23 @@ body.gallery-view #gallery {
 .gallery-grid {
   display: grid;
   gap: 26px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 360px));
+  justify-content: center;
 }
 
 .gallery-card {
   overflow: hidden;
+}
+
+.gallery-card__button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: zoom-in;
+  display: block;
+  padding: 0;
+  text-align: left;
+  width: 100%;
 }
 
 .gallery-card:hover {
@@ -1160,6 +1172,61 @@ body.gallery-view #gallery {
 
 .gallery-meta p {
   margin: 0;
+}
+
+.gallery-modal {
+  align-items: center;
+  background: var(--modal-backdrop);
+  display: none;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 2000;
+}
+
+.gallery-modal.active {
+  display: flex;
+}
+
+.gallery-modal__dialog {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  max-height: min(900px, 92svh);
+  max-width: min(980px, 96vw);
+  overflow: auto;
+  padding: 18px;
+  position: relative;
+  width: fit-content;
+}
+
+.gallery-modal__dialog img {
+  border-radius: var(--radius);
+  max-height: 78svh;
+  object-fit: contain;
+  width: auto;
+}
+
+.gallery-modal__dialog h3 {
+  font-size: 1.2rem;
+  margin: 14px 48px 0 0;
+}
+
+.gallery-modal__close {
+  align-items: center;
+  background: var(--button-bg);
+  border: 0;
+  border-radius: 50%;
+  color: var(--button-text);
+  cursor: pointer;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 38px;
 }
 
 .software-showcase {
@@ -1704,6 +1771,22 @@ footer .socials a:hover {
 
   .certificate-modal__actions {
     grid-template-columns: 1fr;
+  }
+
+  .gallery-modal {
+    align-items: stretch;
+    padding: 10px;
+  }
+
+  .gallery-modal__dialog {
+    max-height: calc(100svh - 20px);
+    padding: 12px;
+    width: 100%;
+  }
+
+  .gallery-modal__dialog img {
+    max-height: 74svh;
+    width: 100%;
   }
 
   .slideshow-frame {

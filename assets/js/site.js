@@ -442,6 +442,31 @@ function closeCertificateModal() {
   document.body.classList.remove("modal-open");
 }
 
+function openGalleryModal(item) {
+  const modal = $("#gallery-modal");
+  const image = $("#gallery-modal-image");
+  const title = $("#gallery-modal-title");
+  if (!modal || !image || !title) return;
+
+  image.src = item.image;
+  image.alt = item.alt || item.title;
+  title.textContent = item.title;
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeGalleryModal() {
+  const modal = $("#gallery-modal");
+  const image = $("#gallery-modal-image");
+  if (!modal || !image) return;
+
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+  image.removeAttribute("src");
+  document.body.classList.remove("modal-open");
+}
+
 function revealCertificates(options = {}) {
   const section = $("#certificates");
   if (!section) return;
@@ -572,10 +597,15 @@ function renderGallery() {
 
   gallery.items.forEach((item) => {
     const card = createElement("article", "gallery-card");
+    const button = document.createElement("button");
     const imageWrap = createElement("div", "gallery-image");
     const image = document.createElement("img");
     const meta = createElement("div", "gallery-meta");
     const details = createElement("div", "gallery-details");
+
+    button.type = "button";
+    button.className = "gallery-card__button";
+    button.setAttribute("aria-label", `Open photo: ${item.title}`);
 
     image.src = item.image;
     image.alt = item.alt || item.title;
@@ -589,7 +619,9 @@ function renderGallery() {
     meta.appendChild(createElement("h3", null, item.title));
     meta.appendChild(createElement("p", null, item.description));
 
-    card.append(imageWrap, meta);
+    button.append(imageWrap, meta);
+    button.addEventListener("click", () => openGalleryModal(item));
+    card.appendChild(button);
     grid.appendChild(card);
   });
 }
@@ -1067,6 +1099,8 @@ function bindInteractions() {
   const toggle = $("#mobile-toggle");
   const certificateModal = $("#certificate-modal");
   const certificateClose = $("#certificate-modal-close");
+  const galleryModal = $("#gallery-modal");
+  const galleryClose = $("#gallery-modal-close");
   const closeNavigation = () => {
     navLinks.classList.remove("active");
     document.body.classList.remove("nav-open");
@@ -1140,9 +1174,18 @@ function bindInteractions() {
   certificateModal.addEventListener("click", (event) => {
     if (event.target === certificateModal) closeCertificateModal();
   });
+  if (galleryClose && galleryModal) {
+    galleryClose.addEventListener("click", closeGalleryModal);
+    galleryModal.addEventListener("click", (event) => {
+      if (event.target === galleryModal) closeGalleryModal();
+    });
+  }
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && certificateModal.classList.contains("active")) {
       closeCertificateModal();
+    }
+    if (event.key === "Escape" && galleryModal?.classList.contains("active")) {
+      closeGalleryModal();
     }
   });
 }
@@ -1174,6 +1217,8 @@ function renderSite() {
   document.title = siteData.site.pageTitle;
   const certificateClose = $("#certificate-modal-close");
   if (certificateClose) certificateClose.setAttribute("aria-label", uiText("closeCertificate", "Close certificate"));
+  const galleryClose = $("#gallery-modal-close");
+  if (galleryClose) galleryClose.setAttribute("aria-label", "Close photo");
   renderNavigation();
   renderHero();
   renderBio();

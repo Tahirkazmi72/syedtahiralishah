@@ -472,6 +472,37 @@ function hideCertificates() {
   section.setAttribute("aria-hidden", "true");
 }
 
+function revealGallery(options = {}) {
+  const section = $("#gallery");
+  if (!section) return;
+
+  hideCertificates();
+  document.body.classList.add("gallery-view");
+  section.classList.remove("is-hidden");
+  section.setAttribute("aria-hidden", "false");
+
+  if (options.updateHash) {
+    history.pushState(null, "", "#gallery");
+  }
+
+  if (window.AOS) {
+    window.AOS.refreshHard();
+  }
+
+  window.setTimeout(() => {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 30);
+}
+
+function hideGallery() {
+  const section = $("#gallery");
+  if (!section) return;
+
+  document.body.classList.remove("gallery-view");
+  section.classList.add("is-hidden");
+  section.setAttribute("aria-hidden", "true");
+}
+
 function renderCertificates() {
   const certificates = siteData.certificates;
   const grid = $("#certificate-grid");
@@ -1078,18 +1109,30 @@ function bindInteractions() {
 
     if (internalLink.getAttribute("href") === "#certificates") {
       event.preventDefault();
+      hideGallery();
       revealCertificates({ updateHash: true });
       return;
     }
 
+    if (internalLink.getAttribute("href") === "#gallery") {
+      event.preventDefault();
+      revealGallery({ updateHash: true });
+      return;
+    }
+
     hideCertificates();
+    hideGallery();
   });
 
   window.addEventListener("hashchange", () => {
     if (window.location.hash === "#certificates") {
+      hideGallery();
       revealCertificates();
+    } else if (window.location.hash === "#gallery") {
+      revealGallery();
     } else {
       hideCertificates();
+      hideGallery();
     }
   });
 
@@ -1164,6 +1207,8 @@ function renderSite() {
 
   if (window.location.hash === "#certificates") {
     revealCertificates();
+  } else if (window.location.hash === "#gallery") {
+    revealGallery();
   }
 }
 

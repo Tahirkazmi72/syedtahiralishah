@@ -926,13 +926,29 @@ a.pub-title:hover,
   display: none;
 }
 
+.gallery-section.is-hidden {
+  display: none;
+}
+
 body.certificate-view .hero,
 body.certificate-view main > section:not(#certificates),
 body.certificate-view footer {
   display: none;
 }
 
+body.gallery-view .hero,
+body.gallery-view main > section:not(#gallery),
+body.gallery-view footer {
+  display: none;
+}
+
 body.certificate-view #certificates {
+  display: block;
+  margin-bottom: 90px;
+  margin-top: 128px;
+}
+
+body.gallery-view #gallery {
   display: block;
   margin-bottom: 90px;
   margin-top: 128px;

@@ -8,6 +8,7 @@
     { "label": "Bio", "href": "#bio" },
     { "label": "Education", "href": "#education" },
     { "label": "Certificates", "href": "#certificates" },
+    { "label": "Gallery", "href": "#gallery" },
     { "label": "Research", "href": "#research" },
     { "label": "Publications", "href": "#publications" },
     { "label": "Projects", "href": "#projects" },
@@ -124,6 +125,36 @@
         "file": "assets/certificates/portuguese-language-a2-2026.jpeg",
         "thumbnail": "assets/certificates/portuguese-language-a2-2026.jpeg",
         "buttonLabel": "View Certificate"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Selected photos from research visits, summer schools, workshops, and academic activities.",
+    "items": [
+      {
+        "title": "Company / Lab Visit",
+        "date": "2026",
+        "category": "Research Visit",
+        "description": "Photos from industrial visits, laboratory work, and collaborative research activities.",
+        "image": "https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Research and engineering lab visit"
+      },
+      {
+        "title": "Summer School",
+        "date": "2026",
+        "category": "Training",
+        "description": "Moments from summer school sessions, training activities, and academic learning events.",
+        "image": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
+        "alt": "University summer school session"
+      },
+      {
+        "title": "Conference & Workshop",
+        "date": "2025",
+        "category": "Academic Event",
+        "description": "Conference presentations, workshops, posters, and professional networking activities.",
+        "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Academic conference and workshop"
       }
     ]
   },

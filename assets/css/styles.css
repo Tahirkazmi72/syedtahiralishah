@@ -533,6 +533,7 @@ section {
 .project-card,
 .pub-item,
 .certificate-card,
+.gallery-card,
 .contact-card {
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -547,6 +548,7 @@ section {
 
 .research-card:hover,
 .project-card:hover,
+.gallery-card:hover,
 .certificate-card:hover,
 .contact-card:hover {
   box-shadow: var(--shadow-soft);
@@ -1073,6 +1075,77 @@ body.certificate-view #certificates {
   width: 100%;
 }
 
+.gallery-grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.gallery-card {
+  overflow: hidden;
+}
+
+.gallery-card:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery-image {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-muted);
+  overflow: hidden;
+}
+
+.gallery-image img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+  width: 100%;
+}
+
+.gallery-card:hover .gallery-image img {
+  transform: scale(1.04);
+}
+
+.gallery-meta {
+  padding: 22px;
+}
+
+.gallery-details {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.gallery-category,
+.gallery-date {
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 5px 9px;
+}
+
+.gallery-category {
+  background: var(--bg-subtle);
+  color: var(--teal);
+}
+
+.gallery-date {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.gallery-meta h3 {
+  font-size: 1.34rem;
+  margin-bottom: 8px;
+}
+
+.gallery-meta p {
+  margin: 0;
+}
+
 .software-showcase {
   align-items: center;
   display: grid;
@@ -1461,6 +1534,7 @@ footer .socials a:hover {
 
   .research-card:hover,
   .project-card:hover,
+  .gallery-card:hover,
   .certificate-card:hover,
   .contact-card:hover,
   .pub-item:hover {
@@ -1554,6 +1628,7 @@ footer .socials a:hover {
   .research-card,
   .project-card,
   .pub-item,
+  .gallery-card,
   .certificate-card,
   .contact-card {
     padding: 22px;
@@ -1694,6 +1769,7 @@ footer .socials a:hover {
   .research-card,
   .project-card,
   .pub-item,
+  .gallery-card,
   .certificate-card,
   .contact-card {
     padding: 18px;

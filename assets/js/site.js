@@ -530,6 +530,39 @@ function renderCertificates() {
   });
 }
 
+function renderGallery() {
+  const gallery = siteData.gallery;
+  const grid = $("#gallery-grid");
+  if (!gallery || !grid) return;
+
+  setText("#gallery-title", gallery.title);
+  setText("#gallery-subtitle", gallery.subtitle);
+  grid.innerHTML = "";
+
+  gallery.items.forEach((item) => {
+    const card = createElement("article", "gallery-card");
+    const imageWrap = createElement("div", "gallery-image");
+    const image = document.createElement("img");
+    const meta = createElement("div", "gallery-meta");
+    const details = createElement("div", "gallery-details");
+
+    image.src = item.image;
+    image.alt = item.alt || item.title;
+    image.loading = "lazy";
+    image.decoding = "async";
+    imageWrap.appendChild(image);
+
+    details.appendChild(createElement("span", "gallery-category", item.category));
+    details.appendChild(createElement("span", "gallery-date", item.date));
+    meta.appendChild(details);
+    meta.appendChild(createElement("h3", null, item.title));
+    meta.appendChild(createElement("p", null, item.description));
+
+    card.append(imageWrap, meta);
+    grid.appendChild(card);
+  });
+}
+
 function categoryCounts() {
   return siteData.publications.items.reduce((counts, item) => {
     counts[item.category] = (counts[item.category] || 0) + 1;
@@ -1104,6 +1137,7 @@ function renderSite() {
   setText("#education-title", siteData.education.title);
   renderTimeline("#education-timeline", siteData.education.items);
   renderCertificates();
+  renderGallery();
   renderResearch();
   renderLanguages();
   setText("#publications-title", siteData.publications.title);

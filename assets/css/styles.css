@@ -523,6 +523,21 @@ section {
   margin: 0;
 }
 
+.timeline-link {
+  align-items: center;
+  color: var(--accent-strong);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 8px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.timeline-link:hover,
+.timeline-link:focus-visible {
+  color: var(--primary);
+}
+
 .research-grid {
   display: grid;
   gap: 26px;

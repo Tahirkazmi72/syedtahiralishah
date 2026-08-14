@@ -333,6 +333,13 @@ function renderTimeline(selector, items, animation = "fade-right") {
     entry.appendChild(createElement("h3", null, item.title));
     entry.appendChild(createElement("h4", null, item.organization));
     if (item.description) entry.appendChild(createElement("p", null, item.description));
+    if (item.url) {
+      const link = createLink({ href: item.url, label: item.linkLabel || "Website" }, "timeline-link");
+      link.textContent = "";
+      appendIcon(link, "fas fa-external-link-alt");
+      link.append(document.createTextNode(item.linkLabel || "Website"));
+      entry.appendChild(link);
+    }
     timeline.appendChild(entry);
   });
 }

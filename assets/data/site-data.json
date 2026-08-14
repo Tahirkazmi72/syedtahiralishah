@@ -135,6 +135,16 @@
         "file": "assets/certificates/imsa-2026-participation.pdf",
         "thumbnail": "assets/certificates/imsa-2026-participation.png",
         "buttonLabel": "View Certificate"
+      },
+      {
+        "id": "eaia-2026-participation",
+        "title": "EAIA 2026 Advanced School on Artificial Intelligence",
+        "issuer": "University of Aveiro, Portugal",
+        "date": "July 23-24, 2026",
+        "description": "Certificate of participation in EAIA 2026 - Advanced School on Artificial Intelligence, held at the University of Aveiro.",
+        "file": "assets/certificates/eaia-2026-participation.pdf",
+        "thumbnail": "assets/certificates/eaia-2026-participation.png",
+        "buttonLabel": "View Certificate"
       }
     ]
   },

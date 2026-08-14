@@ -125,6 +125,16 @@
         "file": "assets/certificates/portuguese-language-a2-2026.jpeg",
         "thumbnail": "assets/certificates/portuguese-language-a2-2026.jpeg",
         "buttonLabel": "View Certificate"
+      },
+      {
+        "id": "imsa-2026-participation",
+        "title": "IMSA 2026 Participation Certificate",
+        "issuer": "4th Intelligent Methods, Systems, and Applications (IMSA 2026) International Conference",
+        "date": "July 11-12, 2026",
+        "description": "Certificate of participation for presenting \"A Proof-of-Concept Physio-Digital Twin for Stress-Aware Shared Micro-Mobility: Public-Data Training, Federated Simulation, and ESP32 Edge Deployment\" in Giza, Egypt.",
+        "file": "assets/certificates/imsa-2026-participation.pdf",
+        "thumbnail": "assets/certificates/imsa-2026-participation.png",
+        "buttonLabel": "View Certificate"
       }
     ]
   },

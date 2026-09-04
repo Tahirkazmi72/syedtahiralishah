@@ -235,7 +235,7 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: August 20, 2026",
+    "lastUpdated": "Updated: September 4, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
@@ -429,6 +429,14 @@
         "title": "Wearable Sensing for Electric Micromobility Safety (From Cycling Evidence to E-Scooter Rider Monitoring)",
         "venue": "TEchMA 2026 \u2013 Engineering Sustainable Futures: Materials, Systems and Technologies for Society",
         "authors": "Gabriel Constantinescu, Syed Tahir Ali Shah",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "Rider-Aware Smart E-Bikes Using Wearable Physiological Sensing and Embedded AI for Adaptive Micro-Mobility",
+        "venue": "Theveli International Conference 2026: Transformative Innovation in the 21st Century: Science, Technology, and Society",
+        "authors": "Syed Tahir Ali Shah, Santos,J.P, Fernandes, Jos\u00e9, Pereira, A. B, Gabriel Constantinescu",
         "source": "orcid"
       },
       {

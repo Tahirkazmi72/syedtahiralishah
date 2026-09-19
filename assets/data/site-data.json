@@ -235,7 +235,7 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: September 4, 2026",
+    "lastUpdated": "Updated: September 19, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
@@ -314,13 +314,15 @@
       },
       {
         "category": "journal",
-        "year": 2025,
+        "year": 2026,
         "status": "Submitted (2025)",
         "statusType": "submitted",
         "title": "Smart E-bike systems: Integrating own rider information for improving riding experience",
         "venue": "Journal Article",
         "authors": "Syed Tahir Ali Shah, J.M. Fernandes, J.P. Santos, G. Constantinescu, A.B. Pereira, M.S. Henriques.",
-        "source": "cienciavitae, orcid"
+        "source": "cienciavitae, orcid",
+        "url": "https://www.spmateriais.pt/_files/ugd/f3aad1_5974cc032abe481daf192a4925c588b1.pdf",
+        "linkLabel": "Read Article"
       },
       {
         "category": "journal",
@@ -355,6 +357,19 @@
         "statusType": "published",
         "source": "cienciavitae, orcid",
         "doi": "10.5281/zenodo.17129656"
+      },
+      {
+        "category": "journal",
+        "year": 2025,
+        "status": "Published (2025)",
+        "statusType": "published",
+        "title": "Machine Learning-Driven Design and Optimization of Neodymium-Substituted R-Type Hexagonal Ferrites for Enhanced Electrical Polarization Properties",
+        "venue": "Journal for Current Sign (2025)",
+        "authors": "Syed Tahir Ali Shah",
+        "url": "https://doi.org/10.5281/zenodo.17527187",
+        "doi": "10.5281/zenodo.17527187",
+        "linkLabel": "Read Article",
+        "source": "cienciavitae"
       },
       {
         "category": "journal",

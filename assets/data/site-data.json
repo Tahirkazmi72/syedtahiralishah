@@ -235,7 +235,7 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: September 19, 2026",
+    "lastUpdated": "Updated: October 4, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
@@ -452,6 +452,25 @@
         "title": "Rider-Aware Smart E-Bikes Using Wearable Physiological Sensing and Embedded AI for Adaptive Micro-Mobility",
         "venue": "Theveli International Conference 2026: Transformative Innovation in the 21st Century: Science, Technology, and Society",
         "authors": "Syed Tahir Ali Shah, Santos,J.P, Fernandes, Jos\u00e9, Pereira, A. B, Gabriel Constantinescu",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "A Proof-of-Concept Physio-Digital Twin for Stress-Aware Shared Micro-Mobility: Public-Data Training, Federated Simulation, and ESP32 Edge Deployment",
+        "venue": "IEEE Conference on Intelligent Methods, Systems, and Applications (IMSA 2026)",
+        "authors": "Shah, S. Tahir Ali, Santos, J. P, Bastos, A. M, Fernandes, J. M, Constantinescu, G",
+        "doi": "10.1109/imsa70415.2026.11700273",
+        "url": "https://doi.org/10.1109/imsa70415.2026.11700273",
+        "linkLabel": "Read Article",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "Development of a new, lightweight, attractive, and efficient bike",
+        "venue": "2nd International Conference on Management, Engineering, Sciences & Humanities 2026 (MESH \u2013 2026)",
+        "authors": "Pereira, A. B, Syed Tahir Ali Shah",
         "source": "orcid"
       },
       {

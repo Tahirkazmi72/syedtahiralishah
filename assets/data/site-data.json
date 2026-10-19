@@ -235,7 +235,7 @@
   },
   "publications": {
     "title": "Publications",
-    "lastUpdated": "Updated: October 4, 2026",
+    "lastUpdated": "Updated: October 19, 2026",
     "categories": [
       { "id": "all", "label": "All" },
       { "id": "journal", "label": "Journals & Articles" },
@@ -301,6 +301,19 @@
         "linkLabel": "Read Article",
         "source": "cienciavitae, orcid",
         "doi": "10.3390/fib14050061"
+      },
+      {
+        "category": "journal",
+        "year": 2026,
+        "status": "Published (2026)",
+        "statusType": "published",
+        "title": "Data-Minimizing Motion-Gated Artificial Intelligence Decision Support for Electric Micro-Mobility: An Architecture-Feasibility Study",
+        "venue": "Sensors 26 19 (2026): 6334",
+        "authors": "Shah, Syed Tahir Ali, Santos, Jos\u00e9 Paulo Oliveira , Fernandes, Jos\u00e9 Maria, Pereira, Ant\u00f3nio B., Constantinescu, Gabriel. Autor correspondente: Shah, Syed Tahir Ali",
+        "url": "https://doi.org/10.3390/s26196334",
+        "doi": "10.3390/s26196334",
+        "linkLabel": "Read Article",
+        "source": "cienciavitae, orcid"
       },
       {
         "category": "journal",
@@ -471,6 +484,17 @@
         "title": "Development of a new, lightweight, attractive, and efficient bike",
         "venue": "2nd International Conference on Management, Engineering, Sciences & Humanities 2026 (MESH \u2013 2026)",
         "authors": "Pereira, A. B, Syed Tahir Ali Shah",
+        "source": "orcid"
+      },
+      {
+        "category": "conference",
+        "year": 2026,
+        "title": "Differentiating Physical Exertion from Psychological Stress in Micro-Mobility Using Attention-Based Multi-Task TinyML",
+        "venue": "EEITE 2026 (7th International Conference in Electronic Engineering & Information Technology)",
+        "authors": "Shah, Syed Tahir Ali, Pereira, Ant\u00f3nio B, Santos, J. P, Fernandes, J. M, Constantinescu, G",
+        "doi": "10.1109/eeite69609.2026.11679620",
+        "url": "https://doi.org/10.1109/eeite69609.2026.11679620",
+        "linkLabel": "Read Article",
         "source": "orcid"
       },
       {
